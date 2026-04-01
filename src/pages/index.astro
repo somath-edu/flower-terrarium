@@ -40,11 +40,26 @@ const jsonLd = {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>HAKO MAGAZINE | Editorial Index</title>
     <meta name="description" content="Discover the world of HAKOrium. We sculpt the principles of nature into an indoor ecosystem through premium terrariums and vivariums." />
+    <link rel="canonical" href="https://somath-edu.github.io/flower-terrarium/" />
+
+    <!-- Open Graph / Social -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="HAKO MAGAZINE | Editorial Index" />
+    <meta property="og:description" content="Discover the world of HAKOrium. Premium terrariums and vivariums." />
+    <meta property="og:image" content="https://somath-edu.github.io/flower-terrarium/optimized/first-post-top.jpg" />
+    <meta property="og:url" content="https://somath-edu.github.io/flower-terrarium/" />
+    <meta property="og:site_name" content="HAKO Magazine" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="HAKO MAGAZINE | Editorial Index" />
+    <meta name="twitter:description" content="Premium interior ecosystems by HAKOrium." />
+    <meta name="twitter:image" content="https://somath-edu.github.io/flower-terrarium/optimized/first-post-top.jpg" />
     
     <!-- Sitemap -->
     <link rel="sitemap" href={`${base}/sitemap-index.xml`.replace('//', '/')} />
     
-    <!-- JSON-LD SEO Schema -->
+    <!-- JSON-LD SEO Schema (AEO/GEO Optimization) -->
     <script type="application/ld+json" set:html={JSON.stringify(jsonLd)}></script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">

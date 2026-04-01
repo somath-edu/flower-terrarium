@@ -47,18 +47,61 @@ const bodyStyle = createStyleObject({
   fontMetrics: notoSansKrMetrics
 });
 
+// JSON-LD Article Content
+const articleLd = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": title,
+  "description": description || subtitle,
+  "image": [new URL(safeCover, 'https://somath-edu.github.io').toString()],
+  "datePublished": date.toISOString(),
+  "author": [{
+    "@type": "Organization",
+    "name": "HAKOrium",
+    "url": "https://somath-edu.github.io/flower-terrarium"
+  }],
+  "publisher": {
+    "@type": "Organization",
+    "name": "HAKOrium",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://somath-edu.github.io/flower-terrarium/optimized/first-post-top.jpg"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": `https://somath-edu.github.io/flower-terrarium${Astro.url.pathname}`
+  }
+};
 ---
 
 <html lang="ko" data-theme="light" data-lang="ko">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- JSON-LD Article Schema (AEO/GEO Optimization) -->
+    <script type="application/ld+json" set:html={JSON.stringify(articleLd)}></script>
     <title>{title} - Magazine Blog</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&family=Noto+Serif+KR:wght@400;500;600;700;800&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,800&display=swap" rel="stylesheet">
-    
+    <!-- SEO / AEO / GEO Metadata -->
+    <meta name="description" content={description || subtitle || `HAKO Magazine: ${category} - ${title}`} />
+    <link rel="canonical" href={new URL(Astro.url.pathname, 'https://somath-edu.github.io').toString()} />
+
+    <!-- Open Graph / Social -->
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description || subtitle} />
+    <meta property="og:image" content={new URL(safeCover, 'https://somath-edu.github.io').toString()} />
+    <meta property="og:url" content={new URL(Astro.url.pathname, 'https://somath-edu.github.io').toString()} />
+    <meta property="og:site_name" content="HAKO Magazine" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description || subtitle} />
+    <meta name="twitter:image" content={new URL(safeCover, 'https://somath-edu.github.io').toString()} />
+
     <style is:global define:vars={{
       // Dynamically pass Capsize logic to CSS Variables for usage
       valBefore: headerStyle['::before'].content,
