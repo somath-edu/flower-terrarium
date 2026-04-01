@@ -1,18 +1,18 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection, type CollectionEntry } from 'astro:content';
 
 const posts = await getCollection('blog');
-posts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+posts.sort((a: CollectionEntry<'blog'>, b: CollectionEntry<'blog'>) => b.data.date.valueOf() - a.data.date.valueOf());
 
 // Group posts by category
-const categories = posts.reduce((acc, post) => {
+const categories = posts.reduce((acc: Record<string, CollectionEntry<'blog'>[]>, post: CollectionEntry<'blog'>) => {
   const cat = post.data.categoryEn || post.data.category;
   if (!acc[cat]) {
     acc[cat] = [];
   }
   acc[cat].push(post);
   return acc;
-}, {} as Record<string, typeof posts>);
+}, {} as Record<string, CollectionEntry<'blog'>[]>);
 
 const siteUrl = "https://somath-edu.github.io/flower-terrarium";
 const base = import.meta.env.BASE_URL; // e.g. /flower-terrarium
@@ -213,7 +213,7 @@ const jsonLd = {
 
       <!-- 본문 목록: 카테고리별 그리드 -->
       <main class="content-grid">
-        {Object.entries(categories).map(([categoryName, catPosts]) => (
+        {(Object.entries(categories) as [string, CollectionEntry<'blog'>[]][]).map(([categoryName, catPosts]) => (
           <section class="category-section">
             <h2>{categoryName}</h2>
             <div class="article-list">
