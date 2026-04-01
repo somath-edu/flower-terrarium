@@ -1,0 +1,257 @@
+---
+import { getCollection } from 'astro:content';
+
+const posts = await getCollection('blog');
+posts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+// Group posts by category
+const categories = posts.reduce((acc, post) => {
+  const cat = post.data.categoryEn || post.data.category;
+  if (!acc[cat]) {
+    acc[cat] = [];
+  }
+  acc[cat].push(post);
+  return acc;
+}, {} as Record<string, typeof posts>);
+
+const siteUrl = "https://somath-edu.github.io/flower-terrarium";
+const base = import.meta.env.BASE_URL; // e.g. /flower-terrarium
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "HAKO MAGAZINE",
+  "url": siteUrl,
+  "description": "Premium interior terrarium and vivarium brand. We combine landscaping tech and craftsmanship to bring you ecosystem-in-a-glass.",
+  "publisher": {
+    "@type": "Organization",
+    "name": "HAKOrium",
+    "logo": {
+      "@type": "ImageObject",
+      "url": `${siteUrl}/optimized/first-post-top.jpg`
+    }
+  }
+};
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HAKO MAGAZINE | Editorial Index</title>
+    <meta name="description" content="Discover the world of HAKOrium. We sculpt the principles of nature into an indoor ecosystem through premium terrariums and vivariums." />
+    
+    <!-- Sitemap -->
+    <link rel="sitemap" href={`${base}/sitemap-index.xml`.replace('//', '/')} />
+    
+    <!-- JSON-LD SEO Schema -->
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)}></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;600;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+      :root {
+        --bg-color: #f8f7f2; /* Paper texture base */
+        --text-main: #111111;
+        --text-muted: #666666;
+        --border-color: #2a2a2a;
+      }
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: var(--bg-color);
+        color: var(--text-main);
+        font-family: 'Noto Sans KR', sans-serif;
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+      }
+      .page-wrapper {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 60px 40px;
+      }
+      header.masthead {
+        text-align: center;
+        border-bottom: 2px solid var(--border-color);
+        padding-bottom: 3rem;
+        margin-bottom: 4rem;
+      }
+      .logo {
+        font-family: 'Noto Serif KR', serif;
+        font-size: 6rem;
+        font-weight: 700;
+        font-style: italic;
+        letter-spacing: -3px;
+        margin: 0 0 1.5rem 0;
+        text-transform: uppercase;
+      }
+      .intro {
+        max-width: 750px;
+        margin: 0 auto;
+        font-size: 1.15rem;
+        color: var(--text-muted);
+        font-family: 'Noto Serif KR', serif;
+      }
+      
+      .content-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 5rem;
+      }
+      
+      .category-section h2 {
+        font-family: 'Noto Serif KR', serif;
+        font-size: 1.8rem;
+        border-bottom: 1px solid var(--border-color);
+        padding-bottom: 0.5rem;
+        margin-bottom: 2.5rem;
+        text-transform: uppercase;
+      }
+
+      .article-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+        gap: 3rem;
+        justify-content: start;
+      }
+
+      .article-card {
+        text-decoration: none;
+        color: inherit;
+        display: flex;
+        flex-direction: column;
+        transition: transform 0.2s ease;
+        max-width: 450px; /* Prevent single items from being too wide */
+      }
+      .article-card:hover {
+        transform: translateY(-4px);
+      }
+      
+      .article-cover-wrapper {
+        width: 100%;
+        aspect-ratio: 16 / 10;
+        overflow: hidden;
+        margin-bottom: 1.5rem;
+        border: 1px solid rgba(0,0,0,0.05);
+      }
+
+      .article-cover {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        /* Slight vintage editorial grade */
+        filter: grayscale(10%) contrast(105%);
+        transition: filter 0.3s, transform 0.5s ease;
+      }
+      .article-card:hover .article-cover {
+        filter: grayscale(0%) contrast(100%);
+        transform: scale(1.03);
+      }
+
+      .article-meta {
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        color: var(--text-muted);
+        margin-bottom: 0.4rem;
+        font-weight: 600;
+      }
+      
+      .article-title {
+        font-family: 'Noto Serif KR', serif;
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin: 0 0 0.6rem 0;
+        line-height: 1.3;
+      }
+      
+      .article-desc {
+        font-size: 0.95rem;
+        color: var(--text-muted);
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+
+      footer {
+        margin-top: 6rem;
+        padding-top: 2rem;
+        border-top: 1px solid var(--border-color);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 0.9rem;
+        font-weight: 500;
+        text-transform: uppercase;
+      }
+      footer a {
+        color: var(--text-main);
+        text-decoration: none;
+        border-bottom: 1px solid var(--text-main);
+      }
+      
+      @media (max-width: 768px) {
+        .logo { font-size: 3.5rem; }
+        .page-wrapper { padding: 30px 20px; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page-wrapper">
+      
+      <!-- SEO 대표 헤더 텍스트 영역 -->
+      <header class="masthead">
+        <h1 class="logo">HAKO MAGAZINE</h1>
+        <p class="intro">
+          We combine decades of landscaping tech, premium craftsmanship, and advanced data analysis 
+          to bring you industry-changing indoor terrarium systems. 
+          Discover our living ecosystem curated through the design principles of nature.
+        </p>
+      </header>
+
+      <!-- 본문 목록: 카테고리별 그리드 -->
+      <main class="content-grid">
+        {Object.entries(categories).map(([categoryName, catPosts]) => (
+          <section class="category-section">
+            <h2>{categoryName}</h2>
+            <div class="article-list">
+              {catPosts.map(post => {
+                // Remove leading slash to accurately combine with astro Base path
+                const internalHref = post.id.startsWith('/') ? post.id.slice(1) : post.id;
+                const cover = post.data.coverImage ? post.data.coverImage.replace(/^\//, '') : '';
+                return (
+                  <a href={`${base}/${internalHref}`.replace('//', '/')} class="article-card">
+                    {cover && (
+                      <div class="article-cover-wrapper">
+                        <img src={`${base}/${cover}`.replace('//', '/')} alt={post.data.title} class="article-cover" />
+                      </div>
+                    )}
+                    <div class="article-meta">
+                      {new Date(post.data.date).toLocaleDateString()}
+                    </div>
+                    <h3 class="article-title">{post.data.title}</h3>
+                    <p class="article-desc">{post.data.description}</p>
+                  </a>
+                );
+              })}
+            </div>
+          </section>
+        ))}
+      </main>
+
+      <!-- 하단 정보 및 사이트맵 연결 -->
+      <footer>
+        <div class="copy">
+          &copy; {new Date().getFullYear()} HAKOrium. All rights reserved.<br/>
+          Global Shipping Available
+        </div>
+        <div class="sitemap-link">
+           <a href={`${base}/sitemap-index.xml`.replace('//', '/')}>Sitemap (XML)</a>
+        </div>
+      </footer>
+      
+    </div>
+  </body>
+</html>
