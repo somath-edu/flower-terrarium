@@ -10,7 +10,26 @@ const notoSerifKrMetrics = {
   capHeight: 733, ascent: 1160, descent: -288, lineGap: 0, unitsPerEm: 1000
 };
 
-const { title, date, category, coverImage, subImage, subtitle, description, titleEn, categoryEn, subtitleEn, descriptionEn } = Astro.props;
+import { type CollectionEntry } from 'astro:content';
+
+interface Props {
+  title: string;
+  date: Date;
+  category: string;
+  coverImage: string;
+  subImage: string;
+  subtitle: string;
+  description: string;
+  titleEn?: string;
+  categoryEn?: string;
+  subtitleEn?: string;
+  descriptionEn?: string;
+}
+
+const { 
+  title, date, category, coverImage, subImage, subtitle, description, 
+  titleEn, categoryEn, subtitleEn, descriptionEn 
+} = Astro.props as Props;
 const base = import.meta.env.BASE_URL;
 const safeCover = coverImage ? `${base}${coverImage.replace(/^\/+/, '')}` : '';
 const safeSub = subImage ? `${base}${subImage.replace(/^\/+/, '')}` : '';
