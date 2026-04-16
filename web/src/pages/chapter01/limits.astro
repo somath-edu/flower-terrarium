@@ -42,14 +42,16 @@ const limA = "$\\displaystyle \\lim_{x \\to a}$";
 				</p>
 
 				<!-- Flow 01 -->
-				<div class="type-section">
-					<span class="type-badge">1.</span>
-					<h4 style="margin-top: 5px; display: flex; align-items: baseline; gap: 15px;">
-						{limInf} (무한대로 갈 때)
+				<div style="margin-bottom: 40px;">
+					<h4 style="display: flex; align-items: baseline; gap: 10px;">
+						<span class="pencil-star">★</span>
+						<span class="pencil-underline" style="font-size: 1.3rem;">
+							1. {limInf} (무한대로 갈 때)
+						</span>
 						<a href="/wiki/chapter01/problems-inf/" class="problem-link">실전 문제 ✏️</a>
 					</h4>
-					<p>분수 형태의 식에서는 분모와 분자의 <b>최고차항</b>을 비교합니다.</p>
-					<ul>
+					<p style="margin-left: 25px;">분수 형태의 식에서는 분모와 분자의 <b>최고차항</b>을 비교합니다.</p>
+					<ul style="margin-left: 25px;">
 						<li><b>분모의 차수 &gt; 분자의 차수</b>: 극한값은 $0$입니다.</li>
 						<li><b>분모의 차수 = 분자의 차수</b>: 극한값은 <b>최고차항 계수의 비</b>입니다.</li>
 						<li><b>분모의 차수 &lt; 분자의 차수</b>: 무한대($\infty$)로 발산합니다.</li>
@@ -57,20 +59,19 @@ const limA = "$\\displaystyle \\lim_{x \\to a}$";
 				</div>
 
 				<!-- Flow 02 -->
-				<div class="type-section">
-					<span class="type-badge">2.</span>
-					<h4 style="margin-top: 5px; display: flex; align-items: baseline; gap: 15px;">
-						{limA} (상수로 갈 때)
+				<div style="margin-bottom: 40px;">
+					<h4 style="display: flex; align-items: baseline; gap: 10px;">
+						<span class="pencil-star">★</span>
+						<span class="pencil-underline" style="font-size: 1.3rem;">
+							2. {limA} (상수로 갈 때)
+						</span>
 						<a href="#" class="problem-link">실전 문제 ✏️</a>
 					</h4>
-					<p>대입했을 때 분모가 $0$이 되는 경우(부정형)를 주의해야 합니다.</p>
-					<ul>
+					<p style="margin-left: 25px;">대입했을 때 분모가 $0$이 되는 경우(부정형)를 주의해야 합니다.</p>
+					<ul style="margin-left: 25px;">
 						<li>분모가 $0$으로 가면, 분자도 반드시 $0$으로 가야 극한값이 존재합니다. ($0/0$ 꼴)</li>
 						<li>이때 분자는 반드시 분모를 $0$으로 만드는 <b>인수 $(x-a)$</b>를 가지고 있습니다.</li>
 					</ul>
-					<p style="font-style: italic; color: #666; font-size: 11pt; margin-bottom: 0;">
-						"분모가 0이 된다면, 분자에서 약분할 대상을 찾으세요!"
-					</p>
 				</div>
 			</section>
 
