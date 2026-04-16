@@ -1,39 +1,80 @@
 ---
 import CornellNote from '../components/CornellNote.astro';
 ---
+
 <html lang="ko">
 	<head>
 		<meta charset="utf-8" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
-		<title>MathWiki - Limits</title>
+		<title>미적분 I - 함수의 극한</title>
+		<!-- KaTeX for Math (Safe CDN) -->
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+		<script is:inline src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+		<script is:inline src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+		<style>
+			body {
+				background-color: #e0e0e0;
+				margin: 0;
+				padding: 20px;
+				display: flex;
+				justify-content: center;
+			}
+		</style>
 	</head>
 	<body>
-		<CornellNote title="Limits of Functions" chapter="Chapter 01">
-			<div slot="cues">
-				<p><b>Q1.</b><br/>What to know for Limits?</p>
-			</div>
+		<CornellNote title="함수의 극한 (Limits of Functions)" chapter="미적분 I: 01. 함수의 극한과 연속">
 			
+			<div slot="cues">
+				<p><b>Q1.</b><br/>극한 문제를 볼 때 알아둬야 하는 게 뭔가요?</p>
+				
+				<div style="margin-top: 50mm;">
+					<p><b>Keywords:</b></p>
+					<ul>
+						<li>최고차항 비교</li>
+						<li>부정형 (0/0)</li>
+						<li>인수분해</li>
+					</ul>
+				</div>
+			</div>
+
 			<section>
-				<h4>1. Case x to Infinity</h4>
-				<p>Compare degrees:</p>
+				<p>함수의 극한 문제를 해결할 때는 크게 <b>두 가지 흐름</b>을 파악하는 것이 핵심입니다.</p>
+
+				<h4>1. 무한대로 갈 때 ($x \to \infty$)</h4>
+				<p>분수 형태의 식에서는 분모와 분자의 <b>최고차항</b>을 비교합니다.</p>
 				<ul>
-					<li>Denom > Num: 0</li>
-					<li>Denom = Num: Coefficient ratio</li>
+					<li><b>분모의 차수 &gt; 분자의 차수</b>: 극한값은 $0$입니다.</li>
+					<li><b>분모의 차수 = 분자의 차수</b>: 극한값은 <b>최고차항 계수의 비</b>입니다.</li>
+					<li><b>분모의 차수 &lt; 분자의 차수</b>: 무한대($\infty$)로 발산합니다.</li>
 				</ul>
+
+				<h4 style="margin-top: 10mm;">2. 상수로 갈 때 ($x \to a$)</h4>
+				<p>대입했을 때 분모가 0이 되는 경우(부정형)를 주의해야 합니다.</p>
+				<ul>
+					<li>분모가 $0$으로 가면, 분자도 반드시 $0$으로 가야 극한값이 존재합니다. ($0/0$ 꼴)</li>
+					<li>이때 분자는 반드시 분모를 $0$으로 만드는 <b>인수 $(x-a)$</b>를 가지고 있습니다.</li>
+				</ul>
+				<p style="font-style: italic; color: #666; font-size: 11pt;">
+					"분모가 0이 된다면, 분자에서 약분할 대상을 찾으세요!"
+				</p>
 			</section>
 
 			<div slot="summary">
-				<p>Focus on forms.</p>
+				<p>극한은 <b>'형태'</b>를 보는 연습입니다. 무한대에서는 힘 싸움(차수 비교)을, 상수에서는 0이 되는 원인(인수분해)을 제거하는 것이 핵심 전략입니다.</p>
 			</div>
 		</CornellNote>
-
-		<script is:inline src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
-		<script is:inline src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+		
 		<script is:inline>
+			/* Render math formulas after DOM is ready */
 			document.addEventListener("DOMContentLoaded", function() {
-				renderMathInElement(document.body);
+				renderMathInElement(document.body, {
+					delimiters: [
+						{left: '$$', right: '$$', display: true},
+						{left: '$', right: '$', display: false}
+					],
+					throwOnError : false
+				});
 			});
 		</script>
 	</body>
