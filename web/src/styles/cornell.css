@@ -134,10 +134,10 @@ body {
   .paper {
     width: 100%;
     margin: 0;
-    padding: 30px 20px; /* Increased vertical and horizontal padding */
+    padding: 15px 15px; /* Reduced top and horizontal padding */
     box-shadow: none;
     background-size: 100% var(--base-grid);
-    min-height: auto; /* Remove A4 height constraint on mobile */
+    min-height: auto;
   }
   .cornell-main {
     flex-direction: column;
@@ -149,8 +149,8 @@ body {
     border-bottom: 1px dashed var(--sidebar-color);
     padding-right: 0;
     margin-right: 0;
-    margin-bottom: var(--base-grid);
-    padding-bottom: 20px;
+    margin-bottom: 10px; /* Reduced from 32px to 10px */
+    padding-bottom: 5px;  /* Reduced from 20px to 5px */
   }
   .cornell-notes {
     padding-left: 0;
