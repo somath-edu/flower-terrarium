@@ -199,6 +199,23 @@ body {
   text-decoration: underline;
 }
 
+/* Problem Type - Soft Boxing Style */
+.type-section {
+  background-color: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 32px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.01);
+  transition: all 0.2s ease;
+}
+
+.type-section:hover {
+  background-color: rgba(255, 255, 255, 0.9);
+  border-color: rgba(65, 105, 225, 0.3);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+}
+
 /* Red Pencil Highlights */
 .pencil-star {
   color: #e63946;
