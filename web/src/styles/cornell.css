@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Nanum+Myeongjo:wght@400;700;800&display=swap');
+
+:root {
+  --notebook-bg: #fcfaf2;  /* 미색 종이 색상 */
+  --line-color: rgba(0, 0, 0, 0.08); /* 연한 줄무늬 */
+  --sidebar-color: rgba(65, 105, 225, 0.2); /* 큐 사이드바 구분선 (옅은 블루) */
+  --text-primary: #2c2c2c;
+  --header-font: 'Nanum Myeongjo', serif;
+  --body-font: 'EB Garamond', serif;
+}
+
+@page {
+  size: A4;
+  margin: 0;
+}
+
+.paper {
+  background-color: var(--notebook-bg);
+  width: 210mm;
+  min-height: 297mm;
+  padding: 20mm;
+  margin: 10mm auto;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  position: relative;
+  box-sizing: border-box;
+  color: var(--text-primary);
+  /* 종이 질감 효과 */
+  background-image: 
+    radial-gradient(var(--line-color) 1px, transparent 0),
+    linear-gradient(var(--line-color) 1px, transparent 1px);
+  background-size: 20px 20px, 100% 32px;
+}
+
+.cornell-header {
+  border-bottom: 2px solid #444;
+  margin-bottom: 10mm;
+  padding-bottom: 2mm;
+}
+
+.cornell-header h1 {
+  font-family: var(--header-font);
+  font-size: 24pt;
+  margin: 0;
+}
+
+.cornell-main {
+  display: flex;
+  min-height: 200mm;
+  border-bottom: 2px solid #444;
+}
+
+.cornell-cues {
+  flex: 0 0 30%;
+  border-right: 2px solid var(--sidebar-color);
+  padding-right: 5mm;
+  font-family: var(--header-font);
+  font-style: italic;
+  font-size: 11pt;
+  color: #555;
+}
+
+.cornell-notes {
+  flex: 1;
+  padding-left: 8mm;
+  font-family: var(--body-font);
+  font-size: 13pt;
+  line-height: 1.6;
+}
+
+.cornell-summary {
+  margin-top: 5mm;
+  padding: 5mm;
+  background: rgba(0,0,0,0.02);
+  min-height: 30mm;
+  font-family: var(--body-font);
+}
+
+.cornell-summary h3 {
+  font-family: var(--header-font);
+  font-size: 12pt;
+  margin-top: 0;
+  border-bottom: 1px solid #ccc;
+  display: inline-block;
+}
+
+/* 수식 스타일 (자연스럽게) */
+.math-inline {
+  color: #d32f2f; /* 약간의 강조를 위해 딥 레드 계열 사용 */
+}

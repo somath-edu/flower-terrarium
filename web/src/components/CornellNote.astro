@@ -1,0 +1,31 @@
+---
+interface Props {
+	title: string;
+	chapter?: string;
+}
+
+const { title, chapter } = Astro.props;
+import '../styles/cornell.css';
+---
+
+<div class="paper">
+	<header class="cornell-header">
+		{chapter && <p style="font-family: var(--header-font); font-size: 10pt; margin: 0; color: #888;">{chapter}</p>}
+		<h1>{title}</h1>
+	</header>
+
+	<main class="cornell-main">
+		<aside class="cornell-cues">
+			<slot name="cues" />
+		</aside>
+		
+		<article class="cornell-notes">
+			<slot />
+		</article>
+	</main>
+
+	<footer class="cornell-summary">
+		<h3>Summary / 핵심 요조약</h3>
+		<slot name="summary" />
+	</footer>
+</div>
