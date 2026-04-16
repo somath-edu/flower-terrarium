@@ -80,9 +80,15 @@ body {
 
 .cornell-notes {
   flex: 1;
+  padding-left: 40px; /* Increased padding for better balance */
   font-family: var(--body-font);
   font-size: 13pt;
-  line-height: var(--line-height); /* Essential for alignment */
+  line-height: var(--line-height);
+}
+
+/* Ensure lists are also balanced */
+.cornell-notes ul {
+  padding-left: 20px;
 }
 
 /* Ensure all elements fit the grid */
