@@ -1,9 +1,11 @@
 ---
 import MathPageLayout from '../../../layouts/MathPageLayout.astro';
+import CornellNote from '../../../components/CornellNote.astro';
 ---
 
-<MathPageLayout title="유형 01. 유리함수" chapter="Chapter 01 Practice">
-  <div slot="cues">
+<MathPageLayout title="유형 01. 유리함수">
+  <CornellNote title="유형 01. 유리함수" chapter="Chapter 01 Practice">
+<div slot="cues">
 <p style="margin: 0; font-weight: bold; color: #1a1a1a;">💡 집중 공략 포인트</p>
 				<ul style="margin-top: 10px; padding-left: 18px; font-size: 11pt; line-height: 1.6; color: #444;">
 					<li>분모와 분자의 최고차항 찾기</li>
@@ -65,4 +67,5 @@ import MathPageLayout from '../../../layouts/MathPageLayout.astro';
   <div slot="summary">
 <p>유리함수의 극한에서는 **'어떤 항이 가장 빠르게 커지는가'**만 눈에 보이면 1초 만에 풀 수 있습니다. 분모와 분자의 차수가 같을 때는 계수만 쓱 보세요!</p>
   </div>
+  </CornellNote>
 </MathPageLayout>

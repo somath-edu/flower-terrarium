@@ -1,9 +1,11 @@
 ---
 import MathPageLayout from '../../layouts/MathPageLayout.astro';
+import CornellNote from '../../components/CornellNote.astro';
 ---
 
-<MathPageLayout title="무한대 극한" chapter="Chapter 01 Practice">
-  <div slot="cues">
+<MathPageLayout title="무한대 극한">
+  <CornellNote title="무한대 극한" chapter="Chapter 01 Practice">
+<div slot="cues">
 <p style="margin: 0; font-weight: bold; color: #1a1a1a;">🚀 해결 전략 체크리스트</p>
 				<ul style="margin-top: 10px; padding-left: 18px; font-size: 11pt; line-height: 1.6; color: #444;">
 					<li>식의 형태 파악 ({ "$ \\frac{\\infty}{\\infty} $" } 또는 { "$ \\infty-\\infty $" })</li>
@@ -62,6 +64,7 @@ import MathPageLayout from '../../layouts/MathPageLayout.astro';
   <div slot="summary">
 <p>무한대 극한의 핵심은 **'가장 힘이 센 항(최고차항)'**을 찾는 것입니다. 무리식이 있으면 유리화를 통해 우리가 아는 차수 비교 형태로 바꾸는 것이 전략입니다.</p>
   </div>
+  </CornellNote>
 </MathPageLayout>
 
 <style>

@@ -1,9 +1,11 @@
 ---
 import MathPageLayout from '../../layouts/MathPageLayout.astro';
+import CornellNote from '../../components/CornellNote.astro';
 ---
 
-<MathPageLayout title="상수 극한 (x → a)" chapter="Chapter 01 Practice">
-  <div slot="cues">
+<MathPageLayout title="상수 극한 (x → a)">
+  <CornellNote title="상수 극한 (x → a)" chapter="Chapter 01 Practice">
+<div slot="cues">
 <p style="margin: 0; font-weight: bold; color: #1a1a1a;">🚀 해결 전략 체크리스트</p>
 				<ul style="margin-top: 10px; padding-left: 18px; font-size: 11pt; line-height: 1.6; color: #444;">
 					<li>직접 대입 시 분모가 { "$ 0 $" }이 되는지 확인</li>
@@ -62,6 +64,7 @@ import MathPageLayout from '../../layouts/MathPageLayout.astro';
   <div slot="summary">
 <p>상수 극한의 핵심은 **'0이 되는 원인(인수)을 찾아 제거하는 것'**입니다. 분모가 0이면 분자도 반드시 0이어야 함을 잊지 마세요!</p>
   </div>
+  </CornellNote>
 </MathPageLayout>
 
 <style>

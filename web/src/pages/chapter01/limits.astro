@@ -1,9 +1,11 @@
 ---
 import MathPageLayout from '../../layouts/MathPageLayout.astro';
+import CornellNote from '../../components/CornellNote.astro';
 ---
 
-<MathPageLayout title="함수의 극한" chapter="Chapter 01: 함수의 극한">
-  <div slot="cues">
+<MathPageLayout title="함수의 극한">
+  <CornellNote title="함수의 극한" chapter="Chapter 01: 함수의 극한">
+<div slot="cues">
 <p style="margin: 0; font-weight: bold;">Q1. 극한 문제를 볼 때 알아둬야 하는 게 뭔가요?</p>
 				<p style="margin-top: var(--base-grid); color: #666; font-size: 11pt; line-height: 1.4;">
 					* 극한은 '형태'를 먼저<br/>파악하는 것이 중요합니다.
@@ -54,4 +56,5 @@ import MathPageLayout from '../../layouts/MathPageLayout.astro';
   <div slot="summary">
 <p>극한은 <b>'형태'</b>를 보는 연습입니다. 무한대에서는 힘 싸움(차수 비교)을, 상수에서는 0이 되는 원인(인수분해)을 제거하는 것이 핵심 전략입니다.</p>
   </div>
+  </CornellNote>
 </MathPageLayout>

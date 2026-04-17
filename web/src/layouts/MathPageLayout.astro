@@ -1,14 +1,9 @@
 ---
-import CornellNote from '../components/CornellNote.astro';
-
 interface Props {
   title: string;
-  chapter?: string;
-  // Optional extra CSS for page-specific overrides
-  pageStyle?: string;
 }
 
-const { title, chapter, pageStyle } = Astro.props;
+const { title } = Astro.props;
 ---
 
 <html lang="ko">
@@ -21,19 +16,9 @@ const { title, chapter, pageStyle } = Astro.props;
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
     <script is:inline src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
     <script is:inline src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
-    {pageStyle && <style set:html={pageStyle} />}
   </head>
   <body>
-    <CornellNote title={title} chapter={chapter}>
-      <!-- cues slot (왼쪽 힌트 컬럼) -->
-      <slot name="cues" slot="cues" />
-
-      <!-- main content (본문) -->
-      <slot />
-
-      <!-- summary slot (하단 요약) -->
-      <slot name="summary" slot="summary" />
-    </CornellNote>
+    <slot />
 
     <script is:inline>
       if (typeof window !== 'undefined') {
