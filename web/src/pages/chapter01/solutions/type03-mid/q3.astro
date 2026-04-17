@@ -25,27 +25,29 @@ import CornellNote from '../../../../components/CornellNote.astro';
 			<div slot="cues">
 				<p style="margin: 0; font-weight: bold; color: #1a1a1a;">💡 풀이 전략</p>
 				<p style="margin-top: 10px; font-size: 10pt; line-height: 1.6; color: #666;">
-					분자의 영인자 조건을 먼저 해결하고, 유리화된 식의 대입을 통해 나머지 미지수를 구합니다.
+					{ "$ \\infty - \\infty $" } 꼴의 미정계수 문제는 유리화를 통해 { "$ \\infty/\\infty $" } 꼴로 바꾼 뒤 계수를 비교합니다.
 				</p>
 			</div>
 
 			<section>
 				<div class="sol-box formula-box">
-					<p style="margin-bottom: 20px; font-weight: bold;">Q3. 다음 등식을 만족시키는 상수 { "$ a, b $" }에 대하여 { "$ a+b $" }의 값을 구하시오.</p>
-					<p style="text-align: center; font-size: 1.25rem; background: #fcfcfc; padding: 10px; border-radius: 12px;">
-						{ "$ \\displaystyle \\lim_{x \\to 2} \\frac{\\sqrt{x+a}-2}{x-2} = b $" }
+					<p style="margin-bottom: 20px; font-weight: bold;">Q3. 다음 등식이 성립하도록 하는 양수 { "$ a $" }의 값을 구하시오.</p>
+					<p style="text-align: center; font-size: 1.25rem; background: #f9f9f9; padding: 10px; border-radius: 12px;">
+						{ "$ \\displaystyle \\lim_{x \\to \\infty} (\\sqrt{x^2 + ax} - x) = 3 $" }
 					</p>
 
-					<span class="step-title">Step 1. 영인자 조건 해결</span>
-					<p>{ "$ x \\to 2 $" }일 때 { "$ \\sqrt{2+a}-2 = 0 \\implies \\sqrt{2+a} = 2 \\implies a = 2 $" }입니다.</p>
+					<span class="step-title">Step 1. 유리화 진행</span>
+					<p>{ "$ \\infty - \\infty $" } 꼴이므로 분자를 유리화합니다.<br/>
+					{ "$ \\displaystyle \\frac{(\\sqrt{x^2+ax}-x)(\\sqrt{x^2+ax}+x)}{\\sqrt{x^2+ax}+x} = \\frac{ax}{\\sqrt{x^2+ax}+x} $" }</p>
 
-					<span class="step-title">Step 2. 식 유리화</span>
-					<p>{ "$ a=2 $" }를 대입한 뒤 분자를 유리화합니다.<br/>
-					{ "$ \\displaystyle \\frac{\\sqrt{x+2}-2}{x-2} = \\frac{(x+2)-4}{(x-2)(\\sqrt{x+2}+2)} = \\frac{1}{\\sqrt{x+2}+2} $" }</p>
+					<span class="step-title">Step 2. 무한대 극한 (계수비)</span>
+					<p>분모의 최고차항 { "$ x $" }로 나누어 계수를 비교합니다.<br/>
+					분모의 최고차항({ "$ x $" }) 계수 합 : { "$ \\sqrt{1} + 1 = 2 $" }<br/>
+					분자의 최고차항({ "$ x $" }) 계수 : { "$ a $" }</p>
 
-					<span class="step-title">Step 3. 결과값 도출</span>
-					<p>{ "$ \\displaystyle \\lim_{x \\to 2} \\frac{1}{\\sqrt{x+2}+2} = \\frac{1}{2+2} = \\frac{1}{4} = b $" }<br/>
-					따라서 { "$ a+b = 2 + 0.25 = 2.25 $" } (분수로는 { "$ 9/4 $" }) 입니다.</p>
+					<span class="step-title">Step 3. 상수 { "$ a $" } 결정</span>
+					<p>계수비에 의한 극한값은 { "$ \\frac{a}{2} $" }입니다.<br/>
+					{ "$ \\frac{a}{2} = 3 \\implies a = 6 $" }입니다.</p>
 				</div>
 
 				<div style="text-align: center;">

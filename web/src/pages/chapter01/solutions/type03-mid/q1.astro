@@ -26,27 +26,27 @@ import CornellNote from '../../../../components/CornellNote.astro';
 				<p style="margin: 0; font-weight: bold; color: #1a1a1a;">💡 풀이 전략</p>
 				<p style="margin-top: 10px; font-size: 10pt; line-height: 1.6; color: #666;">
 					무리식의 극한에서 미정계수를 구할 때는 먼저 영인자 조건을 확인한 뒤, 유리화를 통해 극한값을 결정합니다.
+					무한대 극한에서 극한값이 상수로 존재할 때, 분모와 분자의 차수를 비교하여 미정계수를 결정합니다.
 				</p>
 			</div>
 
 			<section>
 				<div class="sol-box formula-box">
 					<p style="margin-bottom: 20px; font-weight: bold;">Q1. 다음 등식이 성립하도록 하는 상수 { "$ a, b $" }의 값을 구하시오.</p>
-					<p style="text-align: center; font-size: 1.25rem; background: #fcfcfc; padding: 10px; border-radius: 12px;">
-						{ "$ \\displaystyle \\lim_{x \\to 1} \\frac{a\\sqrt{x} + b}{x-1} = 2 $" }
+					<p style="text-align: center; font-size: 1.25rem; background: #f9f9f9; padding: 10px; border-radius: 12px;">
+						{ "$ \\displaystyle \\lim_{x \\to \\infty} \\frac{ax^2 + bx + 1}{x + 3} = 4 $" }
 					</p>
 
-					<span class="step-title">Step 1. 영인자 조건 탐색</span>
-					<p>{ "$ x \\to 1 $" }일 때 분모가 { "$ 0 $" }이므로 분자{ "$ (a\\sqrt{x}+b) \\to 0 $" }입니다.<br/>
-					{ "$ a + b = 0 \\implies b = -a $" }</p>
+					<span class="step-title">Step 1. 차수 결정 ({ "$ a $" } 구하기)</span>
+					<p>분모가 { "$ 1 $" }차식인데 극한값이 { "$ 4 $" }(상수)이므로, 분자도 반드시 { "$ 1 $" }차식이어야 합니다.<br/>
+					따라서 이차항의 계수인 **{ "$ a = 0 $" }**입니다.</p>
 
-					<span class="step-title">Step 2. 식 대입 및 유리화</span>
-					<p>{ "$ b $" } 대신 { "$ -a $" }를 대입하고 공통인수 { "$ a $" }로 묶습니다.<br/>
-					{ "$ \\displaystyle \\lim_{x \\to 1} \\frac{a(\\sqrt{x}-1)}{x-1} = \\lim_{x \\to 1} \\frac{a(\\sqrt{x}-1)}{(\\sqrt{x}-1)(\\sqrt{x}+1)} = \\lim_{x \\to 1} \\frac{a}{\\sqrt{x}+1} $" }</p>
+					<span class="step-title">Step 2. 계수 비교 ({ "$ b $" } 구하기)</span>
+					<p>{ "$ a=0 $" }일 때 식은 { "$ \\displaystyle \\lim_{x \\to \\infty} \\frac{bx + 1}{x + 3} = 4 $" }가 됩니다.<br/>
+					무한대 극한에서의 최고차항 계수비는 { "$ \\frac{b}{1} = 4 $" }이므로 **{ "$ b = 4 $" }**입니다.</p>
 
-					<span class="step-title">Step 3. 결과 도출</span>
-					<p>극한값을 구하면 { "$ \\frac{a}{2} = 2$" }이므로 { "$ a=4 $" }입니다.<br/>
-					따라서 { "$ b = -4 $" }입니다.</p>
+					<span class="step-title">Step 3. 최종 결과</span>
+					<p>따라서 정답은 **{ "$ a = 0, b = 4 $" }**입니다.</p>
 				</div>
 
 				<div style="text-align: center;">
