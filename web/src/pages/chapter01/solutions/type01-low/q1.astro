@@ -1,48 +1,73 @@
 ---
-import MathPageLayout from '../../../../layouts/MathPageLayout.astro';
 import CornellNote from '../../../../components/CornellNote.astro';
 ---
 
-<MathPageLayout title="유형 01 [하] Q1 상세 해설">
-  <CornellNote title="유형 01 [하] Q1 상세 해설" chapter="Solution">
-<div slot="cues">
-    <p style="margin: 0; font-weight: bold; color: #1a1a1a;">💡 풀이 전략</p>
-    <p style="margin-top: 10px; font-size: 10pt; line-height: 1.6; color: #666;">
-      무한대({ "$ \infty $" })로 갈 때의 극한값은 분모와 분자의 최고차항의 계수를 비교하여 결정합니다.
-    </p>
-  </div>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<title>유형 01 [하] - Q1 상세 해설</title>
+		<!-- KaTeX -->
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+		<script is:inline src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+		<script is:inline src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+		<style>
+			body { background-color: #e0e0e0; margin: 0; padding: 10px; display: flex; justify-content: center; }
+			.sol-box { background: white; padding: 10px; border-radius: 20px; border: 1.5px solid #eee; margin-bottom: 25px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+			.step-title { display: block; font-weight: bold; color: #1a73e8; margin: 20px 0 10px 0; font-size: 1.1rem; }
+			.back-btn { display: inline-block; padding: 10px 20px; background: #333; color: white; border-radius: 8px; text-decoration: none; margin-top: 20px; transition: background 0.2s; }
+			.back-btn:hover { background: #555; }
+		</style>
+	</head>
+	<body>
+		<CornellNote title="유형 01 [하] Q1 상세 해설" chapter="Solution">
+			<div slot="cues">
+				<p style="margin: 0; font-weight: bold; color: #1a1a1a;">💡 풀이 전략</p>
+				<p style="margin-top: 10px; font-size: 10pt; line-height: 1.6; color: #666;">
+					무한대({ "$ \\infty $" })로 갈 때의 극한값은 분모와 분자의 최고차항의 계수를 비교하여 결정합니다.
+				</p>
+			</div>
 
-  <section>
-    <div class="sol-box formula-box">
-      <p style="margin-bottom: 20px; font-weight: bold;">Q1. 다음 극한값을 구하시오.</p>
-      <p style="text-align: center; font-size: 1.25rem; background: #f9f9f9; padding: 10px; border-radius: 12px;">
-        { "$ \displaystyle \lim_{x \to \infty} \frac{5x^2 + 1}{2x^2 - 3} $" }
-      </p>
+			<section>
+				<div class="sol-box formula-box">
+					<p style="margin-bottom: 20px; font-weight: bold;">Q1. 다음 극한값을 구하시오.</p>
+					<p style="text-align: center; font-size: 1.25rem; background: #f9f9f9; padding: 10px; border-radius: 12px;">
+						{ "$ \\displaystyle \\lim_{x \\to \\infty} \\frac{5x^2 + 1}{2x^2 - 3} $" }
+					</p>
 
-      <span class="step-title">Step 1. 무한대 극한 형태 파악</span>
-      <p>{ "$ x \to \infty $" }일 때 분모와 분자가 모두 무한대({ "$ \infty/\infty $" })로 발산하는 형태입니다.</p>
+					<span class="step-title">Step 1. 무한대 극한 형태 파악</span>
+					<p>{ "$ x \\to \\infty $" }일 때 분모와 분자가 모두 무한대({ "$ \\infty/\\infty $" })로 발산하는 형태입니다.</p>
 
-      <span class="step-title">Step 2. 최고차항 비교</span>
-      <p>분모의 최고차항은 { "$ x^2 $" }이고, 분자의 최고차항도 { "$ x^2 $" }입니다.<br/>
-      분모와 분자의 차수가 같으므로 극한값은 최고차항의 계수의 비로 수렴합니다.</p>
+					<span class="step-title">Step 2. 최고차항 비교</span>
+					<p>분모의 최고차항은 { "$ x^2 $" }이고, 분자의 최고차항도 { "$ x^2 $" }입니다.<br/>
+					분모와 분자의 차수가 같으므로 극한값은 최고차항의 계수의 비로 수렴합니다.</p>
 
-      <span class="step-title">Step 3. 결과 계산</span>
-      <p>분자의 최고차항 계수는 { "$ 5 $" }, 분모의 최고차항 계수는 { "$ 2 $" }입니다.<br/>
-      따라서 극한값은 { "$ \frac{5}{2} $" }입니다.</p>
-    </div>
+					<span class="step-title">Step 3. 결과 계산</span>
+					<p>분자의 최고차항 계수는 { "$ 5 $" }, 분모의 최고차항 계수는 { "$ 2 $" }입니다.<br/>
+					따라서 극한값은 { "$ \\frac{5}{2} $" }입니다.</p>
+				</div>
 
-    <div style="text-align: center;">
-      <a href="/wiki/chapter01/levels/type01-low/" class="problem-link mobile-nav-btn">← 문제로 돌아가기</a>
-    </div>
-  </section>
+				<div style="text-align: center;">
+					<a href="/wiki/chapter01/levels/type01-low/" class="problem-link mobile-nav-btn">← 문제로 돌아가기</a>
+				</div>
+			</section>
+		</CornellNote>
 
-  <div slot="summary">
-    <p>무한대 유리함수 극한은 최고차항 계수비만 비교하면 됩니다!</p>
-  </div>
-  </CornellNote>
-</MathPageLayout>
-
-<style>
-  .sol-box { background: white; padding: 10px; border-radius: 20px; border: 1.5px solid #eee; margin-bottom: 25px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
-  .step-title { display: block; font-weight: bold; color: #1a73e8; margin: 20px 0 10px 0; font-size: 1.1rem; }
-</style>
+		<script is:inline>
+			if (typeof window !== 'undefined') {
+				document.addEventListener("DOMContentLoaded", function() {
+					if (typeof renderMathInElement === 'function') {
+						renderMathInElement(document.body, {
+							delimiters: [
+								{left: '$$', right: '$$', display: true},
+								{left: '$', right: '$', display: false}
+							],
+							throwOnError : false
+						});
+					}
+				});
+			}
+		</script>
+	</body>
+</html>

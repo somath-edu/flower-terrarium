@@ -1,19 +1,39 @@
 ---
-import MathPageLayout from '../../layouts/MathPageLayout.astro';
 import CornellNote from '../../components/CornellNote.astro';
 ---
 
-<MathPageLayout title="함수의 극한">
-  <CornellNote title="함수의 극한" chapter="Chapter 01: 함수의 극한">
-<div slot="cues">
-<p style="margin: 0; font-weight: bold;">Q1. 극한 문제를 볼 때 알아둬야 하는 게 뭔가요?</p>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<title>미적분 I - 함수의 극한</title>
+		<!-- KaTeX for Math (Safe CDN) -->
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+		<script is:inline src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+		<script is:inline src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+		<style>
+			body {
+				background-color: #e0e0e0;
+				margin: 0;
+				padding: 20px;
+				display: flex;
+				justify-content: center;
+			}
+		</style>
+	</head>
+	<body>
+		<CornellNote title="함수의 극한" chapter="Chapter 01: 함수의 극한">
+			
+			<div slot="cues">
+				<p style="margin: 0; font-weight: bold;">Q1. 극한 문제를 볼 때 알아둬야 하는 게 뭔가요?</p>
 				<p style="margin-top: var(--base-grid); color: #666; font-size: 11pt; line-height: 1.4;">
 					* 극한은 '형태'를 먼저<br/>파악하는 것이 중요합니다.
 				</p>
-  </div>
+			</div>
 
-  <section>
-<p style="margin: 0 0 var(--base-grid) 0; font-weight: 500;">
+			<section>
+				<p style="margin: 0 0 var(--base-grid) 0; font-weight: 500;">
 					"함수의 극한 문제를 해결할 때는 크게 <b>두 가지 흐름</b>을 파악하는 것이 핵심입니다."
 				</p>
 
@@ -51,10 +71,27 @@ import CornellNote from '../../components/CornellNote.astro';
 						<li>이때 분자는 반드시 분모를 { "$ 0 $" }으로 만드는 <b>인수 { "$ (x-a) $" }</b>를 가지고 있습니다.</li>
 					</ul>
 				</div>
-  </section>
+			</section>
 
-  <div slot="summary">
-<p>극한은 <b>'형태'</b>를 보는 연습입니다. 무한대에서는 힘 싸움(차수 비교)을, 상수에서는 0이 되는 원인(인수분해)을 제거하는 것이 핵심 전략입니다.</p>
-  </div>
-  </CornellNote>
-</MathPageLayout>
+			<div slot="summary">
+				<p>극한은 <b>'형태'</b>를 보는 연습입니다. 무한대에서는 힘 싸움(차수 비교)을, 상수에서는 0이 되는 원인(인수분해)을 제거하는 것이 핵심 전략입니다.</p>
+			</div>
+		</CornellNote>
+		
+		<script is:inline>
+			if (typeof window !== 'undefined') {
+				document.addEventListener("DOMContentLoaded", function() {
+					if (typeof renderMathInElement === 'function') {
+						renderMathInElement(document.body, {
+							delimiters: [
+								{left: '$$', right: '$$', display: true},
+								{left: '$', right: '$', display: false}
+							],
+							throwOnError : false
+						});
+					}
+				});
+			}
+		</script>
+	</body>
+</html>

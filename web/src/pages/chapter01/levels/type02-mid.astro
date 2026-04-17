@@ -1,20 +1,58 @@
 ---
-import MathPageLayout from '../../../layouts/MathPageLayout.astro';
 import CornellNote from '../../../components/CornellNote.astro';
 ---
 
-<MathPageLayout title="유형 02. [중] 실력 향상">
-  <CornellNote title="유형 02. [중] 실력 향상" chapter="Level: Mid">
-<div slot="cues">
-<p style="margin: 0; font-weight: bold; color: #1a1a1a;">🔵 응용 포인트</p>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<title>유형 02 - 난이도 [중] 연습</title>
+		<!-- KaTeX -->
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+		<script is:inline src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+		<script is:inline src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+		<style>
+			body {
+				background-color: #e0e0e0;
+				margin: 0;
+				padding: 20px;
+				display: flex;
+				justify-content: center;
+			}
+			.sol-button {
+				display: inline-block;
+				padding: 4px 12px;
+				background: #fff8e1;
+				color: #a0522d;
+				border-radius: 8px;
+				text-decoration: none;
+				font-size: 0.9rem;
+				font-weight: bold;
+				margin-left: 10px;
+				border: 1.5px solid #a0522d;
+				transition: all 0.2s ease;
+			}
+			.sol-button:hover {
+				background: #a0522d;
+				color: white;
+				transform: translateY(-1px);
+				box-shadow: 0 4px 8px rgba(160, 82, 45, 0.2);
+			}
+		</style>
+	</head>
+	<body>
+		<CornellNote title="유형 02. [중] 실력 향상" chapter="Level: Mid">
+			<div slot="cues">
+				<p style="margin: 0; font-weight: bold; color: #1a1a1a;">🔵 응용 포인트</p>
 				<ul style="margin-top: 10px; padding-left: 18px; font-size: 11pt; line-height: 1.6; color: #444;">
 					<li>복잡한 계수의 유리화</li>
 					<li>상수항이 포함된 무리식 처리</li>
 				</ul>
-  </div>
+			</div>
 
-  <section>
-<div class="type-section">
+			<section>
+				<div class="type-section">
 					<p style="margin-bottom: 20px;">계수가 복잡해지거나 항이 늘어난 경우의 유리화 연습입니다.</p>
 					
 					<div class="question-card">
@@ -54,28 +92,23 @@ import CornellNote from '../../../components/CornellNote.astro';
 					<a href="/wiki/chapter01/types/type02/" class="problem-link" style="margin: 0;">← 핵심 문제로 이동</a>
 					<a href="/wiki/chapter01/problems-inf/" class="problem-link" style="margin: 0; background-color: rgba(0,0,0,0.05); color: #666;">목록으로 돌아가기</a>
 				</div>
-  </section>
-  </CornellNote>
-</MathPageLayout>
+			</section>
+		</CornellNote>
 
-<style>
-.sol-button {
-				display: inline-block;
-				padding: 4px 12px;
-				background: #fff8e1;
-				color: #a0522d;
-				border-radius: 8px;
-				text-decoration: none;
-				font-size: 0.9rem;
-				font-weight: bold;
-				margin-left: 10px;
-				border: 1.5px solid #a0522d;
-				transition: all 0.2s ease;
+		<script is:inline>
+			if (typeof window !== 'undefined') {
+				document.addEventListener("DOMContentLoaded", function() {
+					if (typeof renderMathInElement === 'function') {
+						renderMathInElement(document.body, {
+							delimiters: [
+								{left: '$$', right: '$$', display: true},
+								{left: '$', right: '$', display: false}
+							],
+							throwOnError : false
+						});
+					}
+				});
 			}
-			.sol-button:hover {
-				background: #a0522d;
-				color: white;
-				transform: translateY(-1px);
-				box-shadow: 0 4px 8px rgba(160, 82, 45, 0.2);
-			}
-</style>
+		</script>
+	</body>
+</html>

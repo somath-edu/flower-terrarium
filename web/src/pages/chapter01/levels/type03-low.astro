@@ -1,21 +1,59 @@
 ---
-import MathPageLayout from '../../../layouts/MathPageLayout.astro';
 import CornellNote from '../../../components/CornellNote.astro';
 ---
 
-<MathPageLayout title="유형 03. 미정계수의 결정 [하]">
-  <CornellNote title="유형 03. 미정계수의 결정 [하]" chapter="Level: Low">
-<div slot="cues">
-<p style="margin: 0; font-weight: bold; color: #1a1a1a;">🟢 기본 원리</p>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<title>유형 03 - 난이도 [하] 연습</title>
+		<!-- KaTeX -->
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+		<script is:inline src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+		<script is:inline src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+		<style>
+			body {
+				background-color: #e0e0e0;
+				margin: 0;
+				padding: 20px;
+				display: flex;
+				justify-content: center;
+			}
+			.sol-button {
+				display: inline-block;
+				padding: 4px 12px;
+				background: #eef2f8;
+				color: #1a73e8;
+				border-radius: 8px;
+				text-decoration: none;
+				font-size: 0.9rem;
+				font-weight: bold;
+				margin-left: 10px;
+				border: 1.5px solid #d0e0f0;
+				transition: all 0.2s ease;
+			}
+			.sol-button:hover {
+				background: #1a73e8;
+				color: white;
+				transform: translateY(-1px);
+				box-shadow: 0 4px 8px rgba(26, 115, 232, 0.2);
+			}
+		</style>
+	</head>
+	<body>
+		<CornellNote title="유형 03. 미정계수의 결정 [하]" chapter="Level: Low">
+			<div slot="cues">
+				<p style="margin: 0; font-weight: bold; color: #1a1a1a;">🟢 기본 원리</p>
 				<ul style="margin-top: 10px; padding-left: 18px; font-size: 11pt; line-height: 1.6; color: #444;">
 					<li>무한대 극한과 미정계수</li>
 					<li>분모와 분자의 차수 비교</li>
 					<li>최고차항 계수의 비와 극한값</li>
 				</ul>
-  </div>
+			</div>
 
-  <section>
-<div class="type-section">
+			<section>
+				<div class="type-section">
 					<p style="margin-bottom: 20px;">기호와 식의 기본 성질을 이용하여 미지수를 찾아내는 기초 연습입니다.</p>
 					
 					<!-- Q1 -->
@@ -56,28 +94,23 @@ import CornellNote from '../../../components/CornellNote.astro';
 					<a href="/wiki/chapter01/types/type03/" style="color: #666; text-decoration: none;">← 핵심 문제로 이동</a>
 					<a href="/wiki/chapter01/problems-inf/" style="color: #666; text-decoration: none;">목록으로 돌아가기</a>
 				</div>
-  </section>
-  </CornellNote>
-</MathPageLayout>
+			</section>
+		</CornellNote>
 
-<style>
-.sol-button {
-				display: inline-block;
-				padding: 4px 12px;
-				background: #eef2f8;
-				color: #1a73e8;
-				border-radius: 8px;
-				text-decoration: none;
-				font-size: 0.9rem;
-				font-weight: bold;
-				margin-left: 10px;
-				border: 1.5px solid #d0e0f0;
-				transition: all 0.2s ease;
+		<script is:inline>
+			if (typeof window !== 'undefined') {
+				document.addEventListener("DOMContentLoaded", function() {
+					if (typeof renderMathInElement === 'function') {
+						renderMathInElement(document.body, {
+							delimiters: [
+								{left: '$$', right: '$$', display: true},
+								{left: '$', right: '$', display: false}
+							],
+							throwOnError : false
+						});
+					}
+				});
 			}
-			.sol-button:hover {
-				background: #1a73e8;
-				color: white;
-				transform: translateY(-1px);
-				box-shadow: 0 4px 8px rgba(26, 115, 232, 0.2);
-			}
-</style>
+		</script>
+	</body>
+</html>

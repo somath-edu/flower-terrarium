@@ -1,19 +1,36 @@
 ---
-import MathPageLayout from '../../../../layouts/MathPageLayout.astro';
 import CornellNote from '../../../../components/CornellNote.astro';
 ---
 
-<MathPageLayout title="유형 01 [하] Q3 상세 해설">
-  <CornellNote title="유형 01 [하] Q3 상세 해설" chapter="Solution">
-<div slot="cues">
-<p style="margin: 0; font-weight: bold; color: #1a1a1a;">💡 풀이 전략</p>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<title>유형 01 [하] - Q3 상세 해설</title>
+		<!-- KaTeX -->
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+		<script is:inline src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+		<script is:inline src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+		<style>
+			body { background-color: #e0e0e0; margin: 0; padding: 10px; display: flex; justify-content: center; }
+			.sol-box { background: white; padding: 10px; border-radius: 20px; border: 1.5px solid #eee; margin-bottom: 25px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+			.step-title { display: block; font-weight: bold; color: #1a73e8; margin: 20px 0 10px 0; font-size: 1.1rem; }
+			.back-btn { display: inline-block; padding: 10px 20px; background: #333; color: white; border-radius: 8px; text-decoration: none; margin-top: 20px; transition: background 0.2s; }
+			.back-btn:hover { background: #555; }
+		</style>
+	</head>
+	<body>
+		<CornellNote title="유형 01 [하] Q3 상세 해설" chapter="Solution">
+			<div slot="cues">
+				<p style="margin: 0; font-weight: bold; color: #1a1a1a;">💡 풀이 전략</p>
 				<p style="margin-top: 10px; font-size: 10pt; line-height: 1.6; color: #666;">
 					분모와 분자의 차수가 같은 무한대 극한에서는 **최고차항의 계수만**을 비교하여 빠르게 답을 구할 수 있습니다.
 				</p>
-  </div>
+			</div>
 
-  <section>
-<div class="sol-box formula-box">
+			<section>
+				<div class="sol-box formula-box">
 					<p style="margin-bottom: 20px; font-weight: bold;">Q3. 다음 극한값을 구하시오.</p>
 					<p style="text-align: center; font-size: 1.25rem; background: #f9f9f9; padding: 10px; border-radius: 12px;">
 						{ "$ \\displaystyle \\lim_{x \\to \\infty} \\frac{4x^2 + 7x}{x^2 + 5} $" }
@@ -34,12 +51,23 @@ import CornellNote from '../../../../components/CornellNote.astro';
 				<div style="text-align: center;">
 					<a href="/wiki/chapter01/levels/type01-low/" class="problem-link mobile-nav-btn">← 문제로 돌아가기</a>
 				</div>
-  </section>
-  </CornellNote>
-</MathPageLayout>
+			</section>
+		</CornellNote>
 
-<style>
-.sol-box { background: white; padding: 10px; border-radius: 20px; border: 1.5px solid #eee; margin-bottom: 25px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
-			.step-title { display: block; font-weight: bold; color: #1a73e8; margin: 20px 0 10px 0; font-size: 1.1rem; }
-			.back-btn:hover { background: #555; }
-</style>
+		<script is:inline>
+			if (typeof window !== 'undefined') {
+				document.addEventListener("DOMContentLoaded", function() {
+					if (typeof renderMathInElement === 'function') {
+						renderMathInElement(document.body, {
+							delimiters: [
+								{left: '$$', right: '$$', display: true},
+								{left: '$', right: '$', display: false}
+							],
+							throwOnError : false
+						});
+					}
+				});
+			}
+		</script>
+	</body>
+</html>
