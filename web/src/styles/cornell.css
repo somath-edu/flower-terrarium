@@ -243,6 +243,8 @@ body {
   font-style: italic;
   font-size: 1.1rem;
   transition: color 0.2s;
+}
+
 /* Question Card Layout for Levels */
 .question-card {
   background: white;
