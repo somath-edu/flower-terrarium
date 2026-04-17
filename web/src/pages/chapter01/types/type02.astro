@@ -47,13 +47,24 @@ const limInf = "$\\displaystyle \\lim_{x \\to \\infty}$";
 						<span class="math">{limInf} { "$ (\\sqrt{x^2 + 2x} - x) $" }</span>
 					</p>
 					
-					<div style="margin-top: 40px; border-top: 1px dashed #ccc; padding-top: 20px;">
-						<p style="font-weight: bold; color: #666;">📝 해결 전략</p>
-						<div style="color: #444; line-height: 1.6;">
-							유리화를 하면 { "$ \\frac{(\\sqrt{x^2+2x}-x)(\\sqrt{x^2+2x}+x)}{\\sqrt{x^2+2x}+x} = \\frac{2x}{\\sqrt{x^2+2x}+x} $" } 가 됩니다.<br/>
-							분모의 최고차항은 $x$ (차수는 1)이며, 계수의 비는 { "$ \\frac{2}{1+1} = 1 $" }입니다.
+					<!-- Progressive Disclosure: Strategy -->
+					<details style="margin-top: 30px; border: 1px solid #eee; border-radius: 8px; padding: 10px; background: #fff;">
+						<summary style="font-weight: bold; color: #1a73e8; cursor: pointer; padding: 5px;">💡 해결 전략 (클릭하여 확인)</summary>
+						<div style="margin-top: 10px; padding: 10px; border-top: 1px dashed #eee; color: #444; line-height: 1.6;">
+							무리함수가 포함된 { "$ \\infty - \\infty $" } 꼴은 분자를 1로 보고 <b>유리화</b>하여 { "$ \\frac{\\infty}{\\infty} $" } 꼴로 변형합니다.
 						</div>
-					</div>
+					</details>
+
+					<!-- Progressive Disclosure: Step-by-Step Solution -->
+					<details style="margin-top: 15px; border: 1px solid #eee; border-radius: 8px; padding: 10px; background: #fff;">
+						<summary style="font-weight: bold; color: #e63946; cursor: pointer; padding: 5px;">📝 단계별 풀이 (마지막에 열어보세요!)</summary>
+						<div style="margin-top: 10px; padding: 10px; border-top: 1px dashed #eee; color: #444; line-height: 1.8;">
+							<p><b>Step 1. 유리화 진행</b><br/>분자, 분모에 { "$ \\sqrt{x^2+2x}+x $" } 를 곱하여 정리합니다.</p>
+							<p><b>Step 2. 식 가공</b><br/>{ "$ \\frac{(\\sqrt{x^2+2x}-x)(\\sqrt{x^2+2x}+x)}{\\sqrt{x^2+2x}+x} = \\frac{2x}{\\sqrt{x^2+2x}+x} $" } 가 됩니다.</p>
+							<p><b>Step 3. 계수 비교</b><br/>분모의 최고차항 계수는 $1+1=2$, 분자는 $2$이므로<br/>
+							따라서 { "$ \\text{극한값} = \\frac{2}{2} = 1 $" } 입니다.</p>
+						</div>
+					</details>
 				</div>
 
 				<a href="/wiki/chapter01/problems-inf/" class="back-link">← 유형별 목록으로 돌아가기</a>

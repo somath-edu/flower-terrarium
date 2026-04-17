@@ -47,13 +47,23 @@ const limInf = "$\\displaystyle \\lim_{x \\to \\infty}$";
 						<span class="math">{limInf} { "$ \\frac{ax^3 + bx^2 + 5}{x^2 - 1} = 3 $" }</span>
 					</p>
 					
-					<div style="margin-top: 40px; border-top: 1px dashed #ccc; padding-top: 20px;">
-						<p style="font-weight: bold; color: #666;">📝 해결 전략</p>
-						<div style="color: #444; line-height: 1.6;">
-							1. 극한값이 $3$으로 존재하려면, 분모가 2차이므로 분자도 반드시 **2차**여야 합니다. 따라서 $x^3$항의 계수 **$a=0$**입니다.<br/>
-							2. 이제 2차항의 계수만 비교하면 됩니다. { "$ \\frac{b}{1} = 3 $" } 이므로 **$b=3$**입니다.
+					<!-- Progressive Disclosure: Strategy -->
+					<details style="margin-top: 30px; border: 1px solid #eee; border-radius: 8px; padding: 10px; background: #fff;">
+						<summary style="font-weight: bold; color: #1a73e8; cursor: pointer; padding: 5px;">💡 해결 전략 (클릭하여 확인)</summary>
+						<div style="margin-top: 10px; padding: 10px; border-top: 1px dashed #eee; color: #444; line-height: 1.6;">
+							극한값이 상수로 수렴할 때, 분모와 분자의 <b>최고차 차수</b>가 같아야 함을 이용합니다.
 						</div>
-					</div>
+					</details>
+
+					<!-- Progressive Disclosure: Step-by-Step Solution -->
+					<details style="margin-top: 15px; border: 1px solid #eee; border-radius: 8px; padding: 10px; background: #fff;">
+						<summary style="font-weight: bold; color: #e63946; cursor: pointer; padding: 5px;">📝 단계별 풀이 (마지막에 열어보세요!)</summary>
+						<div style="margin-top: 10px; padding: 10px; border-top: 1px dashed #eee; color: #444; line-height: 1.8;">
+							<p><b>Step 1. 차수 비교</b><br/>분모가 2차인데 극한값이 3(상수)이므로, 분자도 반드시 2차식이어야 합니다. 따라서 3차항의 계수 <b>$a=0$</b>입니다.</p>
+							<p><b>Step 2. 계수 비교</b><br/>분모의 최고차항 계수는 $1$, 분자의 2차항 계수는 $b$입니다.</p>
+							<p><b>Step 3. 상수 구하기</b><br/>{ "$ \\frac{b}{1} = 3 $" } 이므로 <b>$b=3$</b>입니다.</p>
+						</div>
+					</details>
 				</div>
 
 				<a href="/wiki/chapter01/problems-inf/" class="back-link">← 유형별 목록으로 돌아가기</a>
