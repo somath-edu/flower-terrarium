@@ -1,44 +1,19 @@
 ---
-import CornellNote from '../../../components/CornellNote.astro';
-
-// LaTeX constants
-const limConst = "$\\displaystyle \\lim_{x \\to 1}$";
+import MathPageLayout from '../../../layouts/MathPageLayout.astro';
 ---
 
-<html lang="ko">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<title>유형 06. 미정계수 (상수) - 상세 연습</title>
-		<!-- KaTeX -->
-		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
-		<script is:inline src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
-		<script is:inline src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
-		<style>
-			body {
-				background-color: #e0e0e0;
-				margin: 0;
-				padding: 20px;
-				display: flex;
-				justify-content: center;
-			}
-		</style>
-	</head>
-	<body>
-		<CornellNote title="유형 06. 미정계수 (상수)" chapter="Chapter 01 Practice">
-			
-			<div slot="cues">
-				<p style="margin: 0; font-weight: bold; color: #1a1a1a;">💡 집중 공략 포인트</p>
+<MathPageLayout title="유형 06. 미정계수 (상수)" chapter="Chapter 01 Practice">
+  <div slot="cues">
+<p style="margin: 0; font-weight: bold; color: #1a1a1a;">💡 집중 공략 포인트</p>
 				<ul style="margin-top: 10px; padding-left: 18px; font-size: 11pt; line-height: 1.6; color: #444;">
 					<li>분모가 { "$ x \to a $" }에서 { "$ 0 $" }이면 분자도 반드시 { "$ 0 $" }</li>
 					<li>구해낸 미지수 관계식을 본식에 대입하여 **약분** 추진</li>
 					<li>미지수가 2개인 경우 연립방정식 활용</li>
 				</ul>
-			</div>
+  </div>
 
-			<section>
-				<div class="type-section">
+  <section>
+<div class="type-section">
 					<h4 style="margin-top: 0; color: #1a1a1a; border-bottom: 2px solid #e63946; display: inline-block; padding-bottom: 5px; margin-bottom: 15px;">
 						[핵심 문제]
 					</h4>
@@ -88,27 +63,9 @@ const limConst = "$\\displaystyle \\lim_{x \\to 1}$";
 				</div>
 
 				<a href="/wiki/chapter01/problems-const/" class="back-link" style="margin-top: 40px; display: inline-block; color: #666; text-decoration: none;">← 유형별 목록으로 돌아가기</a>
-			</section>
+  </section>
 
-			<div slot="summary">
-				<p>상수 미정계수는 **'영인자 추적 게임'**입니다. 분모가 0이 되는 원인이 분자에도 똑같이 들어있다는 사실 하나만으로 복잡해 보이는 식을 완전히 지배할 수 있습니다!</p>
-			</div>
-		</CornellNote>
-
-		<script is:inline>
-			if (typeof window !== 'undefined') {
-				document.addEventListener("DOMContentLoaded", function() {
-					if (typeof renderMathInElement === 'function') {
-						renderMathInElement(document.body, {
-							delimiters: [
-								{left: '$$', right: '$$', display: true},
-								{left: '$', right: '$', display: false}
-							],
-							throwOnError : false
-						});
-					}
-				});
-			}
-		</script>
-	</body>
-</html>
+  <div slot="summary">
+<p>상수 미정계수는 **'영인자 추적 게임'**입니다. 분모가 0이 되는 원인이 분자에도 똑같이 들어있다는 사실 하나만으로 복잡해 보이는 식을 완전히 지배할 수 있습니다!</p>
+  </div>
+</MathPageLayout>

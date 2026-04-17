@@ -1,39 +1,18 @@
 ---
-import CornellNote from '../../../components/CornellNote.astro';
+import MathPageLayout from '../../../layouts/MathPageLayout.astro';
 ---
 
-<html lang="ko">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<title>유형 05 - 난이도 [하] 연습</title>
-		<!-- KaTeX -->
-		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
-		<script is:inline src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
-		<script is:inline src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
-		<style>
-			body { background-color: #e0e0e0; margin: 0; padding: 20px; display: flex; justify-content: center; }
-			.sol-button {
-				display: inline-block; padding: 4px 12px; background: #eef7ee; color: #2e7d32;
-				border-radius: 8px; text-decoration: none; font-size: 0.9rem; font-weight: bold;
-				margin-left: 10px; border: 1.5px solid #2e7d32; transition: all 0.2s ease;
-			}
-			.sol-button:hover { background: #2e7d32; color: white; transform: translateY(-1px); }
-		</style>
-	</head>
-	<body>
-		<CornellNote title="유형 05. 0/0 꼴 무리식 [하]" chapter="Level: Low">
-			<div slot="cues">
-				<p style="margin: 0; font-weight: bold; color: #1a1a1a;">🟢 기본 원리</p>
+<MathPageLayout title="유형 05. 0/0 꼴 무리식 [하]" chapter="Level: Low">
+  <div slot="cues">
+<p style="margin: 0; font-weight: bold; color: #1a1a1a;">🟢 기본 원리</p>
 				<ul style="margin-top: 10px; padding-left: 18px; font-size: 11pt; line-height: 1.6; color: #444;">
 					<li>켤레식을 곱하여 무리수 제거</li>
 					<li>유리화 이후 약분은 필수</li>
 				</ul>
-			</div>
+  </div>
 
-			<section>
-				<div class="type-section">
+  <section>
+<div class="type-section">
 					<p style="margin-bottom: 20px;">무리식이 포함된 부정형을 유리화로 해결하는 기초 연습입니다.</p>
 					
 					<!-- Q1 -->
@@ -65,23 +44,14 @@ import CornellNote from '../../../components/CornellNote.astro';
 					<a href="/wiki/chapter01/types/type05/" style="color: #666; text-decoration: none;">← 핵심 문제로 이동</a>
 					<a href="/wiki/chapter01/problems-const/" style="color: #666; text-decoration: none;">목록으로 돌아가기</a>
 				</div>
-			</section>
-		</CornellNote>
+  </section>
+</MathPageLayout>
 
-		<script is:inline>
-			if (typeof window !== 'undefined') {
-				document.addEventListener("DOMContentLoaded", function() {
-					if (typeof renderMathInElement === 'function') {
-						renderMathInElement(document.body, {
-							delimiters: [
-								{left: '$$', right: '$$', display: true},
-								{left: '$', right: '$', display: false}
-							],
-							throwOnError : false
-						});
-					}
-				});
+<style>
+.sol-button {
+				display: inline-block; padding: 4px 12px; background: #eef7ee; color: #2e7d32;
+				border-radius: 8px; text-decoration: none; font-size: 0.9rem; font-weight: bold;
+				margin-left: 10px; border: 1.5px solid #2e7d32; transition: all 0.2s ease;
 			}
-		</script>
-	</body>
-</html>
+			.sol-button:hover { background: #2e7d32; color: white; transform: translateY(-1px); }
+</style>

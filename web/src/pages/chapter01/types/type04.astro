@@ -1,44 +1,19 @@
 ---
-import CornellNote from '../../../components/CornellNote.astro';
-
-// LaTeX constants
-const limConst = "$\\displaystyle \\lim_{x \\to 1}$";
+import MathPageLayout from '../../../layouts/MathPageLayout.astro';
 ---
 
-<html lang="ko">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<title>유형 04. 0/0 꼴 (다항식) - 상세 연습</title>
-		<!-- KaTeX -->
-		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
-		<script is:inline src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
-		<script is:inline src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
-		<style>
-			body {
-				background-color: #e0e0e0;
-				margin: 0;
-				padding: 20px;
-				display: flex;
-				justify-content: center;
-			}
-		</style>
-	</head>
-	<body>
-		<CornellNote title="유형 04. 0/0 꼴 (다항식)" chapter="Chapter 01 Practice">
-			
-			<div slot="cues">
-				<p style="margin: 0; font-weight: bold; color: #1a1a1a;">💡 집중 공략 포인트</p>
+<MathPageLayout title="유형 04. 0/0 꼴 (다항식)" chapter="Chapter 01 Practice">
+  <div slot="cues">
+<p style="margin: 0; font-weight: bold; color: #1a1a1a;">💡 집중 공략 포인트</p>
 				<ul style="margin-top: 10px; padding-left: 18px; font-size: 11pt; line-height: 1.6; color: #444;">
 					<li>분모를 { "$ 0 $" }으로 만드는 **영인자** 찾기</li>
 					<li>인수분해를 통한 부정형 제거</li>
 					<li>약분 후 직접 대입하여 최종값 도출</li>
 				</ul>
-			</div>
+  </div>
 
-			<section>
-				<div class="type-section">
+  <section>
+<div class="type-section">
 					<h4 style="margin-top: 0; color: #1a1a1a; border-bottom: 2px solid #e63946; display: inline-block; padding-bottom: 5px; margin-bottom: 15px;">
 						[핵심 문제]
 					</h4>
@@ -88,27 +63,9 @@ const limConst = "$\\displaystyle \\lim_{x \\to 1}$";
 				</div>
 
 				<a href="/wiki/chapter01/problems-const/" class="back-link" style="margin-top: 40px; display: inline-block; color: #666; text-decoration: none;">← 유형별 목록으로 돌아가기</a>
-			</section>
+  </section>
 
-			<div slot="summary">
-				<p>다항식 극한의 상수 꼴은 **'누가 범인인가(0이 되게 하는 인수)'**를 잡으면 해결됩니다. 인수분해 실력이 곧 극한 실력이 되는 파트이니 기초를 탄탄히 합시다!</p>
-			</div>
-		</CornellNote>
-
-		<script is:inline>
-			if (typeof window !== 'undefined') {
-				document.addEventListener("DOMContentLoaded", function() {
-					if (typeof renderMathInElement === 'function') {
-						renderMathInElement(document.body, {
-							delimiters: [
-								{left: '$$', right: '$$', display: true},
-								{left: '$', right: '$', display: false}
-							],
-							throwOnError : false
-						});
-					}
-				});
-			}
-		</script>
-	</body>
-</html>
+  <div slot="summary">
+<p>다항식 극한의 상수 꼴은 **'누가 범인인가(0이 되게 하는 인수)'**를 잡으면 해결됩니다. 인수분해 실력이 곧 극한 실력이 되는 파트이니 기초를 탄탄히 합시다!</p>
+  </div>
+</MathPageLayout>

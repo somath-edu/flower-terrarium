@@ -1,39 +1,18 @@
 ---
-import CornellNote from '../../../components/CornellNote.astro';
+import MathPageLayout from '../../../layouts/MathPageLayout.astro';
 ---
 
-<html lang="ko">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<title>유형 06 - 난이도 [하] 연습</title>
-		<!-- KaTeX -->
-		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
-		<script is:inline src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
-		<script is:inline src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
-		<style>
-			body { background-color: #e0e0e0; margin: 0; padding: 20px; display: flex; justify-content: center; }
-			.sol-button {
-				display: inline-block; padding: 4px 12px; background: #eef7ee; color: #2e7d32;
-				border-radius: 8px; text-decoration: none; font-size: 0.9rem; font-weight: bold;
-				margin-left: 10px; border: 1.5px solid #2e7d32; transition: all 0.2s ease;
-			}
-			.sol-button:hover { background: #2e7d32; color: white; transform: translateY(-1px); }
-		</style>
-	</head>
-	<body>
-		<CornellNote title="유형 06. 미정계수 [하]" chapter="Level: Low">
-			<div slot="cues">
-				<p style="margin: 0; font-weight: bold; color: #1a1a1a;">🟢 기본 원리</p>
+<MathPageLayout title="유형 06. 미정계수 [하]" chapter="Level: Low">
+  <div slot="cues">
+<p style="margin: 0; font-weight: bold; color: #1a1a1a;">🟢 기본 원리</p>
 				<ul style="margin-top: 10px; padding-left: 18px; font-size: 11pt; line-height: 1.6; color: #444;">
 					<li>분모가 0이면 분자(영인자)도 반드시 0</li>
 					<li>상수 $a$를 먼저 구하고 약분으로 마무리</li>
 				</ul>
-			</div>
+  </div>
 
-			<section>
-				<div class="type-section">
+  <section>
+<div class="type-section">
 					<p style="margin-bottom: 20px;">극한값을 통해 식 안의 숨겨진 숫자를 찾아내는 기초 미정계수 연습입니다.</p>
 					
 					<!-- Q1 -->
@@ -74,23 +53,14 @@ import CornellNote from '../../../components/CornellNote.astro';
 					<a href="/wiki/chapter01/types/type06/" style="color: #666; text-decoration: none;">← 핵심 문제로 이동</a>
 					<a href="/wiki/chapter01/problems-const/" style="color: #666; text-decoration: none;">목록으로 돌아가기</a>
 				</div>
-			</section>
-		</CornellNote>
+  </section>
+</MathPageLayout>
 
-		<script is:inline>
-			if (typeof window !== 'undefined') {
-				document.addEventListener("DOMContentLoaded", function() {
-					if (typeof renderMathInElement === 'function') {
-						renderMathInElement(document.body, {
-							delimiters: [
-								{left: '$$', right: '$$', display: true},
-								{left: '$', right: '$', display: false}
-							],
-							throwOnError : false
-						});
-					}
-				});
+<style>
+.sol-button {
+				display: inline-block; padding: 4px 12px; background: #eef7ee; color: #2e7d32;
+				border-radius: 8px; text-decoration: none; font-size: 0.9rem; font-weight: bold;
+				margin-left: 10px; border: 1.5px solid #2e7d32; transition: all 0.2s ease;
 			}
-		</script>
-	</body>
-</html>
+			.sol-button:hover { background: #2e7d32; color: white; transform: translateY(-1px); }
+</style>
