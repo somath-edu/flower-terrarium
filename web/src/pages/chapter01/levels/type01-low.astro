@@ -1,8 +1,5 @@
 ---
 import CornellNote from '../../../components/CornellNote.astro';
-
-// LaTeX constants
-const limInf = "$\\displaystyle \\lim_{x \\to \\infty}$";
 ---
 
 <html lang="ko">
@@ -39,19 +36,55 @@ const limInf = "$\\displaystyle \\lim_{x \\to \\infty}$";
 				<div class="type-section">
 					<p style="margin-bottom: 20px;">기초적인 계수 비교를 통해 빠르게 정답을 찾는 연습을 합니다.</p>
 					
-					<div style="background: white; padding: 20px; border-radius: 12px; border: 1px solid #eee; margin-bottom: 20px;">
+					<!-- Q1 -->
+					<div style="background: white; padding: 25px; border-radius: 16px; border: 1px solid #eee; margin-bottom: 30px; box-shadow: 0 4px 12px rgba(0,0,0,0.03);">
 						<p><b>Q1.</b> 다음 극한값을 구하시오.</p>
-						<p style="text-align: center; font-size: 1.4rem;">{limInf} { "$ \\frac{5x^2 + 1}{2x^2 - 3} $" }</p>
+						<p style="text-align: center; font-size: 1.4rem; margin: 20px 0;">
+							{ "$ \\displaystyle \\lim_{x \\to \\infty} \\frac{5x^2 + 1}{2x^2 - 3} $" }
+						</p>
+
+						<details style="margin-top: 20px; border: 1px solid #eef2f8; border-radius: 10px; background: #fafbfc;">
+							<summary style="font-weight: bold; color: #1a73e8; cursor: pointer; padding: 12px;">📊 단계별 풀이 보기</summary>
+							<div style="padding: 15px; border-top: 1px solid #eef2f8; line-height: 1.8; color: #444; font-size: 11pt;">
+								<p><b>Step 1. 차수 확인</b><br/>분모와 분자 모두 { "$ 2 $" }차식으로 차수가 같습니다.</p>
+								<p><b>Step 2. 계수 비교</b><br/>분모의 최고차항 계수는 { "$ 2 $" }, 분자의 최고차항 계수는 { "$ 5 $" } 입니다.</p>
+								<p><b>Step 3. 정답</b><br/>따라서 극한값은 { "$ \\mathbf{\\frac{5}{2}} $" } (또는 { "$ 2.5 $" }) 입니다.</p>
+							</div>
+						</details>
 					</div>
 
-					<div style="background: white; padding: 20px; border-radius: 12px; border: 1px solid #eee; margin-bottom: 20px;">
+					<!-- Q2 -->
+					<div style="background: white; padding: 25px; border-radius: 16px; border: 1px solid #eee; margin-bottom: 30px; box-shadow: 0 4px 12px rgba(0,0,0,0.03);">
 						<p><b>Q2.</b> 다음 극한값을 구하시오.</p>
-						<p style="text-align: center; font-size: 1.4rem;">{limInf} { "$ \\frac{10x - 3}{5x + 7} $" }</p>
+						<p style="text-align: center; font-size: 1.4rem; margin: 20px 0;">
+							{ "$ \\displaystyle \\lim_{x \\to \\infty} \\frac{10x - 3}{5x + 7} $" }
+						</p>
+
+						<details style="margin-top: 20px; border: 1px solid #eef2f8; border-radius: 10px; background: #fafbfc;">
+							<summary style="font-weight: bold; color: #1a73e8; cursor: pointer; padding: 12px;">📊 단계별 풀이 보기</summary>
+							<div style="padding: 15px; border-top: 1px solid #eef2f8; line-height: 1.8; color: #444; font-size: 11pt;">
+								<p><b>Step 1. 차수 확인</b><br/>분모와 분자 모두 { "$ 1 $" }차식입니다.</p>
+								<p><b>Step 2. 계수 비 계산</b><br/>최고차항 계수의 비는 { "$ \\frac{10}{5} $" } 입니다.</p>
+								<p><b>Step 3. 정답</b><br/>따라서 극한값은 { "$ \\mathbf{2} $" } 입니다.</p>
+							</div>
+						</details>
 					</div>
 
-					<div style="background: white; padding: 20px; border-radius: 12px; border: 1px solid #eee;">
+					<!-- Q3 -->
+					<div style="background: white; padding: 25px; border-radius: 16px; border: 1px solid #eee; box-shadow: 0 4px 12px rgba(0,0,0,0.03);">
 						<p><b>Q3.</b> 다음 극한값을 구하시오.</p>
-						<p style="text-align: center; font-size: 1.4rem;">{limInf} { "$ \\frac{4x^2 + 7x}{x^2 + 5} $" }</p>
+						<p style="text-align: center; font-size: 1.4rem; margin: 20px 0;">
+							{ "$ \\displaystyle \\lim_{x \\to \\infty} \\frac{4x^2 + 7x}{x^2 + 5} $" }
+						</p>
+
+						<details style="margin-top: 20px; border: 1px solid #eef2f8; border-radius: 10px; background: #fafbfc;">
+							<summary style="font-weight: bold; color: #1a73e8; cursor: pointer; padding: 12px;">📊 단계별 풀이 보기</summary>
+							<div style="padding: 15px; border-top: 1px solid #eef2f8; line-height: 1.8; color: #444; font-size: 11pt;">
+								<p><b>Step 1. 최고차항 파악</b><br/>분모와 분자 모두 { "$ x^2 $" }이 최고차항입니다.</p>
+								<p><b>Step 2. 계수 추출</b><br/>분모의 { "$ x^2 $" } 계수는 { "$ 1 $" }, 분자의 { "$ x^2 $" } 계수는 { "$ 4 $" } 입니다.</p>
+								<p><b>Step 3. 정답</b><br/>따라서 극한값은 { "$ \\frac{4}{1} = \\mathbf{4} $" } 입니다.</p>
+							</div>
+						</details>
 					</div>
 				</div>
 

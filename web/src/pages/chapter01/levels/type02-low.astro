@@ -1,8 +1,5 @@
 ---
 import CornellNote from '../../../components/CornellNote.astro';
-
-// LaTeX constants
-const limInf = "$\\displaystyle \\lim_{x \\to \\infty}$";
 ---
 
 <html lang="ko">
@@ -39,19 +36,67 @@ const limInf = "$\\displaystyle \\lim_{x \\to \\infty}$";
 				<div class="type-section">
 					<p style="margin-bottom: 20px;">무리식의 기본적인 유리화 과정을 반복 연습합니다.</p>
 					
-					<div style="background: white; padding: 20px; border-radius: 12px; border: 1px solid #eee; margin-bottom: 20px;">
+					<!-- Q1 -->
+					<div style="background: white; padding: 25px; border-radius: 16px; border: 1px solid #eee; margin-bottom: 30px; box-shadow: 0 4px 12px rgba(0,0,0,0.03);">
 						<p><b>Q1.</b> 다음 극한값을 구하시오.</p>
-						<p style="text-align: center; font-size: 1.4rem;">{limInf} { "$ (\\sqrt{x^2 + x} - x) $" }</p>
+						<p style="text-align: center; font-size: 1.4rem; margin: 20px 0;">
+							{ "$ \\displaystyle \\lim_{x \\to \\infty} (\\sqrt{x^2 + x} - x) $" }
+						</p>
+
+						<details style="margin-top: 20px; border: 1px solid #eef2f8; border-radius: 10px; background: #fafbfc;">
+							<summary style="font-weight: bold; color: #1a73e8; cursor: pointer; padding: 12px;">📊 단계별 풀이 보기</summary>
+							<div style="padding: 15px; border-top: 1px solid #eef2f8; line-height: 1.8; color: #444; font-size: 11pt;">
+								<p><b>Step 1. 유리화 진행</b><br/>
+								켤레식인 { "$ \\sqrt{x^2+x}+x $" }를 분모와 분자에 곱합니다.<br/>
+								{ "$ \\displaystyle \\lim_{x \\to \\infty} \\frac{(\\sqrt{x^2+x}-x)(\\sqrt{x^2+x}+x)}{\\sqrt{x^2+x}+x} $" }</p>
+								<p><b>Step 2. 식 정리</b><br/>
+								분자를 합차 공식을 이용해 정리하면:<br/>
+								{ "$ \\displaystyle \\lim_{x \\to \\infty} \\frac{(x^2+x)-(x^2)}{\\sqrt{x^2+x}+x} = \\displaystyle \\lim_{x \\to \\infty} \\frac{x}{\\sqrt{x^2+x}+x} $" }</p>
+								<p><b>Step 3. 결과 도출</b><br/>
+								분모의 최고차항은 { "$ x $" }이므로 계수만 비교하면 { "$ \\frac{1}{1+1} = \\mathbf{\\frac{1}{2}} $" } 입니다.</p>
+							</div>
+						</details>
 					</div>
 
-					<div style="background: white; padding: 20px; border-radius: 12px; border: 1px solid #eee; margin-bottom: 20px;">
+					<!-- Q2 -->
+					<div style="background: white; padding: 25px; border-radius: 16px; border: 1px solid #eee; margin-bottom: 30px; box-shadow: 0 4px 12px rgba(0,0,0,0.03);">
 						<p><b>Q2.</b> 다음 극한값을 구하시오.</p>
-						<p style="text-align: center; font-size: 1.4rem;">{limInf} { "$ (\\sqrt{x^2 + 4x} - x) $" }</p>
+						<p style="text-align: center; font-size: 1.4rem; margin: 20px 0;">
+							{ "$ \\displaystyle \\lim_{x \\to \\infty} (\\sqrt{x^2 + 4x} - x) $" }
+						</p>
+
+						<details style="margin-top: 20px; border: 1px solid #eef2f8; border-radius: 10px; background: #fafbfc;">
+							<summary style="font-weight: bold; color: #1a73e8; cursor: pointer; padding: 12px;">📊 단계별 풀이 보기</summary>
+							<div style="padding: 15px; border-top: 1px solid #eef2f8; line-height: 1.8; color: #444; font-size: 11pt;">
+								<p><b>Step 1. 유리화</b><br/>
+								{ "$ \\displaystyle \\lim_{x \\to \\infty} \\frac{(x^2+4x)-x^2}{\\sqrt{x^2+4x}+x} = \\displaystyle \\lim_{x \\to \\infty} \\frac{4x}{\\sqrt{x^2+4x}+x} $" }</p>
+								<p><b>Step 2. 계수 비교</b><br/>
+								분모의 최고차항 계수는 { "$ \\sqrt{1}+1 = 2 $" } 이고 분자는 { "$ 4 $" } 입니다.</p>
+								<p><b>Step 3. 정답</b><br/>
+								{ "$ 4 / 2 = \\mathbf{2} $" } 입니다.</p>
+							</div>
+						</details>
 					</div>
 
-					<div style="background: white; padding: 20px; border-radius: 12px; border: 1px solid #eee;">
+					<!-- Q3 -->
+					<div style="background: white; padding: 25px; border-radius: 16px; border: 1px solid #eee; box-shadow: 0 4px 12px rgba(0,0,0,0.03);">
 						<p><b>Q3.</b> 다음 극한값을 구하시오.</p>
-						<p style="text-align: center; font-size: 1.4rem;">{limInf} { "$ \\sqrt{x}(\\sqrt{x+1} - \\sqrt{x}) $" }</p>
+						<p style="text-align: center; font-size: 1.4rem; margin: 20px 0;">
+							{ "$ \\displaystyle \\lim_{x \\to \\infty} \\sqrt{x}(\\sqrt{x+1} - \\sqrt{x}) $" }
+						</p>
+
+						<details style="margin-top: 20px; border: 1px solid #eef2f8; border-radius: 10px; background: #fafbfc;">
+							<summary style="font-weight: bold; color: #1a73e8; cursor: pointer; padding: 12px;">📊 단계별 풀이 보기</summary>
+							<div style="padding: 15px; border-top: 1px solid #eef2f8; line-height: 1.8; color: #444; font-size: 11pt;">
+								<p><b>Step 1. 유리화 (괄호 내부)</b><br/>
+								{ "$ \\sqrt{x} \\cdot \\displaystyle \\lim_{x \\to \\infty} \\frac{(x+1)-x}{\\sqrt{x+1}+\\sqrt{x}} = \\displaystyle \\lim_{x \\to \\infty} \\frac{\\sqrt{x}}{\\sqrt{x+1}+\\sqrt{x}} $" }</p>
+								<p><b>Step 2. 계수 비교</b><br/>
+								분모와 분자 모두 최고차항이 { "$ \\sqrt{x} $" } 입니다.<br/>
+								분모 계수비 { "$ (1+1) $" }, 분자 계수 { "$ 1 $" }.</p>
+								<p><b>Step 3. 정답</b><br/>
+								{ "$ \\mathbf{\\frac{1}{2}} $" } 입니다.</p>
+							</div>
+						</details>
 					</div>
 				</div>
 

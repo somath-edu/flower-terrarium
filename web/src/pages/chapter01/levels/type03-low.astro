@@ -1,8 +1,5 @@
 ---
 import CornellNote from '../../../components/CornellNote.astro';
-
-// LaTeX constants
-const limInf = "$\\displaystyle \\lim_{x \\to \\infty}$";
 ---
 
 <html lang="ko">
@@ -39,16 +36,46 @@ const limInf = "$\\displaystyle \\lim_{x \\to \\infty}$";
 				<div class="type-section">
 					<p style="margin-bottom: 20px;">극한값을 보고 미지수의 값을 추정하는 기초 연습입니다.</p>
 					
-					<div style="background: white; padding: 20px; border-radius: 12px; border: 1px solid #eee; margin-bottom: 20px;">
-						<p><b>Q1.</b> {limInf} { "$ \\frac{ax^2 + 5x}{x^2 - 1} = 2 $" } 일 때, 상수 $a$의 값을 구하시오.</p>
+					<!-- Q1 -->
+					<div style="background: white; padding: 25px; border-radius: 16px; border: 1px solid #eee; margin-bottom: 30px; box-shadow: 0 4px 12px rgba(0,0,0,0.03);">
+						<p><b>Q1.</b> { "$ \\displaystyle \\lim_{x \\to \\infty} \\frac{ax^2 + 5x}{x^2 - 1} = 2 $" } 일 때, 상수 { "$ a $" }의 값을 구하시오.</p>
+						
+						<details style="margin-top: 20px; border: 1px solid #eef2f8; border-radius: 10px; background: #fafbfc;">
+							<summary style="font-weight: bold; color: #1a73e8; cursor: pointer; padding: 12px;">📊 단계별 풀이 보기</summary>
+							<div style="padding: 15px; border-top: 1px solid #eef2f8; line-height: 1.8; color: #444; font-size: 11pt;">
+								<p><b>Step 1. 차수 비교</b><br/>분모와 분자가 모두 2차식으로 차수가 같습니다.</p>
+								<p><b>Step 2. 계수 비 추출</b><br/>최고차항 계수의 비는 { "$ \\frac{a}{1} $" } 입니다.</p>
+								<p><b>Step 3. 결과</b><br/>{ "$ a = 2 $" } 이므로 정답은 <b>{ "$ 2 $" }</b>입니다.</p>
+							</div>
+						</details>
 					</div>
 
-					<div style="background: white; padding: 20px; border-radius: 12px; border: 1px solid #eee; margin-bottom: 20px;">
-						<p><b>Q2.</b> {limInf} { "$ \\frac{4x - 1}{ax + 3} = 2 $" } 일 때, 상수 $a$의 값을 구하시오.</p>
+					<!-- Q2 -->
+					<div style="background: white; padding: 25px; border-radius: 16px; border: 1px solid #eee; margin-bottom: 30px; box-shadow: 0 4px 12px rgba(0,0,0,0.03);">
+						<p><b>Q2.</b> { "$ \\displaystyle \\lim_{x \\to \\infty} \\frac{4x - 1}{ax + 3} = 2 $" } 일 때, 상수 { "$ a $" }의 값을 구하시오.</p>
+						
+						<details style="margin-top: 20px; border: 1px solid #eef2f8; border-radius: 10px; background: #fafbfc;">
+							<summary style="font-weight: bold; color: #1a73e8; cursor: pointer; padding: 12px;">📊 단계별 풀이 보기</summary>
+							<div style="padding: 15px; border-top: 1px solid #eef2f8; line-height: 1.8; color: #444; font-size: 11pt;">
+								<p><b>Step 1. 계수 비 식 세우기</b><br/>분모와 분자가 1차식이므로 계수 비는 { "$ \\frac{4}{a} $" } 입니다.</p>
+								<p><b>Step 2. 방정식 풀이</b><br/>{ "$ \\frac{4}{a} = 2 \\Rightarrow 2a = 4 $" } 입니다.</p>
+								<p><b>Step 3. 정답</b><br/>따라서 { "$ a = \\mathbf{2} $" } 입니다.</p>
+							</div>
+						</details>
 					</div>
 
-					<div style="background: white; padding: 20px; border-radius: 12px; border: 1px solid #eee;">
-						<p><b>Q3.</b> {limInf} { "$ \\frac{ax^2 + bx}{2x^2 + 7} = 3 $" } 일 때, 상수 $a$의 값을 구하시오.</p>
+					<!-- Q3 -->
+					<div style="background: white; padding: 25px; border-radius: 16px; border: 1px solid #eee; box-shadow: 0 4px 12px rgba(0,0,0,0.03);">
+						<p><b>Q3.</b> { "$ \\displaystyle \\lim_{x \\to \\infty} \\frac{ax^2 + bx}{2x^2 + 7} = 3 $" } 일 때, 상수 { "$ a $" }의 값을 구하시오.</p>
+						
+						<details style="margin-top: 20px; border: 1px solid #eef2f8; border-radius: 10px; background: #fafbfc;">
+							<summary style="font-weight: bold; color: #1a73e8; cursor: pointer; padding: 12px;">📊 단계별 풀이 보기</summary>
+							<div style="padding: 15px; border-top: 1px solid #eef2f8; line-height: 1.8; color: #444; font-size: 11pt;">
+								<p><b>Step 1. 최고차항 계수 확인</b><br/>분모의 최고차항 계수는 { "$ 2 $" }, 분자의 최고차항 계수는 { "$ a $" } 입니다.</p>
+								<p><b>Step 2. 관계식 설정</b><br/>{ "$ \\frac{a}{2} = 3 $" } 이 성립해야 합니다.</p>
+								<p><b>Step 3. 정답</b><br/>양변에 { "$ 2 $" }를 곱하면 { "$ a = \\mathbf{6} $" } 입니다.</p>
+							</div>
+						</details>
 					</div>
 				</div>
 
