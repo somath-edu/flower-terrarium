@@ -1,8 +1,5 @@
 ---
 import CornellNote from '../../components/CornellNote.astro';
-
-// LaTeX constants for math accuracy
-const limInf = "$\\displaystyle \\lim_{x \\to \\infty}$";
 ---
 
 <html lang="ko">
@@ -53,7 +50,7 @@ const limInf = "$\\displaystyle \\lim_{x \\to \\infty}$";
 			<div slot="cues">
 				<p style="margin: 0; font-weight: bold; color: #1a1a1a;">🚀 해결 전략 체크리스트</p>
 				<ul style="margin-top: 10px; padding-left: 18px; font-size: 11pt; line-height: 1.6; color: #444;">
-					<li>{ "식의 형태 파악 ($\\frac{\\infty}{\\infty}$ 또는 $\\infty-\\infty$)" }</li>
+					<li>식의 형태 파악 ({ "$ \\frac{\\infty}{\\infty} $" } 또는 { "$ \\infty-\\infty $" })</li>
 					<li>분모와 분자의 최고차항 비교</li>
 					<li>무리식이 있다면 유리화 검토</li>
 					<li>극한값이 상수일 때 차수 추론</li>
@@ -71,7 +68,7 @@ const limInf = "$\\displaystyle \\lim_{x \\to \\infty}$";
 					</div>
 					<p>다음 극한값을 구하시오.</p>
 					<p style="text-align: center; font-size: 1.4rem; margin: var(--base-grid) 0;">
-						{limInf} { "$ \\frac{3x^2 - 5x + 1}{x^2 + 2} $" }
+						{ "$ \\displaystyle \\lim_{x \\to \\infty} \\frac{3x^2 - 5x + 1}{x^2 + 2} $" }
 					</p>
 				</div>
 
@@ -85,7 +82,7 @@ const limInf = "$\\displaystyle \\lim_{x \\to \\infty}$";
 					</div>
 					<p>다음 극한값을 구하시오.</p>
 					<p style="text-align: center; font-size: 1.4rem; margin: var(--base-grid) 0;">
-						{limInf} { "$ (\\sqrt{x^2 + 2x} - x) $" }
+						{ "$ \\displaystyle \\lim_{x \\to \\infty} (\\sqrt{x^2 + 2x} - x) $" }
 					</p>
 				</div>
 
@@ -99,7 +96,7 @@ const limInf = "$\\displaystyle \\lim_{x \\to \\infty}$";
 					</div>
 					<p>다음 등식이 성립하도록 하는 상수 $a, b$의 값을 구하시오.</p>
 					<p style="text-align: center; font-size: 1.4rem; margin: var(--base-grid) 0;">
-						{limInf} { "$ \\frac{ax^3 + bx^2 + 5}{x^2 - 1} = 3 $" }
+						{ "$ \\displaystyle \\lim_{x \\to \\infty} \\frac{ax^3 + bx^2 + 5}{x^2 - 1} = 3 $" }
 					</p>
 				</div>
 
@@ -112,15 +109,19 @@ const limInf = "$\\displaystyle \\lim_{x \\to \\infty}$";
 		</CornellNote>
 
 		<script is:inline>
-			document.addEventListener("DOMContentLoaded", function() {
-				renderMathInElement(document.body, {
-					delimiters: [
-						{left: '$$', right: '$$', display: true},
-						{left: '$', right: '$', display: false}
-					],
-					throwOnError : false
+			if (typeof window !== 'undefined') {
+				document.addEventListener("DOMContentLoaded", function() {
+					if (typeof renderMathInElement === 'function') {
+						renderMathInElement(document.body, {
+							delimiters: [
+								{left: '$$', right: '$$', display: true},
+								{left: '$', right: '$', display: false}
+							],
+							throwOnError : false
+						});
+					}
 				});
-			});
+			}
 		</script>
 	</body>
 </html>

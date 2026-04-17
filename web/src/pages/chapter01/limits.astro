@@ -1,9 +1,5 @@
 ---
 import CornellNote from '../../components/CornellNote.astro';
-
-// Define LaTeX constants with display style to put limits underneath
-const limInf = "$\\displaystyle \\lim_{x \\to \\infty}$";
-const limA = "$\\displaystyle \\lim_{x \\to a}$";
 ---
 
 <html lang="ko">
@@ -47,15 +43,15 @@ const limA = "$\\displaystyle \\lim_{x \\to a}$";
 						<a href="/wiki/chapter01/problems-inf/" style="text-decoration: none; color: inherit; display: flex; align-items: baseline; gap: 10px;">
 							<span class="pencil-star">★</span>
 							<span class="pencil-underline" style="font-size: 1.3rem;">
-								1. {limInf} (무한대)
+								1. { "$ \\displaystyle \\lim_{x \\to \\infty} $" } (무한대)
 							</span>
 						</a>
 					</h4>
 					<p style="margin-left: 25px;">분수 형태의 식에서는 분모와 분자의 <b>최고차항</b>을 비교합니다.</p>
 					<ul style="margin-left: 25px;">
-						<li><b>분모의 차수 &gt; 분자의 차수</b>: 극한값은 $0$입니다.</li>
+						<li><b>분모의 차수 &gt; 분자의 차수</b>: 극한값은 { "$ 0 $" }입니다.</li>
 						<li><b>분모의 차수 = 분자의 차수</b>: 극한값은 <b>최고차항 계수의 비</b>입니다.</li>
-						<li><b>분모의 차수 &lt; 분자의 차수</b>: 무한대($\infty$)로 발산합니다.</li>
+						<li><b>분모의 차수 &lt; 분자의 차수</b>: 무한대({ "$ \\infty $" })로 발산합니다.</li>
 					</ul>
 				</div>
 
@@ -65,14 +61,14 @@ const limA = "$\\displaystyle \\lim_{x \\to a}$";
 						<a href="#" style="text-decoration: none; color: inherit; display: flex; align-items: baseline; gap: 10px;">
 							<span class="pencil-star">★</span>
 							<span class="pencil-underline" style="font-size: 1.3rem;">
-								2. {limA} (상수)
+								2. { "$ \\displaystyle \\lim_{x \\to a} $" } (상수)
 							</span>
 						</a>
 					</h4>
-					<p style="margin-left: 25px;">대입했을 때 분모가 $0$이 되는 경우(부정형)를 주의해야 합니다.</p>
+					<p style="margin-left: 25px;">대입했을 때 분모가 { "$ 0 $" }이 되는 경우(부정형)를 주의해야 합니다.</p>
 					<ul style="margin-left: 25px;">
-						<li>분모가 $0$으로 가면, 분자도 반드시 $0$으로 가야 극한값이 존재합니다. ($0/0$ 꼴)</li>
-						<li>이때 분자는 반드시 분모를 $0$으로 만드는 <b>인수 $(x-a)$</b>를 가지고 있습니다.</li>
+						<li>분모가 { "$ 0 $" }으로 가면, 분자도 반드시 { "$ 0 $" }으로 가야 극한값이 존재합니다. ({ "$ 0/0 $" } 꼴)</li>
+						<li>이때 분자는 반드시 분모를 { "$ 0 $" }으로 만드는 <b>인수 { "$ (x-a) $" }</b>를 가지고 있습니다.</li>
 					</ul>
 				</div>
 			</section>
@@ -83,15 +79,19 @@ const limA = "$\\displaystyle \\lim_{x \\to a}$";
 		</CornellNote>
 		
 		<script is:inline>
-			document.addEventListener("DOMContentLoaded", function() {
-				renderMathInElement(document.body, {
-					delimiters: [
-						{left: '$$', right: '$$', display: true},
-						{left: '$', right: '$', display: false}
-					],
-					throwOnError : false
+			if (typeof window !== 'undefined') {
+				document.addEventListener("DOMContentLoaded", function() {
+					if (typeof renderMathInElement === 'function') {
+						renderMathInElement(document.body, {
+							delimiters: [
+								{left: '$$', right: '$$', display: true},
+								{left: '$', right: '$', display: false}
+							],
+							throwOnError : false
+						});
+					}
 				});
-			});
+			}
 		</script>
 	</body>
 </html>
