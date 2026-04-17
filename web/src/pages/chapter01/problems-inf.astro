@@ -33,12 +33,16 @@ const limInf = "$\\displaystyle \\lim_{x \\to \\infty}$";
 			/* Mobile Optimization for Type Headers */
 			@media screen and (max-width: 600px) {
 				.type-header {
-					flex-direction: column !important;
-					align-items: flex-start !important;
-					gap: 10px;
+					flex-direction: row !important; /* Keep side-by-side */
+					align-items: center !important;
+					justify-content: space-between !important;
+				}
+				.type-header h4 {
+					font-size: 1.1rem !important; /* Slightly smaller for mobile */
 				}
 				.problem-link {
-					margin-left: 0 !important;
+					font-size: 0.8rem !important;
+					padding: 3px 10px !important;
 				}
 			}
 		</style>
@@ -59,7 +63,7 @@ const limInf = "$\\displaystyle \\lim_{x \\to \\infty}$";
 			<section>
 				<!-- Type 01 -->
 				<div class="type-section" id="type01">
-					<div class="type-header" style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px;">
+					<div class="type-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
 						<h4 style="margin: 0; color: #1a1a1a; border-bottom: 2px solid royalblue; display: inline-block; padding-bottom: 5px;">
 							유형 01. 유리함수
 						</h4>
