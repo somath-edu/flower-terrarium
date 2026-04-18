@@ -17,6 +17,27 @@ import CornellNote from '../../../../components/CornellNote.astro';
 			.sol-box { background: white; padding: 10px; border-radius: 20px; border: 1.5px solid #eee; margin-bottom: 25px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
 			.step-title { display: block; font-weight: bold; color: #1a73e8; margin: 25px 0 10px 0; font-size: 1.1rem; border-left: 4px solid #1a73e8; padding-left: 10px; }
 			.formula-display { text-align: center; font-size: 1.25rem; background: #f9f9f9; padding: 15px; border-radius: 12px; margin: 15px 0; }
+			
+			/* 조립제법 디자인 */
+			.syn-div-container {
+				display: flex;
+				justify-content: center;
+				margin: 20px 0;
+			}
+			.syn-div-table {
+				display: grid;
+				grid-template-columns: 50px 50px 50px 50px 50px;
+				gap: 5px;
+				text-align: center;
+				font-family: 'Inter', sans-serif;
+				font-weight: 500;
+				font-size: 1.1rem;
+			}
+			.syn-div-cell { padding: 8px; }
+			.syn-div-val { color: #f57c00; font-weight: bold; border-right: 2px solid #333; }
+			.syn-div-top { border-bottom: 2px solid #333; }
+			.syn-div-res { color: #2e7d32; font-weight: bold; padding-top: 10px; }
+			.syn-div-rem { color: #d32f2f; font-weight: bold; border-left: 2px solid #aaa; padding-top: 10px; }
 		</style>
 	</head>
 	<body>
@@ -41,12 +62,30 @@ import CornellNote from '../../../../components/CornellNote.astro';
 
 					<span class="step-title">Step 2. 조립제법을 통한 인수분해</span>
 					<p>분자의 계수 { "$ 1, -2, 1, -2 $" }에 대하여 조립제법을 실시합니다.</p>
-					<div style="font-family: monospace; background: #f0f4f8; padding: 15px; border-radius: 8px; margin: 15px 0; line-height: 1.2;">
-						2 |  1  -2   1  -2 <br/>
-						  |      2   0   2 <br/>
-						  -------------<br/>
-						     1   0   1 | 0
+					
+					<div class="syn-div-container">
+						<div class="syn-div-table">
+							<!-- Row 1 -->
+							<div class="syn-div-cell syn-div-val">2</div>
+							<div class="syn-div-cell">1</div>
+							<div class="syn-div-cell">-2</div>
+							<div class="syn-div-cell">1</div>
+							<div class="syn-div-cell">-2</div>
+							<!-- Row 2 -->
+							<div class="syn-div-cell"></div>
+							<div class="syn-div-cell"></div>
+							<div class="syn-div-cell syn-div-top">2</div>
+							<div class="syn-div-cell syn-div-top">0</div>
+							<div class="syn-div-cell syn-div-top">2</div>
+							<!-- Row 3 (Results) -->
+							<div class="syn-div-cell"></div>
+							<div class="syn-div-cell syn-div-res">1</div>
+							<div class="syn-div-cell syn-div-res">0</div>
+							<div class="syn-div-cell syn-div-res">1</div>
+							<div class="syn-div-cell syn-div-rem">0</div>
+						</div>
 					</div>
+
 					<p>결과에 따라 분자는 다음과 같이 인수분해됩니다.</p>
 					<div class="formula-display">
 						{ "$ x^3 - 2x^2 + x - 2 = (x-2)(x^2 + 1) $" }
