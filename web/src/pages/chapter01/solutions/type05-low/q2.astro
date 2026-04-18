@@ -1,0 +1,67 @@
+---
+import CornellNote from '../../../../components/CornellNote.astro';
+---
+
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<title>유형 05 [하] - Q2 상세 해설</title>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+		<script is:inline src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+		<script is:inline src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+		<style>
+			body { background-color: #e0e0e0; margin: 0; padding: 10px; display: flex; justify-content: center; }
+			.sol-box { background: white; padding: 10px; border-radius: 20px; border: 1.5px solid #eee; margin-bottom: 25px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+			.step-title { display: block; font-weight: bold; color: #1a73e8; margin: 20px 0 10px 0; font-size: 1.1rem; }
+		</style>
+	</head>
+	<body>
+		<CornellNote title="유형 05 [하] Q2 상세 해설" chapter="Solution">
+			<div slot="cues">
+				<p style="margin: 0; font-weight: bold; color: #1a1a1a;">💡 풀이 전략</p>
+				<p style="margin-top: 10px; font-size: 10pt; line-height: 1.6; color: #666;">
+					분모에 루트가 있습니다. 분모의 켤레식 { "$ (\\sqrt{x}+2) $" }를 곱해 유리화하면 분자에서 영인자 { "$ (x-4) $" }를 약분할 수 있습니다.
+				</p>
+			</div>
+
+			<section>
+				<div class="sol-box formula-box">
+					<p style="margin-bottom: 20px; font-weight: bold;">Q2. 다음 극한값을 구하시오.</p>
+					<p style="text-align: center; font-size: 1.25rem; background: #f9f9f9; padding: 10px; border-radius: 12px;">
+						{ "$ \\displaystyle \\lim_{x \\to 4} \\frac{x-4}{\\sqrt{x}-2} $" }
+					</p>
+
+					<span class="step-title">Step 1. 형태 파악: 0/0 꼴</span>
+					<p>{ "$ x=4 $" }를 대입하면 분모 { "$ \\sqrt{4}-2=0 $" }, 분자 { "$ 4-4=0 $" }으로 { "$ \\frac{0}{0} $" } 꼴입니다. 분모를 유리화합니다.</p>
+
+					<span class="step-title">Step 2. 켤레식 곱하여 유리화</span>
+					<p>분모의 켤레식 { "$ (\\sqrt{x}+2) $" }를 분모·분자에 동시에 곱합니다.<br/>
+					{ "$ \\displaystyle \\frac{(x-4)(\\sqrt{x}+2)}{(\\sqrt{x}-2)(\\sqrt{x}+2)} = \\frac{(x-4)(\\sqrt{x}+2)}{x-4} $" }<br/>
+					{ "$ x \\neq 4 $" }이므로 약분하면: { "$ \\sqrt{x}+2 $" }</p>
+
+					<span class="step-title">Step 3. 극한값 대입</span>
+					<p>{ "$ \\displaystyle \\lim_{x \\to 4} (\\sqrt{x}+2) = \\sqrt{4}+2 = 2+2 = \\boxed{4} $" }</p>
+				</div>
+
+				<div style="text-align: center;">
+					<a href="/wiki/chapter01/levels/type05-low/" class="problem-link mobile-nav-btn">← 문제로 돌아가기</a>
+				</div>
+			</section>
+		</CornellNote>
+
+		<script is:inline>
+			if (typeof window !== 'undefined') {
+				document.addEventListener("DOMContentLoaded", function() {
+					if (typeof renderMathInElement === 'function') {
+						renderMathInElement(document.body, {
+							delimiters: [{left: '$$', right: '$$', display: true},{left: '$', right: '$', display: false}],
+							throwOnError: false
+						});
+					}
+				});
+			}
+		</script>
+	</body>
+</html>
