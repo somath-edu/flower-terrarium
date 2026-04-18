@@ -1,0 +1,100 @@
+---
+import CornellNote from '../../../components/CornellNote.astro';
+---
+
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<title>유형 04 - 난이도 [수능] 연습</title>
+		<!-- KaTeX -->
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+		<script is:inline src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+		<script is:inline src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+		<style>
+			body { background-color: #e0e0e0; margin: 0; padding: 20px; display: flex; justify-content: center; }
+			.sol-button {
+				display: inline-block; padding: 4px 12px; background: #ffebee; color: #c62828;
+				border-radius: 8px; text-decoration: none; font-size: 0.9rem; font-weight: bold;
+				margin-left: 10px; border: 1.5px solid #c62828; transition: all 0.2s ease;
+			}
+			.sol-button:hover { background: #c62828; color: white; transform: translateY(-1px); }
+			.question-card { background: white; padding: 25px; border-radius: 16px; margin-bottom: 25px; border: 1px solid #eee; box-shadow: 0 4px 6px rgba(0,0,0,0.02); }
+			.question-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px; }
+			.formula-box { background: #fafafa; padding: 25px; border-radius: 12px; font-size: 1.25rem; line-height: 1.6; }
+		</style>
+	</head>
+	<body>
+		<CornellNote title="유형 04. 다항식 극한 [수능]" chapter="Level: CSAT">
+			<div slot="cues">
+				<p style="margin: 0; font-weight: bold; color: #1a1a1a;">🔴 [수능] 핵심 전략</p>
+				<ul style="margin-top: 10px; padding-left: 18px; font-size: 11pt; line-height: 1.6; color: #444;">
+					<li>{ "$ \frac{0}{0} $" } 조건을 통해 <b>인수를 결정</b>하세요.</li>
+					<li>극한값을 대입하여 <b>미지 계수</b>를 찾아내야 합니다.</li>
+					<li>다항함수의 <b>차수</b>를 먼저 파악하는 것이 우선입니다.</li>
+				</ul>
+			</div>
+
+			<section>
+				<div class="type-section">
+					<p style="margin-bottom: 30px; color: #666;">수능 및 평가원 기출 스타일의 문항입니다. 주어지는 극한 조건을 해석하여 함수 { "$ f(x) $" }를 완벽히 결정해 보세요.</p>
+					
+					<!-- Q1 -->
+					<div class="question-card">
+						<div class="question-header">
+							<p style="margin: 0; font-size: 1.1rem;"><b>Q1.</b> 다항함수 { "$ f(x) $" }가 다음 조건을 만족시킬 때, { "$ f(2) $" }의 값을 구하시오.</p>
+							<a href="/wiki/chapter01/solutions/type04-high/q1" class="sol-button">상세 해설 💡</a>
+						</div>
+						<div class="formula-box">
+							{ "$ \displaystyle \lim_{x \to 1} \frac{f(x)}{x-1} = 4, \quad \lim_{x \to \infty} \frac{f(x)}{x^2+1} = 2 $" }
+						</div>
+					</div>
+
+					<!-- Q2 -->
+					<div class="question-card">
+						<div class="question-header">
+							<p style="margin: 0; font-size: 1.1rem;"><b>Q2.</b> 최고차항의 계수가 { "$ 1 $" }인 삼차함수 { "$ f(x) $" }에 대하여 다음이 성립할 때, { "$ f(3) $" }의 값을 구하시오.</p>
+							<a href="/wiki/chapter01/solutions/type04-high/q2" class="sol-button">상세 해설 💡</a>
+						</div>
+						<div class="formula-box">
+							{ "$ f(1)=0 $" } 이고 { "$ \displaystyle \lim_{x \to 1} \frac{f(x)}{(x-1)^2} = 5 $" }
+						</div>
+					</div>
+
+					<!-- Q3 -->
+					<div class="question-card">
+						<div class="question-header">
+							<p style="margin: 0; font-size: 1.1rem;"><b>Q3.</b> 다항함수 { "$ f(x) $" }가 모든 실수 { "$ a $" }에 대하여 다음 조건을 만족시킨다. { "$ f(1)=10 $" }일 때, { "$ f(2) $" }의 값을 구하시오.</p>
+							<a href="/wiki/chapter01/solutions/type04-high/q3" class="sol-button">상세 해설 💡</a>
+						</div>
+						<div class="formula-box">
+							{ "$ \displaystyle \lim_{x \to a} \frac{f(x)-f(a)}{x^2-a^2} = 1 $" }
+						</div>
+					</div>
+				</div>
+
+				<div style="margin-top: 40px; display: flex; gap: 15px;">
+					<a href="/wiki/chapter01/types/type04/" style="color: #666; text-decoration: none;">← 핵심 문제로 이동</a>
+					<a href="/wiki/chapter01/problems-const/" style="color: #666; text-decoration: none;">목록으로 돌아가기</a>
+				</div>
+			</section>
+		</CornellNote>
+
+		<script is:inline>
+			if (typeof window !== 'undefined') {
+				document.addEventListener("DOMContentLoaded", function() {
+					if (typeof renderMathInElement === 'function') {
+						renderMathInElement(document.body, {
+							delimiters: [
+								{left: '$$', right: '$$', display: true},
+								{left: '$', right: '$', display: false}
+							],
+							throwOnError : false
+						});
+					}
+				});
+			}
+		</script>
+	</body>
+</html>
