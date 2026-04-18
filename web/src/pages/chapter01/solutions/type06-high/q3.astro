@@ -1,0 +1,92 @@
+---
+import CornellNote from '../../../../components/CornellNote.astro';
+---
+
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<title>유형 06 [수능] - Q3 상세 해설</title>
+		<!-- KaTeX -->
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+		<script is:inline src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+		<script is:inline src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+		<style>
+			body { background-color: #e0e0e0; margin: 0; padding: 10px; display: flex; justify-content: center; }
+			.sol-box { background: white; padding: 10px; border-radius: 20px; border: 1.5px solid #eee; margin-bottom: 25px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+			.step-title { display: block; font-weight: bold; color: #c62828; margin: 25px 0 10px 0; font-size: 1.1rem; border-left: 4px solid #c62828; padding-left: 10px; }
+			.formula-display { text-align: center; font-size: 1.25rem; background: #f9f9f9; padding: 15px; border-radius: 12px; margin: 15px 0; }
+		</style>
+	</head>
+	<body>
+		<CornellNote title="유형 06 [수능] Q3 상세 해설" chapter="Solution">
+			<div slot="cues">
+				<p style="margin: 0; font-weight: bold; color: #1a1a1a;">💡 수능적 접근</p>
+				<p style="margin-top: 10px; font-size: 10pt; line-height: 1.6; color: #666;">
+					극한값이 미지수($ a $)인 경우, 무한대 극한의 성질을 이용하여 $ a $를 먼저 상수로 확정 짓는 것이 모든 풀이의 시작입니다.
+				</p>
+			</div>
+
+			<section>
+				<div class="sol-box formula-box">
+					<p style="margin-bottom: 20px; font-weight: bold;">Q3. 최고차항의 계수가 $ 1 $인 다항함수 $ f(x) $가 다음 조건을 만족시킬 때, $ a + f(1) $의 값을 구하시오.</p>
+					<div class="formula-display">
+						{ "$ \\displaystyle \\lim_{x \\to \\infty} \\frac{f(x)}{x^2+2} = a $" } <br/>
+						{ "$ \\displaystyle \\lim_{x \\to a} \\frac{f(x)}{x-a} = 5 $" }
+					</div>
+
+					<span class="step-title">Step 1. 무한대 극한을 통한 $ a $와 차수 결정</span>
+					<p>최고차항 계수가 $ 1 $인 다항함수 $ f(x) $에 대하여, 무한대 극한값이 실수 $ a $로 존재하려면 $ f(x) $는 $ 2 $차 함수여야 합니다.</p>
+					<div style="background: #fff9c4; padding: 15px; border-radius: 8px; margin: 15px 0; text-align: center; font-size: 1.1rem;">
+						{ "$ \\displaystyle \\lim_{x \\to \\infty} \\frac{x^2 + \cdots}{x^2+2} = 1 \\implies \\mathbf{a = 1} $" }
+					</div>
+
+					<span class="step-title">Step 2. 상수 극한과 인수 정리 적용</span>
+					<p>$ a=1 $이므로 두 번째 극한 식은 다음과 같습니다.</p>
+					<div class="formula-display">
+						{ "$ \\displaystyle \\lim_{x \\to 1} \\frac{f(x)}{x-1} = 5 $" }
+					</div>
+					<p>$ x \to 1 $일 때 분모가 $ 0 $이므로 $ f(1)=0 $입니다. $ f(x) $는 $ (x-1) $을 인수로 가지며 최고차항 계수가 $ 1 $인 이차함수이므로 다음과 같이 설성합니다.</p>
+					<div style="font-size: 1.1rem; background: #f0f4f8; padding: 15px; border-radius: 10px; margin: 10px 0; text-align: center;">
+						{ "$ f(x) = (x-1)(x+k) $" }
+					</div>
+
+					<span class="step-title">Step 3. 최종 식 완성 및 정답 도출</span>
+					<p>준식에 대입하여 $ k $를 구합니다.</p>
+					<div class="formula-display">
+						{ "$ \\displaystyle \\lim_{x \\to 1} \frac{(x-1)(x+k)}{x-1} = 1+k = 5 \\implies \\mathbf{k=4} $" }
+					</div>
+					<p>따라서 완성된 함수는 $ f(x) = (x-1)(x+4) $ 이며, 정답은:</p>
+					<div style="font-size: 1.15rem; background: #e8f5e9; padding: 15px; border-radius: 10px; text-align: center;">
+						{ "$ a = 1, f(1) = 0 $" } <br/>
+						{ "$ \\therefore a + f(1) = 1 + 0 = \\mathbf{1} $" }
+					</div>
+					<p style="margin-top: 20px; font-weight: bold; font-size: 1.1rem; text-align: center;">
+						정답은 { "$ \mathbf{1} $" }입니다.
+					</p>
+				</div>
+
+				<div style="text-align: center;">
+					<a href="/wiki/chapter01/levels/type06-high/" class="problem-link mobile-nav-btn" style="background: #333; color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none;">← 문제로 돌아가기</a>
+				</div>
+			</section>
+		</CornellNote>
+
+		<script is:inline>
+			if (typeof window !== 'undefined') {
+				document.addEventListener("DOMContentLoaded", function() {
+					if (typeof renderMathInElement === 'function') {
+						renderMathInElement(document.body, {
+							delimiters: [
+								{left: '$$', right: '$$', display: true},
+								{left: '$', right: '$', display: false}
+							],
+							throwOnError : false
+						});
+					}
+				});
+			}
+		</script>
+	</body>
+</html>

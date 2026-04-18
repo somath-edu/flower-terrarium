@@ -1,0 +1,90 @@
+---
+import CornellNote from '../../../../components/CornellNote.astro';
+---
+
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<title>유형 06 [수능] - Q2 상세 해설</title>
+		<!-- KaTeX -->
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+		<script is:inline src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+		<script is:inline src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+		<style>
+			body { background-color: #e0e0e0; margin: 0; padding: 10px; display: flex; justify-content: center; }
+			.sol-box { background: white; padding: 10px; border-radius: 20px; border: 1.5px solid #eee; margin-bottom: 25px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+			.step-title { display: block; font-weight: bold; color: #c62828; margin: 25px 0 10px 0; font-size: 1.1rem; border-left: 4px solid #c62828; padding-left: 10px; }
+			.formula-display { text-align: center; font-size: 1.25rem; background: #f9f9f9; padding: 15px; border-radius: 12px; margin: 15px 0; }
+		</style>
+	</head>
+	<body>
+		<CornellNote title="유형 06 [수능] Q2 상세 해설" chapter="Solution">
+			<div slot="cues">
+				<p style="margin: 0; font-weight: bold; color: #1a1a1a;">💡 수능적 접근</p>
+				<p style="margin-top: 10px; font-size: 10pt; line-height: 1.6; color: #666;">
+					분모가 $ x, x-1 $일 때 분자가 $ 0 $이 되어야 수렴하므로, $ f(x) $는 $ x $와 $ (x-1) $을 모두 인수로 가짐을 즉시 파악해야 합니다.
+				</p>
+			</div>
+
+			<section>
+				<div class="sol-box formula-box">
+					<p style="margin-bottom: 20px; font-weight: bold;">Q2. 삼차함수 $ f(x) $가 다음 조건을 만족시킬 때, $ f(-1) $의 값을 구하시오.</p>
+					<div class="formula-display">
+						{ "$ \\displaystyle \\lim_{x \\to 0} \\frac{f(x)}{x} = 2 $" }, &nbsp;&nbsp; { "$ \\displaystyle \\lim_{x \\to 1} \\frac{f(x)}{x-1} = 4 $" }
+					</div>
+
+					<span class="step-title">Step 1. 인수를 이용한 함수 식 세우기</span>
+					<p>$ x \to 0, x \to 1 $일 때 극한값이 존재하므로 $ f(0)=0, f(1)=0 $입니다. 삼차함수 $ f(x) $는 $ x(x-1) $을 인수로 가지므로 다음과 같이 설정할 수 있습니다.</p>
+					<div style="background: #fff9c4; padding: 15px; border-radius: 8px; margin: 15px 0; text-align: center; font-size: 1.1rem;">
+						{ "$ f(x) = x(x-1)(ax + b) $" }
+					</div>
+
+					<span class="step-title">Step 2. 극한 조건을 통한 미지수 $ a, b $ 결정</span>
+					<p>첫 번째 극한 조건 대입:</p>
+					<div class="formula-display">
+						{ "$ \\displaystyle \\lim_{x \\to 0} \\frac{x(x-1)(ax + b)}{x} = \\lim_{x \\to 0} (x-1)(ax + b) = -b = 2 \\implies \\mathbf{b = -2} $" }
+					</div>
+					<p>두 번째 극한 조건 대입:</p>
+					<div class="formula-display">
+						{ "$ \\displaystyle \\lim_{x \\to 1} \\frac{x(x-1)(ax - 2)}{x-1} = \\lim_{x \\to 1} x(ax - 2) = a - 2 = 4 \\implies \\mathbf{a = 6} $" }
+					</div>
+
+					<span class="step-title">Step 3. $ f(x) $ 완성 및 최종값 계산</span>
+					<p>완성된 삼차함수는 다음과 같습니다.</p>
+					<div style="font-size: 1.15rem; background: #f0f4f8; padding: 15px; border-radius: 10px; margin: 10px 0; text-align: center;">
+						{ "$ f(x) = x(x-1)(6x - 2) $" }
+					</div>
+					<p>$ x = -1 $을 대입하여 마무리합니다.</p>
+					<div style="font-size: 1.15rem; background: #e8f5e9; padding: 15px; border-radius: 10px; text-align: center;">
+						{ "$ f(-1) = (-1)(-2)(-6-2) = 2 \\times (-8) = \\mathbf{-16} $" }
+					</div>
+					<p style="margin-top: 20px; font-weight: bold; font-size: 1.1rem; text-align: center;">
+						정답은 { "$ \mathbf{-16} $" }입니다.
+					</p>
+				</div>
+
+				<div style="text-align: center;">
+					<a href="/wiki/chapter01/levels/type06-high/" class="problem-link mobile-nav-btn" style="background: #333; color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none;">← 문제로 돌아가기</a>
+				</div>
+			</section>
+		</CornellNote>
+
+		<script is:inline>
+			if (typeof window !== 'undefined') {
+				document.addEventListener("DOMContentLoaded", function() {
+					if (typeof renderMathInElement === 'function') {
+						renderMathInElement(document.body, {
+							delimiters: [
+								{left: '$$', right: '$$', display: true},
+								{left: '$', right: '$', display: false}
+							],
+							throwOnError : false
+						});
+					}
+				});
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,112 @@
+---
+import CornellNote from '../../../components/CornellNote.astro';
+---
+
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<title>유형 06 - 난이도 [수능] 연습</title>
+		<!-- KaTeX -->
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+		<script is:inline src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+		<script is:inline src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+		<style>
+			body { background-color: #e0e0e0; margin: 0; padding: 20px; display: flex; justify-content: center; }
+			.sol-button {
+				display: inline-block; padding: 4px 12px; background: #ffebee; color: #c62828;
+				border-radius: 8px; text-decoration: none; font-size: 0.9rem; font-weight: bold;
+				margin-left: 10px; border: 1.5px solid #c62828; transition: all 0.2s ease;
+			}
+			.sol-button:hover { background: #c62828; color: white; transform: translateY(-1px); }
+			.question-card { background: white; padding: 25px; border-radius: 16px; margin-bottom: 25px; border: 1px solid #ffcdd2; box-shadow: 0 4px 15px rgba(198, 40, 40, 0.05); }
+			.question-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px; }
+			.formula-box { background: #fffcfc; padding: 25px; border-radius: 12px; font-size: 1.3rem; border: 1px dashed #ef9a9a; line-height: 2; }
+			.premium-tag { background: #c62828; color: white; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem; margin-right: 8px; vertical-align: middle; }
+		</style>
+	</head>
+	<body>
+		<CornellNote title="유형 06. 미정계수 [수능]" chapter="Level: High (CSAT)">
+			<div slot="cues">
+				<p style="margin: 0; font-weight: bold; color: #b71c1c;">🔴 수능 킬러 포인트</p>
+				<ul style="margin-top: 10px; padding-left: 18px; font-size: 11pt; line-height: 1.6; color: #444;">
+					<li><b>무한대 극한</b>: 다항함수의 최고차항과 차수를 결정합니다.</li>
+					<li><b>상수 극한</b>: 함수의 인수($x-a$)를 결정합니다.</li>
+					<li>두 정보를 결합하여 $ f(x) $를 추론하는 것이 핵심입니다.</li>
+				</ul>
+			</div>
+
+			<section>
+				<div class="type-section">
+					<p style="margin-bottom: 30px; line-height: 1.7;">수능 기출 유형을 바탕으로 한 다항함수 추론 문제입니다. 조건들을 유기적으로 결합하여 함수의 형태를 완성하세요.</p>
+					
+					<!-- Q1 -->
+					<div class="question-card">
+						<div class="question-header">
+							<div>
+								<span class="premium-tag">함수 추론</span>
+								<p style="margin: 8px 0 0 0; font-weight: bold;">Q1. 다항함수 { "$ f(x) $" }가 다음 두 조건을 만족시킬 때, { "$ f(3) $" }의 값을 구하시오.</p>
+							</div>
+							<a href="/wiki/chapter01/solutions/type06-high/q1" class="sol-button">풀이 💡</a>
+						</div>
+						<div class="formula-box">
+							(가) { "$ \\displaystyle \\lim_{x \\to \\infty} \\frac{f(x)}{x^2} = 1 $" } <br/>
+							(나) { "$ \\displaystyle \\lim_{x \\to 2} \\frac{f(x)}{x-2} = 3 $" }
+						</div>
+					</div>
+
+					<!-- Q2 -->
+					<div class="question-card">
+						<div class="question-header">
+							<div>
+								<span class="premium-tag">인수 정리</span>
+								<p style="margin: 8px 0 0 0; font-weight: bold;">Q2. 삼차함수 { "$ f(x) $" }가 다음 조건을 만족시킬 때, { "$ f(-1) $" }의 값을 구하시오.</p>
+							</div>
+							<a href="/wiki/chapter01/solutions/type06-high/q2" class="sol-button">풀이 💡</a>
+						</div>
+						<div class="formula-box" style="text-align: center;">
+							{ "$ \\displaystyle \\lim_{x \\to 0} \\frac{f(x)}{x} = 2 $" }, &nbsp;&nbsp; { "$ \\displaystyle \\lim_{x \\to 1} \\frac{f(x)}{x-1} = 4 $" }
+						</div>
+					</div>
+
+					<!-- Q3 -->
+					<div class="question-card">
+						<div class="question-header">
+							<div>
+								<span class="premium-tag">계수 결정</span>
+								<p style="margin: 8px 0 0 0; font-weight: bold;">Q3. 최고차항의 계수가 { "$ 1 $" }인 다항함수 { "$ f(x) $" }가 다음 조건을 만족시킬 때, { "$ a + f(1) $" }의 값을 구하시오.</p>
+							</div>
+							<a href="/wiki/chapter01/solutions/type06-high/q3" class="sol-button">풀이 💡</a>
+						</div>
+						<div class="formula-box">
+							{ "$ \\displaystyle \\lim_{x \\to \\infty} \\frac{f(x)}{x^2+2} = a $" } <br/>
+							{ "$ \\displaystyle \\lim_{x \\to a} \\frac{f(x)}{x-a} = 5 $" }
+						</div>
+					</div>
+				</div>
+
+				<div style="margin-top: 40px; display: flex; gap: 15px;">
+					<a href="/wiki/chapter01/types/type06/" style="color: #666; text-decoration: none;">← 핵심 문제로 이동</a>
+					<a href="/wiki/chapter01/problems-const/" style="color: #666; text-decoration: none;">목록으로 돌아가기</a>
+				</div>
+			</section>
+		</CornellNote>
+
+		<script is:inline>
+			if (typeof window !== 'undefined') {
+				document.addEventListener("DOMContentLoaded", function() {
+					if (typeof renderMathInElement === 'function') {
+						renderMathInElement(document.body, {
+							delimiters: [
+								{left: '$$', right: '$$', display: true},
+								{left: '$', right: '$', display: false}
+							],
+							throwOnError : false
+						});
+					}
+				});
+			}
+		</script>
+	</body>
+</html>
