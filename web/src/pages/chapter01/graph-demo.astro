@@ -28,7 +28,7 @@ import JSXGraph from '../../components/JSXGraph.astro';
 
 				<!-- Graph Unit -->
 				<div style="margin-bottom: 30px;">
-					<JSXGraph id="jxg-continuity" height="350px" />
+					<JSXGraph id="jxg-continuity" height="350px" width="100%" />
 					<p style="margin-top: 15px; font-size: 11pt; color: #444; line-height: 1.6; background: #f8f9fa; padding: 15px; border-radius: 10px;">
 						함수 { "$ f(x) $" }는 { "$ x=1 $" }에서 <b>불연속</b>입니다.<br/>
 						이유: 극한값 { "$ \lim_{x \to 1} f(x) = 3 $" }이지만, 함숫값 { "$ f(1) = 4 $" }로 서로 다르기 때문입니다.
@@ -48,22 +48,11 @@ import JSXGraph from '../../components/JSXGraph.astro';
 					boundingbox: [-2, 6, 4, -1],
 					axis: true,
 					showCopyright: false,
-					keepaspectratio: true,
-					showNavigation: true,
-					pan: { enabled: true },
-					zoom: { enabled: true }
-				});
-
-				// Intelligent Auto-resize (Debounced)
-				let resizeTimeout;
-				window.addEventListener('resize', () => {
-					clearTimeout(resizeTimeout);
-					resizeTimeout = setTimeout(() => {
-						// Only resize if the container actually exists and has changed
-						if (board && board.containerObj) {
-							board.resizeContainer(board.containerObj.clientWidth, board.containerObj.clientHeight);
-						}
-					}, 200); // Wait for 200ms of inactivity
+					keepaspectratio: false,
+					showNavigation: false,
+					resize: { enabled: false },
+					pan: { enabled: false },
+					zoom: { enabled: false }
 				});
 
 				// f(x) = x + 2 (but undefined at x=1)
