@@ -20,26 +20,28 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: 24
           cache: 'npm'
           cache-dependency-path: web/package-lock.json
 
       - name: Install dependencies
-        run: npm install
-        working-directory: web
+        run: |
+          cd web
+          npm install
 
       - name: Setup Typst
         uses: typst-community/setup-typst@v3
 
-      - name: Create PDF directory
+      - name: Prep PDF Directory
         run: mkdir -p web/public/pdf/chapter01
 
-      - name: Compile Typst to PDF
+      - name: Compile PDF (Type 01 Low)
         run: typst compile --root . print/chapter01/type01_low.typ web/public/pdf/chapter01/type01_low.pdf
 
-      - name: Build Astro
-        run: npm run build
-        working-directory: web
+      - name: Build Astro App
+        run: |
+          cd web
+          npm run build
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
