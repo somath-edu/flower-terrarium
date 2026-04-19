@@ -25,28 +25,12 @@ jobs:
           cache-dependency-path: web/package-lock.json
 
       - name: Install dependencies
-        run: |
-          cd web
-          npm install
+        run: npm install
+        working-directory: web
 
-      - name: Setup Typst
-        uses: typst-community/setup-typst@v3
-
-      - name: Build PDF and Astro
-        run: |
-          # 1. 경로 강제 생성
-          mkdir -p web/public/pdf/chapter01
-          
-          # 2. 디버깅 로그 (파일 확인)
-          echo "Current Path: $(pwd)"
-          ls -R print
-          
-          # 3. Typst 컴파일 (절대 경로 활용 시도)
-          typst compile --root . print/chapter01/type01_low.typ web/public/pdf/chapter01/type01_low.pdf
-          
-          # 4. Astro 빌드
-          cd web
-          npm run build
+      - name: Build Astro
+        run: npm run build
+        working-directory: web
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
