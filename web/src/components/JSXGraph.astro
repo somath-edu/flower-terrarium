@@ -20,8 +20,8 @@ const { id = "box", width = "100%", height = "400px" } = Astro.props;
 <link rel="stylesheet" type="text/css" href="/wiki/lib/jsxgraph/jsxbox.css" />
 
 <!-- Container -->
-<div class="jxg-wrapper" style={`width: ${width}; margin: 0 auto; overflow: hidden;`}>
-	<div id={id} class="jxgbox" style={`width: 100%; height: ${height}; border-radius: 12px; border: 1.5px solid #eee; background: #fff; touch-action: none;`}></div>
+<div class="jxg-wrapper" style={`width: ${width}; max-width: 100%; margin: 0 auto; overflow: hidden; contain: layout;`}>
+	<div id={id} class="jxgbox" style={`width: 100%; height: ${height}; max-height: 80vh; border-radius: 12px; border: 1.5px solid #eee; background: #fff; touch-action: none;`}></div>
 </div>
 
 <!-- JSXGraph Library -->

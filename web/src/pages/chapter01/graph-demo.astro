@@ -48,15 +48,22 @@ import JSXGraph from '../../components/JSXGraph.astro';
 					boundingbox: [-2, 6, 4, -1],
 					axis: true,
 					showCopyright: false,
-					keepaspectratio: false,
+					keepaspectratio: true,
 					showNavigation: true,
 					pan: { enabled: true },
 					zoom: { enabled: true }
 				});
 
-				// Auto-resize trigger
+				// Intelligent Auto-resize (Debounced)
+				let resizeTimeout;
 				window.addEventListener('resize', () => {
-					board.resizeContainer(board.containerObj.clientWidth, board.containerObj.clientHeight);
+					clearTimeout(resizeTimeout);
+					resizeTimeout = setTimeout(() => {
+						// Only resize if the container actually exists and has changed
+						if (board && board.containerObj) {
+							board.resizeContainer(board.containerObj.clientWidth, board.containerObj.clientHeight);
+						}
+					}, 200); // Wait for 200ms of inactivity
 				});
 
 				// f(x) = x + 2 (but undefined at x=1)
