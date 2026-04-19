@@ -10,9 +10,9 @@
     margin: (x: 2cm, y: 2.5cm),
   )
 
-  // 기본 폰트 설정 (수능 느낌의 명조 계열 추천)
+  // 기본 폰트 설정 (서버 환경 호환성을 위해 범용 폰트 추가)
   set text(
-    font: ("New Computer Modern", "Batang"),
+    font: ("New Computer Modern", "Batang", "Noto Serif KR", "Liberation Serif", "serif"),
     size: 10pt,
     lang: "ko"
   )
