@@ -35,7 +35,7 @@ jobs:
         run: mkdir -p web/public/pdf/chapter01
 
       - name: Compile Typst to PDF
-        run: typst compile print/chapter01/type01_low.typ web/public/pdf/chapter01/type01_low.pdf
+        run: typst compile --root . print/chapter01/type01_low.typ web/public/pdf/chapter01/type01_low.pdf
 
       - name: Build Astro
         run: npm run build
