@@ -42,14 +42,9 @@
     lang: "ko"
   )
 
-  // 수식 설정: 모든 math.op(특히 lim)의 극한 조건을 항상 상/하단에 강제 배치
-  show math.op: it => {
-    if it.text in ("lim", "sum", "prod") {
-      math.limits(it, inline: true)
-    } else {
-      it
-    }
-  }
+  // 수식 설정: 모든 수학 연산자(lim, sum 등)의 극한 조건을 항상 상/하단에 강제 배치
+  // Typst의 자동 인라인 최적화를 무시하고 정석 표기법을 유지합니다.
+  show math.op: math.limits.with(inline: true)
 
   // 3. 메인 헤더 박스 (1페이지 상단) - 성명 칸 우측 최적화
   block(width: 100%, stroke: 1.2pt + black, inset: 12pt)[
