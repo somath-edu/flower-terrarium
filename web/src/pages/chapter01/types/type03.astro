@@ -1,8 +1,5 @@
 ---
 import CornellNote from '../../../components/CornellNote.astro';
-
-// LaTeX constants
-const limInf = "$\\displaystyle \\lim_{x \\to \\infty}$";
 ---
 
 <html lang="ko">
@@ -10,7 +7,7 @@ const limInf = "$\\displaystyle \\lim_{x \\to \\infty}$";
 		<meta charset="utf-8" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
-		<title>유형 03. 미정계수 - 상세 연습</title>
+		<title>유형 03. 함수의 곱의 연속성 - 상세 연습</title>
 		<!-- KaTeX -->
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
 		<script is:inline src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
@@ -26,14 +23,14 @@ const limInf = "$\\displaystyle \\lim_{x \\to \\infty}$";
 		</style>
 	</head>
 	<body>
-		<CornellNote title="유형 03. 미정계수" chapter="Chapter 01 Practice">
+		<CornellNote title="유형 03. 함수의 곱의 연속성" chapter="Chapter 01 Practice">
 			
 			<div slot="cues">
 				<p style="margin: 0; font-weight: bold; color: #1a1a1a;">💡 집중 공략 포인트</p>
 				<ul style="margin-top: 10px; padding-left: 18px; font-size: 11pt; line-height: 1.6; color: #444;">
-					<li>극한값이 **상수**로 존재할 조건 확인</li>
-					<li>분모와 분자의 **최고차항 차수** 일치시키기</li>
-					<li>상수항까지 대입하여 계수 비교</li>
+					<li>불연속인 함수 $f(x)$의 불연속점 $x=k$를 확인</li>
+					<li>연속인 함수 $g(x)$를 곱해 연속이 되려면 $g(k)=0$이어야 함</li>
+					<li>좌/우/함숫값 삼박자 비교 원칙 엄수</li>
 				</ul>
 			</div>
 
@@ -42,26 +39,35 @@ const limInf = "$\\displaystyle \\lim_{x \\to \\infty}$";
 					<h4 style="margin-top: 0; color: #1a1a1a; border-bottom: 2px solid royalblue; display: inline-block; padding-bottom: 5px; margin-bottom: 15px;">
 						[핵심 문제]
 					</h4>
-					<p>다음 등식이 성립하도록 하는 상수 $a, b$의 값을 구하시오.</p>
-					<p style="text-align: center; font-size: 1.6rem; margin: 40px 0; background: rgba(0,0,0,0.02); padding: 30px; border-radius: 12px;">
-						<span class="math">{limInf} { "$ \\frac{ax^3 + bx^2 + 5}{x^2 - 1} = 3 $" }</span>
-					</p>
+					<p>두 함수의 곱이 특정 지점에서 연속이 되도록 하는 미지수를 구하시오.</p>
+					<div style="text-align: center; font-size: 1.6rem; margin: 40px 0; background: rgba(0,0,0,0.02); padding: 30px; border-radius: 12px;">
+						 함수 { "$ f(x) = \\begin{cases} x+2 & (x < 1) \\\\ x^2-4 & (x \\ge 1) \\end{cases} $" } 이고,<br/>
+						 $g(x) = x-a$일 때, $f(x)g(x)$가 $x=1$에서 연속이 되기 위한 $a$의 값은?
+					</div>
 					
-					<!-- Progressive Disclosure: Strategy -->
+					<!-- Strategy -->
 					<details style="margin-top: 30px; border: 1px solid #eee; border-radius: 8px; padding: 10px; background: #fff;">
 						<summary style="font-weight: bold; color: #1a73e8; cursor: pointer; padding: 5px;">💡 해결 전략 (클릭하여 확인)</summary>
 						<div style="margin-top: 10px; padding: 10px; border-top: 1px dashed #eee; color: #444; line-height: 1.6;">
-							극한값이 상수로 수렴할 때, 분모와 분자의 <b>최고차 차수</b>가 같아야 함을 이용합니다.
+							함수 $f(x)$가 $x=1$에서 불연속(좌극한 3, 우극한 -3)입니다. 이 불연속을 '상쇄'하려면 연속 함수인 $g(x)$가 $x=1$에서 **반드시 0**이 되어야 합니다.
 						</div>
 					</details>
 
-					<!-- Progressive Disclosure: Step-by-Step Solution -->
+					<!-- Solution -->
 					<details style="margin-top: 15px; border: 1px solid #eee; border-radius: 8px; padding: 10px; background: #fff;">
-						<summary style="font-weight: bold; color: #e63946; cursor: pointer; padding: 5px;">📝 단계별 풀이 (마지막에 열어보세요!)</summary>
+						<summary style="font-weight: bold; color: #e63946; cursor: pointer; padding: 5px;">📝 단계별 풀이</summary>
 						<div style="margin-top: 10px; padding: 10px; border-top: 1px dashed #eee; color: #444; line-height: 1.8;">
-							<p><b>Step 1. 차수 비교</b><br/>분모가 2차인데 극한값이 3(상수)이므로, 분자도 반드시 2차식이어야 합니다. 따라서 3차항의 계수 <b>$a=0$</b>입니다.</p>
-							<p><b>Step 2. 계수 비교</b><br/>분모의 최고차항 계수는 $1$, 분자의 2차항 계수는 $b$입니다.</p>
-							<p><b>Step 3. 상수 구하기</b><br/>{ "$ \\frac{b}{1} = 3 $" } 이므로 <b>$b=3$</b>입니다.</p>
+							<p><b>Step 1. $f(x)$의 극한 확인</b><br/>
+							- 좌극한 ($x \to 1^-$): $f(x) \to 1+2 = 3$<br/>
+							- 우극한 ($x \to 1^+$): $f(x) \to 1-4 = -3$<br/>
+							즉, $f(x)$는 $x=1$에서 불연속입니다.</p>
+							<p><b>Step 2. $f(x)g(x)$의 연속 조건</b><br/>
+							곱한 함수가 연속이려면 $(좌극한) = (우극한)$이어야 하므로:<br/>
+							$3 \times g(1) = -3 \times g(1)$<br/>
+							이 식이 성립하려면 오직 $g(1) = 0$인 경우뿐입니다.</p>
+							<p><b>Step 3. 상수 $a$ 구하기</b><br/>
+							$g(1) = 1 - a = 0$ 이므로<br/>
+							따라서 **$a = 1$** 입니다.</p>
 						</div>
 					</details>
 
@@ -71,41 +77,19 @@ const limInf = "$\\displaystyle \\lim_{x \\to \\infty}$";
 							🎯 내 실력에 맞는 문제 도전하기
 						</p>
 						<div style="display: flex; gap: 12px;">
-							<a href="/wiki/chapter01/levels/type03-low/" style="flex: 1; padding: 15px; background: #eef7ee; color: #2e7d32; text-align: center; border-radius: 12px; text-decoration: none; font-weight: bold; border: 1.5px solid #2e7d32; font-size: 1.3rem;">
-								[하]
-							</a>
-							<a href="/wiki/chapter01/levels/type03-mid/" style="flex: 1; padding: 15px; background: #ebf3ff; color: #1565c0; text-align: center; border-radius: 12px; text-decoration: none; font-weight: bold; border: 1.5px solid #1565c0; font-size: 1.3rem;">
-								[중]
-							</a>
-							<a href="/wiki/chapter01/levels/type03-high/" style="flex: 1; padding: 15px; background: #fff8e1; color: #a0522d; text-align: center; border-radius: 12px; text-decoration: none; font-weight: bold; border: 1.5px solid #a0522d; font-size: 1.3rem;">
-								[수능]
-							</a>
+							<a href="/wiki/chapter01/levels/type03-low/" style="flex: 1; padding: 15px; background: #eef7ee; color: #2e7d32; text-align: center; border-radius: 12px; text-decoration: none; font-weight: bold; border: 1.5px solid #2e7d32; font-size: 1.3rem;">[하]</a>
+							<a href="/wiki/chapter01/levels/type03-mid/" style="flex: 1; padding: 15px; background: #ebf3ff; color: #1565c0; text-align: center; border-radius: 12px; text-decoration: none; font-weight: bold; border: 1.5px solid #1565c0; font-size: 1.3rem;">[중]</a>
+							<a href="/wiki/chapter01/levels/type03-high/" style="flex: 1; padding: 15px; background: #fff8e1; color: #a0522d; text-align: center; border-radius: 12px; text-decoration: none; font-weight: bold; border: 1.5px solid #a0522d; font-size: 1.3rem;">[수능]</a>
 						</div>
 					</div>
 				</div>
 
-				<a href="/wiki/chapter01/problems-inf/" class="back-link" style="margin-top: 40px; display: inline-block;">← 유형별 목록으로 돌아가기</a>
+				<a href="/wiki/chapter01/problems-cont/" class="back-link" style="margin-top: 40px; display: inline-block;">← 유형별 목록으로 돌아가기</a>
 			</section>
 
 			<div slot="summary">
-				<p>미정계수 결정 문항은 **'수학적 퍼즐'**과 같습니다. 극한값이 존재한다는 단서 하나로 식의 차수와 계수를 순차적으로 찾아내는 짜릿함을 느껴보세요!</p>
+				<p>함수의 곱의 연속성 상세 연습입니다. '불연속 $\times$ 연속이 연속이 되려면 연속 함수는 0이어야 한다'는 원리는 시험 점수를 갈라놓는 핵심 포인트입니다.</p>
 			</div>
 		</CornellNote>
-
-		<script is:inline>
-			if (typeof window !== 'undefined') {
-				document.addEventListener("DOMContentLoaded", function() {
-					if (typeof renderMathInElement === 'function') {
-						renderMathInElement(document.body, {
-							delimiters: [
-								{left: '$$', right: '$$', display: true},
-								{left: '$', right: '$', display: false}
-							],
-							throwOnError : false
-						});
-					}
-				});
-			}
-		</script>
 	</body>
 </html>
