@@ -41,7 +41,7 @@ import CornellNote from '../../../components/CornellNote.astro';
 					</h4>
 					<p>함수의 좌극한과 우극한을 각각 구하여 연속성을 판별하시오.</p>
 					<div style="text-align: center; font-size: 1.6rem; margin: 40px 0; background: rgba(0,0,0,0.02); padding: 30px; border-radius: 12px;">
-						 { "$ f(x) = [x] + [ -x ] $" }<br/>
+						 $ f(x) = [x] + [ -x ] $<br/>
 						 가 $x=1$에서 연속인지 판별하시오. (단, $[x]$는 $x$보다 크지 않은 최대 정수)
 					</div>
 					
@@ -59,10 +59,10 @@ import CornellNote from '../../../components/CornellNote.astro';
 						<div style="margin-top: 10px; padding: 10px; border-top: 1px dashed #eee; color: #444; line-height: 1.8;">
 							<p><b>Step 1. 우극한($x \to 1^+$) 구하기</b><br/>
 							$x \to 1^+$일 때 $[x] = 1$이고, $-x \to -1^-$ 이므로 $[-x] = -2$입니다.<br/>
-							따라서 { "$ \\lim_{x \to 1^+} f(x) = 1 + (-2) = -1 $" } 입니다.</p>
+							따라서 $\lim_{x \to 1^+} f(x) = 1 + (-2) = -1$ 입니다.</p>
 							<p><b>Step 2. 좌극한($x \to 1^-$) 구하기</b><br/>
 							$x \to 1^-$일 때 $[x] = 0$이고, $-x \to -1^+$ 이므로 $[-x] = -1$입니다.<br/>
-							따라서 { "$ \\lim_{x \to 1^-} f(x) = 0 + (-1) = -1 $" } 입니다.</p>
+							따라서 $\lim_{x \to 1^-} f(x) = 0 + (-1) = -1$ 입니다.</p>
 							<p><b>Step 3. 함숫값 확인</b><br/>
 							$f(1) = [1] + [-1] = 1 - 1 = 0$ 입니다.</p>
 							<p><b>결론:</b> 좌/우극한은 모두 $-1$로 같지만, 함숫값($0$)과 다르므로 **불연속**입니다.</p>
