@@ -1,5 +1,25 @@
 ---
 import CornellNote from '../../../components/CornellNote.astro';
+
+// 모든 수식을 변수로 격리하여 에러 방지 및 렌더링 안정화
+const mathMain = "$ f(x) = \\begin{cases} x+2 & (x < 1) \\\\ x^2-4 & (x \\ge 1) \\end{cases} $";
+const mathGX = "$g(x) = x-a$";
+const mathFXGX = "$f(x)g(x)$";
+const mathX1 = "$x=1$";
+const mathA = "$a$";
+
+// 풀이 과정 수식
+const mathLimitL = "$f(x) \\to 1+2 = 3$";
+const mathLimitR = "$f(x) \\to 1-4 = -3$";
+const mathEq = "$3 \\times g(1) = -3 \\times g(1)$";
+const mathG1 = "$g(1) = 0$";
+const mathAns = "$a = 1$";
+
+// 큐 영역 수식
+const mathFK = "$f(x)$";
+const mathXK = "$x=k$";
+const mathGK = "$g(x)$";
+const mathGK0 = "$g(k)=0$";
 ---
 
 <html lang="ko">
@@ -28,8 +48,8 @@ import CornellNote from '../../../components/CornellNote.astro';
 			<div slot="cues">
 				<p style="margin: 0; font-weight: bold; color: #1a1a1a;">💡 집중 공략 포인트</p>
 				<ul style="margin-top: 10px; padding-left: 18px; font-size: 11pt; line-height: 1.6; color: #444;">
-					<li>불연속인 함수 $f(x)$의 불연속점 $x=k$를 확인</li>
-					<li>연속인 함수 $g(x)$를 곱해 연속이 되려면 $g(k)=0$이어야 함</li>
+					<li>불연속인 함수 <span set:html={mathFK}></span>의 불연속점 <span set:html={mathXK}></span>를 확인</li>
+					<li>연속인 함수 <span set:html={mathGK}></span>를 곱해 연속이 되려면 <span set:html={mathGK0}></span>이어야 함</li>
 					<li>좌/우/함숫값 삼박자 비교 원칙 엄수</li>
 				</ul>
 			</div>
@@ -41,15 +61,15 @@ import CornellNote from '../../../components/CornellNote.astro';
 					</h4>
 					<p>두 함수의 곱이 특정 지점에서 연속이 되도록 하는 미지수를 구하시오.</p>
 					<div style="text-align: center; font-size: 1.6rem; margin: 40px 0; background: rgba(0,0,0,0.02); padding: 30px; border-radius: 12px;">
-						 함수 <span set:html={"$ f(x) = \\begin{cases} x+2 & (x < 1) \\\\ x^2-4 & (x \\ge 1) \\end{cases} $"}></span> 이고,<br/>
-						 $g(x) = x-a$일 때, $f(x)g(x)$가 $x=1$에서 연속이 되기 위한 $a$의 값은?
+						 함수 <span set:html={mathMain}></span> 이고,<br/>
+						 <span set:html={mathGX}></span>일 때, <span set:html={mathFXGX}></span>가 <span set:html={mathX1}></span>에서 연속이 되기 위한 <span set:html={mathA}></span>의 값은?
 					</div>
 					
 					<!-- Strategy -->
 					<details style="margin-top: 30px; border: 1px solid #eee; border-radius: 8px; padding: 10px; background: #fff;">
 						<summary style="font-weight: bold; color: #1a73e8; cursor: pointer; padding: 5px;">💡 해결 전략 (클릭하여 확인)</summary>
 						<div style="margin-top: 10px; padding: 10px; border-top: 1px dashed #eee; color: #444; line-height: 1.6;">
-							함수 $f(x)$가 $x=1$에서 불연속(좌극한 3, 우극한 -3)입니다. 이 불연속을 '상쇄'하려면 연속 함수인 $g(x)$가 $x=1$에서 **반드시 0**이 되어야 합니다.
+							함수 <span set:html={mathFK}></span>가 <span set:html={mathX1}></span>에서 불연속(좌극한 3, 우극한 -3)입니다. 이 불연속을 '상쇄'하려면 연속 함수인 <span set:html={mathGK}></span>가 <span set:html={mathX1}></span>에서 **반드시 0**이 되어야 합니다.
 						</div>
 					</details>
 
@@ -57,17 +77,17 @@ import CornellNote from '../../../components/CornellNote.astro';
 					<details style="margin-top: 15px; border: 1px solid #eee; border-radius: 8px; padding: 10px; background: #fff;">
 						<summary style="font-weight: bold; color: #e63946; cursor: pointer; padding: 5px;">📝 단계별 풀이</summary>
 						<div style="margin-top: 10px; padding: 10px; border-top: 1px dashed #eee; color: #444; line-height: 1.8;">
-							<p><b>Step 1. $f(x)$의 극한 확인</b><br/>
-							- 좌극한 ($x \to 1^-$): $f(x) \to 1+2 = 3$<br/>
-							- 우극한 ($x \to 1^+$): $f(x) \to 1-4 = -3$<br/>
-							즉, $f(x)$는 $x=1$에서 불연속입니다.</p>
-							<p><b>Step 2. $f(x)g(x)$의 연속 조건</b><br/>
-							곱한 함수가 연속이려면 $(좌극한) = (우극한)$이어야 하므로:<br/>
-							$3 \times g(1) = -3 \times g(1)$<br/>
-							이 식이 성립하려면 오직 $g(1) = 0$인 경우뿐입니다.</p>
-							<p><b>Step 3. 상수 $a$ 구하기</b><br/>
-							$g(1) = 1 - a = 0$ 이므로<br/>
-							따라서 **$a = 1$** 입니다.</p>
+							<p><b>Step 1. <span set:html={mathFK}></span>의 극한 확인</b><br/>
+							- 좌극한 (<span set:html={"$x \\to 1^-$"}></span>): <span set:html={mathLimitL}></span><br/>
+							- 우극한 (<span set:html={"$x \\to 1^+$"}></span>): <span set:html={mathLimitR}></span><br/>
+							즉, <span set:html={mathFK}></span>는 <span set:html={mathX1}></span>에서 불연속입니다.</p>
+							<p><b>Step 2. <span set:html={mathFXGX}></span>의 연속 조건</b><br/>
+							곱한 함수가 연속이려면 (좌극한) = (우극한)이어야 하므로:<br/>
+							<span set:html={mathEq}></span><br/>
+							이 식이 성립하려면 오직 <span set:html={mathG1}></span>인 경우뿐입니다.</p>
+							<p><b>Step 3. 상수 <span set:html={mathA}></span> 구하기</b><br/>
+							<span set:html={"$g(1) = 1 - a = 0$"}></span> 이므로<br/>
+							따라서 **<span set:html={mathAns}></span>** 입니다.</p>
 						</div>
 					</details>
 
@@ -91,5 +111,21 @@ import CornellNote from '../../../components/CornellNote.astro';
 				<p>함수의 곱의 연속성 상세 연습입니다. '불연속 $\times$ 연속이 연속이 되려면 연속 함수는 0이어야 한다'는 원리는 시험 점수를 갈라놓는 핵심 포인트입니다.</p>
 			</div>
 		</CornellNote>
+
+		<script is:inline>
+			if (typeof window !== 'undefined') {
+				document.addEventListener("DOMContentLoaded", function() {
+					if (typeof renderMathInElement === 'function') {
+						renderMathInElement(document.body, {
+							delimiters: [
+								{left: '$$', right: '$$', display: true},
+								{left: '$', right: '$', display: false}
+							],
+							throwOnError : false
+						});
+					}
+				});
+			}
+		</script>
 	</body>
 </html>

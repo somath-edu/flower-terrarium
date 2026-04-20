@@ -1,5 +1,14 @@
 ---
 import CornellNote from '../../../components/CornellNote.astro';
+
+// 모든 수식을 변수로 격리하여 에러 방지 및 렌더링 안정화
+const mathOuterLimit = "$ \\displaystyle \\lim_{x \\to 1^+} g(f(x)) $";
+const mathInnerLimit = "$ f(x) \\to 2^- $";
+const mathFinalEq = "$ g(f(1)) $";
+
+// 큐 영역 수식
+const mathFX = "$f(x)$";
+const mathGT = "$g(t)$";
 ---
 
 <html lang="ko">
@@ -28,11 +37,11 @@ import CornellNote from '../../../components/CornellNote.astro';
 			<div slot="cues">
 				<p style="margin: 0; font-weight: bold; color: #1a1a1a;">💡 집중 공략 포인트</p>
 				<ul style="margin-top: 10px; padding-left: 18px; font-size: 11pt; line-height: 1.6; color: #444;">
-					<li>안쪽 함수 $f(x)$의 극한 방향(위/아래/일정) 확인</li>
-					<li>바깥 함수 $g(t)$의 해당 지점 연속성 조사</li>
+					<li>안쪽 함수 <span set:html={mathFX}></span>의 극한 방향(위/아래/일정) 확인</li>
+					<li>바깥 함수 <span set:html={mathGT}></span>의 해당 지점 연속성 조사</li>
 					<li>불연속 후보점 확인: 
-						<br/>1. $f(x)$가 불연속인 지점 
-						<br/>2. $f(x)$의 값이 $g(t)$의 불연속점이 되는 지점
+						<br/>1. <span set:html={mathFX}></span>가 불연속인 지점 
+						<br/>2. <span set:html={mathFX}></span>의 값이 <span set:html={mathGT}></span>의 불연속점이 되는 지점
 					</li>
 				</ul>
 			</div>
@@ -44,15 +53,15 @@ import CornellNote from '../../../components/CornellNote.astro';
 					</h4>
 					<p>두 함수의 그래프가 주어질 때, 합성함수의 연속성을 판별하시오.</p>
 					<div style="text-align: center; font-size: 1.6rem; margin: 40px 0; background: rgba(0,0,0,0.02); padding: 30px; border-radius: 12px;">
-						 함수 $f(x)$가 $x=1$에서 우극한은 $2$인 상태에서 아래쪽에서 접근하고, $g(t)$가 $t \to 2^-$일 때 극한값이 $y$라고 한다면,<br/>
-						 <span set:html={"$ \\displaystyle \\lim_{x \\to 1^+} g(f(x)) $"}></span> 의 값은?
+						 함수 <span set:html={mathFX}></span>가 $x=1$에서 우극한은 $2$인 상태에서 아래쪽에서 접근하고, <span set:html={mathGT}></span>가 $t \to 2^-$일 때 극한값이 $y$라고 한다면,<br/>
+						 <span set:html={mathOuterLimit}></span> 의 값은?
 					</div>
 					
 					<!-- Strategy -->
 					<details style="margin-top: 30px; border: 1px solid #eee; border-radius: 8px; padding: 10px; background: #fff;">
 						<summary style="font-weight: bold; color: #1a73e8; cursor: pointer; padding: 5px;">💡 해결 전략 (클릭하여 확인)</summary>
 						<div style="margin-top: 10px; padding: 10px; border-top: 1px dashed #eee; color: #444; line-height: 1.6;">
-							합성함수의 극한은 **'상태의 전이'**입니다. $f(x) \to 2^-$라는 사실이 바깥 함수 $g$의 '좌극한'을 보라는 명령이 됩니다. 함숫값까지 일치해야 최종적으로 연속임에 주의하세요.
+							합성함수의 극한은 **'상태의 전이'**입니다. <span set:html={mathInnerLimit}></span>라는 사실이 바깥 함수 $g$의 '좌극한'을 보라는 명령이 됩니다. 함숫값까지 일치해야 최종적으로 연속임에 주의하세요.
 						</div>
 					</details>
 
@@ -61,11 +70,11 @@ import CornellNote from '../../../components/CornellNote.astro';
 						<summary style="font-weight: bold; color: #e63946; cursor: pointer; padding: 5px;">📝 단계별 풀이</summary>
 						<div style="margin-top: 10px; padding: 10px; border-top: 1px dashed #eee; color: #444; line-height: 1.8;">
 							<p><b>Step 1. 안쪽 함수 분석</b><br/>
-							$x \to 1^+$일 때 $f(x)$가 어떻게 변화하는지 관찰합니다. 만약 $f(x)$가 $2$보다 작은 값에서 커지고 있다면 $f(x) \to 2^-$ 입니다.</p>
+							$x \to 1^+$일 때 <span set:html={mathFX}></span>가 어떻게 변화하는지 관찰합니다. 만약 <span set:html={mathFX}></span>가 $2$보다 작은 값에서 커지고 있다면 <span set:html={mathInnerLimit}></span> 입니다.</p>
 							<p><b>Step 2. 바깥 함수 적용</b><br/>
-							$t = f(x)$라 하면 $t \to 2^-$ 이므로, 바깥 함수 $g(t)$의 $2$에서의 **좌극한**을 찾습니다.</p>
+							$t = f(x)$라 하면 $t \to 2^-$ 이므로, 바깥 함수 <span set:html={mathGT}></span>의 $2$에서의 **좌극한**을 찾습니다.</p>
 							<p><b>Step 3. 함숫값과 비교</b><br/>
-							최종적으로 $g(f(1))$의 값과 위의 극한값이 같은지 확인하여 연속성을 결론짓습니다.</p>
+							최종적으로 <span set:html={mathFinalEq}></span>의 값과 위의 극한값이 같은지 확인하여 연속성을 결론짓습니다.</p>
 						</div>
 					</details>
 
@@ -89,5 +98,21 @@ import CornellNote from '../../../components/CornellNote.astro';
 				<p>합성함수의 연속성 상세 연습입니다. 방향성($+$ 인지 $-$ 인지)을 놓치는 순간 오답으로 이어지므로, 안쪽 함수의 움직임을 추적하는 것이 핵심입니다.</p>
 			</div>
 		</CornellNote>
+
+		<script is:inline>
+			if (typeof window !== 'undefined') {
+				document.addEventListener("DOMContentLoaded", function() {
+					if (typeof renderMathInElement === 'function') {
+						renderMathInElement(document.body, {
+							delimiters: [
+								{left: '$$', right: '$$', display: true},
+								{left: '$', right: '$', display: false}
+							],
+							throwOnError : false
+						});
+					}
+				});
+			}
+		</script>
 	</body>
 </html>
