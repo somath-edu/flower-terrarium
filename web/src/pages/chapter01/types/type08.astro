@@ -1,0 +1,111 @@
+---
+import CornellNote from '../../../components/CornellNote.astro';
+---
+
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<title>유형 08. 구간별 함수의 연속 - 상세 연습</title>
+		<!-- KaTeX -->
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+		<script is:inline src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+		<script is:inline src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+		<style>
+			body {
+				background-color: #e0e0e0;
+				margin: 0;
+				padding: 20px;
+				display: flex;
+				justify-content: center;
+			}
+		</style>
+	</head>
+	<body>
+		<CornellNote title="유형 08. 구간별 함수의 연속" chapter="Chapter 01 Practice">
+			
+			<div slot="cues">
+				<p style="margin: 0; font-weight: bold; color: #1a1a1a;">💡 집중 공략 포인트</p>
+				<ul style="margin-top: 10px; padding-left: 18px; font-size: 11pt; line-height: 1.6; color: #444;">
+					<li>경계점 $x=a$에서의 좌우 극한 비교</li>
+					<li>함숫값이 포함된 구간의 등호 확인</li>
+					<li>'모든 실수' 조건 = '모든 경계' 조건</li>
+				</ul>
+			</div>
+
+			<section>
+				<div class="type-section">
+					<h4 style="margin-top: 0; color: #1a1a1a; border-bottom: 2px solid royalblue; display: inline-block; padding-bottom: 5px; margin-bottom: 15px;">
+						[핵심 문제]
+					</h4>
+					<p>함수 $f(x)$가 모든 실수 $x$에서 연속이 되도록 하는 상수의 값을 구하시오.</p>
+					<div style="text-align: center; font-size: 1.6rem; margin: 40px 0; background: rgba(0,0,0,0.02); padding: 30px; border-radius: 12px;">
+						{ "$ f(x) = \\begin{cases} x^2+ax & (x \\ge 2) \\\\ 2x+1 & (x < 2) \\end{cases} $" }
+					</div>
+					
+					<!-- Progressive Disclosure: Strategy -->
+					<details style="margin-top: 30px; border: 1px solid #eee; border-radius: 8px; padding: 10px; background: #fff;">
+						<summary style="font-weight: bold; color: #1a73e8; cursor: pointer; padding: 5px;">💡 해결 전략 (클릭하여 확인)</summary>
+						<div style="margin-top: 10px; padding: 10px; border-top: 1px dashed #eee; color: #444; line-height: 1.6;">
+							함수가 모든 실수에서 연속이려면 경계점인 **$x=2$**에서도 연속이어야 합니다. $x=2$에서의 **우극한(및 함숫값)**과 **좌극한**이 같아야 한다는 방정식을 세우세요.
+						</div>
+					</details>
+
+					<!-- Progressive Disclosure: Step-by-Step Solution -->
+					<details style="margin-top: 15px; border: 1px solid #eee; border-radius: 8px; padding: 10px; background: #fff;">
+						<summary style="font-weight: bold; color: #e63946; cursor: pointer; padding: 5px;">📝 단계별 풀이 (마지막에 열어보세요!)</summary>
+						<div style="margin-top: 10px; padding: 10px; border-top: 1px dashed #eee; color: #444; line-height: 1.8;">
+							<p><b>Step 1. 우극한 및 함숫값 계산</b><br/>$x \ge 2$인 식에 $x=2$를 대입합니다.<br/>
+							{ "$ \\text{우극한} = f(2) = 2^2 + 2a = 4+2a $" }</p>
+							<p><b>Step 2. 좌극한 계산</b><br/>$x < 2$인 식에 $x=2$를 극한값으로 대입합니다.<br/>
+							{ "$ \\text{좌극한} = \\lim_{x \\to 2^-} (2x+1) = 2(2)+1 = 5 $" }</p>
+							<p><b>Step 3. 결과 결정</b><br/>좌극한과 우극한이 같아야 하므로<br/>
+							{ "$ 4+2a = 5 \\implies 2a = 1 \\implies a = 1/2 $" } 입니다.</p>
+						</div>
+					</details>
+
+					<!-- Difficulty Level Navigation -->
+					<div style="margin-top: 50px; padding: 25px; background: #f9f9f9; border-radius: 16px; border: 1px solid #eee;">
+						<p style="margin: 0 0 15px 0; font-weight: bold; color: #333; font-size: 1rem; display: flex; align-items: center; gap: 8px;">
+							🎯 내 실력에 맞는 문제 도전하기
+						</p>
+						<div style="display: flex; gap: 12px;">
+							<a href="/wiki/chapter01/levels/type08-low/" style="flex: 1; padding: 15px; background: #eef7ee; color: #2e7d32; text-align: center; border-radius: 12px; text-decoration: none; font-weight: bold; border: 1.5px solid #2e7d32; font-size: 1.3rem;">
+								[하]
+							</a>
+							<a href="/wiki/chapter01/levels/type08-mid/" style="flex: 1; padding: 15px; background: #ebf3ff; color: #1565c0; text-align: center; border-radius: 12px; text-decoration: none; font-weight: bold; border: 1.5px solid #1565c0; font-size: 1.3rem;">
+								[중]
+							</a>
+							<a href="/wiki/chapter01/levels/type08-high/" style="flex: 1; padding: 15px; background: #fff8e1; color: #a0522d; text-align: center; border-radius: 12px; text-decoration: none; font-weight: bold; border: 1.5px solid #a0522d; font-size: 1.3rem;">
+								[수능]
+							</a>
+						</div>
+					</div>
+				</div>
+
+				<a href="/wiki/chapter01/problems-piecewise/" class="back-link" style="margin-top: 40px; display: inline-block;">← 유형별 목록으로 돌아가기</a>
+			</section>
+
+			<div slot="summary">
+				<p>구간별 함수의 연속 연습입니다. 경계값에서의 함숫값 일치라는 단순하지만 강력한 원리를 체득하는 것이 목표입니다.</p>
+			</div>
+		</CornellNote>
+
+		<script is:inline>
+			if (typeof window !== 'undefined') {
+				document.addEventListener("DOMContentLoaded", function() {
+					if (typeof renderMathInElement === 'function') {
+						renderMathInElement(document.body, {
+							delimiters: [
+								{left: '$$', right: '$$', display: true},
+								{left: '$', right: '$', display: false}
+							],
+							throwOnError : false
+						});
+					}
+				});
+			}
+		</script>
+	</body>
+</html>

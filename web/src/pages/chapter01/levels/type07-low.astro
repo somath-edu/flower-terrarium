@@ -1,0 +1,118 @@
+---
+import CornellNote from '../../../components/CornellNote.astro';
+---
+
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<title>유형 07 - 난이도 [하] 연습</title>
+		<!-- KaTeX -->
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+		<script is:inline src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+		<script is:inline src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+		<style>
+			body {
+				background-color: #e0e0e0;
+				margin: 0;
+				padding: 20px;
+				display: flex;
+				justify-content: center;
+			}
+			.sol-button {
+				display: inline-block;
+				padding: 4px 12px;
+				background: #eef2f8;
+				color: #1a73e8;
+				border-radius: 8px;
+				text-decoration: none;
+				font-size: 0.9rem;
+				font-weight: bold;
+				margin-left: 10px;
+				border: 1.5px solid #d0e0f0;
+				transition: all 0.2s ease;
+			}
+			.sol-button:hover {
+				background: #1a73e8;
+				color: white;
+				transform: translateY(-1px);
+				box-shadow: 0 4px 8px rgba(26, 115, 232, 0.2);
+			}
+			.question-card {
+				background: white;
+				padding: 20px;
+				border-radius: 12px;
+				margin-bottom: 20px;
+				border: 1px solid #eee;
+			}
+			.question-header {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				margin-bottom: 15px;
+			}
+		</style>
+	</head>
+	<body>
+		<CornellNote title="유형 07. [하] 기초 탄탄" chapter="Level: Low">
+			<div slot="cues">
+				<p style="margin: 0; font-weight: bold; color: #1a1a1a;">🟢 기초 포인트</p>
+				<ul style="margin-top: 10px; padding-left: 18px; font-size: 11pt; line-height: 1.6; color: #444;">
+					<li>분모가 0이 되는 지점 확인</li>
+					<li>단순 미정계수 1개 풀이</li>
+					<li>함숫값과 좌우극한 일치</li>
+				</ul>
+			</div>
+
+			<section>
+				<div class="type-section">
+					<p style="margin-bottom: 20px;">한 점에서의 연속 개념을 기초 문제를 통해 익힙니다.</p>
+					
+					<!-- Q1 -->
+					<div class="question-card">
+						<div class="question-header">
+							<p style="margin: 0;"><b>Q1.</b> 함수 { "$ f(x) = \\begin{cases} \\frac{x^2-1}{x-1} & (x \\neq 1) \\\\ k & (x=1) \\end{cases} $" } 이 $x=1$에서 연속일 때, $k$의 값은?</p>
+							<a href="/wiki/chapter01/solutions/type07-low/q1" class="sol-button">풀이 💡</a>
+						</div>
+					</div>
+
+					<!-- Q2 -->
+					<div class="question-card">
+						<div class="question-header">
+							<p style="margin: 0;"><b>Q2.</b> 함수 { "$ f(x) = \\begin{cases} \\frac{x+a}{x+3} & (x \\neq -3) \\\\ 2 & (x=-3) \\end{cases} $" } 이 $x=-3$에서 연속일 때, $a$의 값은?</p>
+							<span class="sol-button" style="background: #eee; color: #999; border-color: #ddd; cursor: not-allowed;">준비 중</span>
+						</div>
+					</div>
+				</div>
+
+				<!-- Navigation -->
+				<div style="margin-top: 40px; display: flex; gap: 20px; align-items: center; justify-content: center;">
+					<a href="/wiki/chapter01/types/type07/" style="color: #666; text-decoration: none; font-size: 10pt; display: flex; align-items: center; gap: 5px;">
+						<span style="font-size: 12pt;">←</span> 핵심 문제로 이동
+					</a>
+					<div style="width: 1px; height: 12px; background: #ddd;"></div>
+					<a href="/wiki/chapter01/problems-cont/" style="color: #666; text-decoration: none; font-size: 10pt;">
+						목록으로 돌아가기
+					</a>
+				</div>
+			</section>
+		</CornellNote>
+
+		<script is:inline>
+			if (typeof window !== 'undefined') {
+				document.addEventListener("DOMContentLoaded", function() {
+					if (typeof renderMathInElement === 'function') {
+						renderMathInElement(document.body, {
+							delimiters: [
+								{left: '$$', right: '$$', display: true},
+								{left: '$', right: '$', display: false}
+							],
+							throwOnError : false
+						});
+					}
+				});
+			}
+		</script>
+	</body>
+</html>

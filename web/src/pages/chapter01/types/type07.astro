@@ -1,0 +1,112 @@
+---
+import CornellNote from '../../../components/CornellNote.astro';
+---
+
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<title>유형 07. 한 점에서의 연속 - 상세 연습</title>
+		<!-- KaTeX -->
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+		<script is:inline src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+		<script is:inline src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+		<style>
+			body {
+				background-color: #e0e0e0;
+				margin: 0;
+				padding: 20px;
+				display: flex;
+				justify-content: center;
+			}
+		</style>
+	</head>
+	<body>
+		<CornellNote title="유형 07. 한 점에서의 연속" chapter="Chapter 01 Practice">
+			
+			<div slot="cues">
+				<p style="margin: 0; font-weight: bold; color: #1a1a1a;">💡 집중 공략 포인트</p>
+				<ul style="margin-top: 10px; padding-left: 18px; font-size: 11pt; line-height: 1.6; color: #444;">
+					<li>불연속 의심 지점(분모=0) 찾기</li>
+					<li>극한값과 함숫값을 각각 구하기</li>
+					<li>미지수가 2개일 때는 분자=0 조건 먼저 찾기</li>
+				</ul>
+			</div>
+
+			<section>
+				<div class="type-section">
+					<h4 style="margin-top: 0; color: #1a1a1a; border-bottom: 2px solid royalblue; display: inline-block; padding-bottom: 5px; margin-bottom: 15px;">
+						[핵심 문제]
+					</h4>
+					<p>함수 $f(x)$가 $x=a$에서 연속일 조건을 이용하여 미지수를 구하시오.</p>
+					<div style="text-align: center; font-size: 1.6rem; margin: 40px 0; background: rgba(0,0,0,0.02); padding: 30px; border-radius: 12px;">
+						{ "$ f(x) = \\begin{cases} \\frac{x^2+ax+b}{x-2} & (x \\neq 2) \\\\ 5 & (x=2) \\end{cases} $" }<br/>
+						가 $x=2$에서 연속일 때, $a, b$의 값은?
+					</div>
+					
+					<!-- Progressive Disclosure: Strategy -->
+					<details style="margin-top: 30px; border: 1px solid #eee; border-radius: 8px; padding: 10px; background: #fff;">
+						<summary style="font-weight: bold; color: #1a73e8; cursor: pointer; padding: 5px;">💡 해결 전략 (클릭하여 확인)</summary>
+						<div style="margin-top: 10px; padding: 10px; border-top: 1px dashed #eee; color: #444; line-height: 1.6;">
+							$x=2$에서 연속이려면 **{ "$ \\displaystyle \\lim_{x \\to 2} f(x) = f(2) $" }**를 만족해야 합니다. 분수 형태의 함수에서 극한값이 존재하려면 $x \to 2$일 때 분자도 0으로 가야 한다는 조건({ "$ 0/0 $" } 꼴)을 먼저 이용하세요.
+						</div>
+					</details>
+
+					<!-- Progressive Disclosure: Step-by-Step Solution -->
+					<details style="margin-top: 15px; border: 1px solid #eee; border-radius: 8px; padding: 10px; background: #fff;">
+						<summary style="font-weight: bold; color: #e63946; cursor: pointer; padding: 5px;">📝 단계별 풀이 (마지막에 열어보세요!)</summary>
+						<div style="margin-top: 10px; padding: 10px; border-top: 1px dashed #eee; color: #444; line-height: 1.8;">
+							<p><b>Step 1. 분자 조건 확인</b><br/>분모가 $x \to 2$일 때 0이므로, 극한값이 존재하려면 분자도 $x=2$를 대입했을 때 0이어야 합니다.<br/>
+							{ "$ 4 + 2a + b = 0 \\implies b = -2a - 4 $" }</p>
+							<p><b>Step 2. 식 대입 및 약분</b><br/>$b$를 식에 대입하여 인수분해하면 { "$ (x-2) $" }가 약분됩니다.<br/>
+							{ "$ \\frac{x^2+ax-2a-4}{x-2} = \\frac{(x-2)(x+a+2)}{x-2} = x+a+2 $" }</p>
+							<p><b>Step 3. 극한값과 함숫값 일치</b><br/>{ "$ \\displaystyle \\lim_{x \\to 2} (x+a+2) = 4+a $" } 이고 이 값이 $f(2)=5$와 같아야 하므로<br/>
+							{ "$ 4+a = 5 \\implies a=1, b=-6 $" } 입니다.</p>
+						</div>
+					</details>
+
+					<!-- Difficulty Level Navigation -->
+					<div style="margin-top: 50px; padding: 25px; background: #f9f9f9; border-radius: 16px; border: 1px solid #eee;">
+						<p style="margin: 0 0 15px 0; font-weight: bold; color: #333; font-size: 1rem; display: flex; align-items: center; gap: 8px;">
+							🎯 내 실력에 맞는 문제 도전하기
+						</p>
+						<div style="display: flex; gap: 12px;">
+							<a href="/wiki/chapter01/levels/type07-low/" style="flex: 1; padding: 15px; background: #eef7ee; color: #2e7d32; text-align: center; border-radius: 12px; text-decoration: none; font-weight: bold; border: 1.5px solid #2e7d32; font-size: 1.3rem;">
+								[하]
+							</a>
+							<a href="/wiki/chapter01/levels/type07-mid/" style="flex: 1; padding: 15px; background: #ebf3ff; color: #1565c0; text-align: center; border-radius: 12px; text-decoration: none; font-weight: bold; border: 1.5px solid #1565c0; font-size: 1.3rem;">
+								[중]
+							</a>
+							<a href="/wiki/chapter01/levels/type07-high/" style="flex: 1; padding: 15px; background: #fff8e1; color: #a0522d; text-align: center; border-radius: 12px; text-decoration: none; font-weight: bold; border: 1.5px solid #a0522d; font-size: 1.3rem;">
+								[수능]
+							</a>
+						</div>
+					</div>
+				</div>
+
+				<a href="/wiki/chapter01/problems-cont/" class="back-link" style="margin-top: 40px; display: inline-block;">← 유형별 목록으로 돌아가기</a>
+			</section>
+
+			<div slot="summary">
+				<p>함수의 연속 상세 연습입니다. 미정계수 결정 문제는 한 점에서의 연속성 개념이 가장 정교하게 쓰이는 유형입니다.</p>
+			</div>
+		</CornellNote>
+
+		<script is:inline>
+			if (typeof window !== 'undefined') {
+				document.addEventListener("DOMContentLoaded", function() {
+					if (typeof renderMathInElement === 'function') {
+						renderMathInElement(document.body, {
+							delimiters: [
+								{left: '$$', right: '$$', display: true},
+								{left: '$', right: '$', display: false}
+							],
+							throwOnError : false
+						});
+					}
+				});
+			}
+		</script>
+	</body>
+</html>
