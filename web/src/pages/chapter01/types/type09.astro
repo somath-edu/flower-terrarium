@@ -48,8 +48,11 @@ const mathStep5 = "$ b=3, a=0 $";
 						[핵심 문제]
 					</h4>
 					<p>함수 $f(x)$가 모든 실수 $x$에서 연속이 되도록 하는 상수 $a, b$의 값을 구하시오.</p>
-					<div style="text-align: center; font-size: 1.5rem; margin: 40px 0; background: rgba(0,0,0,0.02); padding: 30px; border-radius: 12px;">
-						<span set:html={mathMain}></span>
+					<div style="text-align: center; margin: 40px 0; background: rgba(0,0,0,0.02); padding: 30px; border-radius: 12px;">
+						<div style="font-size: 1.4rem; margin-bottom: 15px;">
+							<span set:html={"$$ f(x) = \\begin{cases} ax+b & (x < 1) \\\\ x^2+2 & (1 \\le x < 2) \\\\ bx+a & (x \\ge 2) \\end{cases} $$"}></span>
+						</div>
+						<p style="margin: 0; font-size: 1.1rem; color: #333;">가 모든 실수 $x$에서 연속이 되도록 하는 상수 $a, b$의 값은?</p>
 					</div>
 					
 					<details style="margin-top: 30px; border: 1px solid #eee; border-radius: 8px; padding: 10px; background: #fff;">
