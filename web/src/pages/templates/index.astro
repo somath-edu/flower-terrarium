@@ -1,0 +1,123 @@
+---
+import CornellNote from '../../components/CornellNote.astro';
+---
+
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<title>문제지 템플릿 모음 - Math Wiki</title>
+		<style>
+			body {
+				background-color: #e0e0e0;
+				margin: 0;
+				padding: 20px;
+				display: flex;
+				justify-content: center;
+			}
+			.template-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+				gap: 20px;
+				margin-top: 20px;
+			}
+			.template-card {
+				background: white;
+				border-radius: 12px;
+				padding: 20px;
+				border: 1px solid #ddd;
+				transition: all 0.2s ease;
+				display: flex;
+				flex-direction: column;
+				gap: 12px;
+			}
+			.template-card:hover {
+				transform: translateY(-4px);
+				box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+				border-color: #4169e1;
+			}
+			.template-badge {
+				display: inline-block;
+				padding: 4px 8px;
+				background: #f0f4ff;
+				color: #4169e1;
+				border-radius: 6px;
+				font-size: 0.8rem;
+				font-weight: bold;
+				width: fit-content;
+			}
+			.template-title {
+				font-size: 1.25rem;
+				font-weight: bold;
+				color: #1a1a1a;
+				margin: 0;
+			}
+			.template-desc {
+				font-size: 0.95rem;
+				color: #666;
+				line-height: 1.5;
+				margin: 0;
+			}
+			.template-footer {
+				margin-top: auto;
+				padding-top: 15px;
+				border-top: 1px solid #eee;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+			}
+			.template-link {
+				color: #4169e1;
+				text-decoration: none;
+				font-weight: bold;
+				font-size: 0.9rem;
+			}
+			.template-link:hover {
+				text-decoration: underline;
+			}
+		</style>
+	</head>
+	<body>
+		<CornellNote title="문제지 템플릿 모음" chapter="Printing Templates">
+			<div slot="cues">
+				<p style="margin: 0;"><b>Template Guide</b></p>
+				<p style="margin-top: 8px; color: #2c2c2c; font-size: 10pt; line-height: 1.6;">
+					모든 템플릿은 Typst 기반으로 제작되어 고품질의 수식 렌더링과 통일된 레이아웃을 제공합니다.
+				</p>
+			</div>
+
+			<section>
+				<p style="margin-bottom: 25px; color: #444;">학습용 문제지 및 테스트용 템플릿 리스트입니다. 각 용도에 맞는 스타일을 선택하여 사용하세요.</p>
+				
+				<div class="template-grid">
+					<!-- Standard Template -->
+					<div class="template-card">
+						<span class="template-badge">v3.2 Stable</span>
+						<h3 class="template-title">표준 문제지 (Standard)</h3>
+						<p class="template-desc">수능형 2단 구성의 깔끔한 표준 레이아웃입니다. 정답 및 자세한 해설지가 자동 생성됩니다.</p>
+						<div class="template-footer">
+							<span style="font-size: 0.8rem; color: #999;">exam_layout.typ</span>
+							<a href="https://github.com/somath-edu/wiki/blob/main/print/templates/exam_layout.typ" target="_blank" class="template-link">소스 보기</a>
+						</div>
+					</div>
+
+					<!-- Premium Template -->
+					<div class="template-card" style="border-left: 4px solid #ffd700;">
+						<span class="template-badge" style="background: #fff8e1; color: #ffa000;">Premium</span>
+						<h3 class="template-title">프리미엄 레벨 (Premium)</h3>
+						<p class="template-desc">심화 문제 및 고난도 테스트를 위한 템플릿입니다. 여백과 폰트가 성취감을 높이도록 디자인되었습니다.</p>
+						<div class="template-footer">
+							<span style="font-size: 0.8rem; color: #999;">premium_exam.typ</span>
+							<a href="https://github.com/somath-edu/wiki/blob/main/print/templates/premium_exam.typ" target="_blank" class="template-link">소스 보기</a>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<div slot="summary">
+				<p>원하는 템플릿의 소스(Typst)를 복사하여 `print/` 폴더 내의 문제 파일에 임포트하여 사용하시기 바랍니다.</p>
+			</div>
+		</CornellNote>
+	</body>
+</html>
