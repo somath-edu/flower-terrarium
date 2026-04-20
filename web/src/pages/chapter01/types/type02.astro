@@ -1,8 +1,5 @@
 ---
 import CornellNote from '../../../components/CornellNote.astro';
-
-// LaTeX constants
-const limInf = "$\\displaystyle \\lim_{x \\to \\infty}$";
 ---
 
 <html lang="ko">
@@ -10,7 +7,7 @@ const limInf = "$\\displaystyle \\lim_{x \\to \\infty}$";
 		<meta charset="utf-8" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
-		<title>유형 02. 무리식 - 상세 연습</title>
+		<title>유형 02. 절댓값/가우스 함수 - 상세 연습</title>
 		<!-- KaTeX -->
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
 		<script is:inline src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
@@ -26,14 +23,14 @@ const limInf = "$\\displaystyle \\lim_{x \\to \\infty}$";
 		</style>
 	</head>
 	<body>
-		<CornellNote title="유형 02. 무리식" chapter="Chapter 01 Practice">
+		<CornellNote title="유형 02. 절댓값/가우스 함수" chapter="Chapter 01 Practice">
 			
 			<div slot="cues">
 				<p style="margin: 0; font-weight: bold; color: #1a1a1a;">💡 집중 공략 포인트</p>
 				<ul style="margin-top: 10px; padding-left: 18px; font-size: 11pt; line-height: 1.6; color: #444;">
-					<li>{ "$ \\infty - \\infty $" } 꼴인지 확인하기</li>
-					<li>분자를 1로 보고 **유리화** 진행</li>
-					<li>최고차항 계수 비교로 마무리</li>
+					<li>절댓값 안이 0이 되는 지점 주의</li>
+					<li>가우스 기호는 정수 주변의 우극한($n$)과 좌극한($n-1$) 구분</li>
+					<li>$(좌극한) = (우극한) = (함숫값)$ 삼박자 확인</li>
 				</ul>
 			</div>
 
@@ -42,27 +39,33 @@ const limInf = "$\\displaystyle \\lim_{x \\to \\infty}$";
 					<h4 style="margin-top: 0; color: #1a1a1a; border-bottom: 2px solid royalblue; display: inline-block; padding-bottom: 5px; margin-bottom: 15px;">
 						[핵심 문제]
 					</h4>
-					<p>다음 극한값을 구하시오.</p>
-					<p style="text-align: center; font-size: 1.6rem; margin: 40px 0; background: rgba(0,0,0,0.02); padding: 30px; border-radius: 12px;">
-						<span class="math">{limInf} { "$ (\\sqrt{x^2 + 2x} - x) $" }</span>
-					</p>
+					<p>함수의 좌극한과 우극한을 각각 구하여 연속성을 판별하시오.</p>
+					<div style="text-align: center; font-size: 1.6rem; margin: 40px 0; background: rgba(0,0,0,0.02); padding: 30px; border-radius: 12px;">
+						 { "$ f(x) = [x] + [ -x ] $" }<br/>
+						 가 $x=1$에서 연속인지 판별하시오. (단, $[x]$는 $x$보다 크지 않은 최대 정수)
+					</div>
 					
-					<!-- Progressive Disclosure: Strategy -->
+					<!-- Strategy -->
 					<details style="margin-top: 30px; border: 1px solid #eee; border-radius: 8px; padding: 10px; background: #fff;">
 						<summary style="font-weight: bold; color: #1a73e8; cursor: pointer; padding: 5px;">💡 해결 전략 (클릭하여 확인)</summary>
 						<div style="margin-top: 10px; padding: 10px; border-top: 1px dashed #eee; color: #444; line-height: 1.6;">
-							무리함수가 포함된 { "$ \\infty - \\infty $" } 꼴은 분자를 1로 보고 <b>유리화</b>하여 { "$ \\frac{\\infty}{\\infty} $" } 꼴로 변형합니다.
+							가우스 기호 $[x]$는 $x$가 정수 $n$으로 갈 때 **우극한은 $n$, 좌극한은 $n-1$**이 됩니다. $[ -x ]$의 극한도 동일한 원리로 좌/우를 각각 구해서 더해 보세요.
 						</div>
 					</details>
 
-					<!-- Progressive Disclosure: Step-by-Step Solution -->
+					<!-- Solution -->
 					<details style="margin-top: 15px; border: 1px solid #eee; border-radius: 8px; padding: 10px; background: #fff;">
-						<summary style="font-weight: bold; color: #e63946; cursor: pointer; padding: 5px;">📝 단계별 풀이 (마지막에 열어보세요!)</summary>
+						<summary style="font-weight: bold; color: #e63946; cursor: pointer; padding: 5px;">📝 단계별 풀이</summary>
 						<div style="margin-top: 10px; padding: 10px; border-top: 1px dashed #eee; color: #444; line-height: 1.8;">
-							<p><b>Step 1. 유리화 진행</b><br/>분자, 분모에 { "$ \\sqrt{x^2+2x}+x $" } 를 곱하여 정리합니다.</p>
-							<p><b>Step 2. 식 가공</b><br/>{ "$ \\frac{(\\sqrt{x^2+2x}-x)(\\sqrt{x^2+2x}+x)}{\\sqrt{x^2+2x}+x} = \\frac{2x}{\\sqrt{x^2+2x}+x} $" } 가 됩니다.</p>
-							<p><b>Step 3. 계수 비교</b><br/>분모의 최고차항 계수는 $1+1=2$, 분자는 $2$이므로<br/>
-							따라서 { "$ \\text{극한값} = \\frac{2}{2} = 1 $" } 입니다.</p>
+							<p><b>Step 1. 우극한($x \to 1^+$) 구하기</b><br/>
+							$x \to 1^+$일 때 $[x] = 1$이고, $-x \to -1^-$ 이므로 $[-x] = -2$입니다.<br/>
+							따라서 { "$ \\lim_{x \to 1^+} f(x) = 1 + (-2) = -1 $" } 입니다.</p>
+							<p><b>Step 2. 좌극한($x \to 1^-$) 구하기</b><br/>
+							$x \to 1^-$일 때 $[x] = 0$이고, $-x \to -1^+$ 이므로 $[-x] = -1$입니다.<br/>
+							따라서 { "$ \\lim_{x \to 1^-} f(x) = 0 + (-1) = -1 $" } 입니다.</p>
+							<p><b>Step 3. 함숫값 확인</b><br/>
+							$f(1) = [1] + [-1] = 1 - 1 = 0$ 입니다.</p>
+							<p><b>결론:</b> 좌/우극한은 모두 $-1$로 같지만, 함숫값($0$)과 다르므로 **불연속**입니다.</p>
 						</div>
 					</details>
 
@@ -72,41 +75,19 @@ const limInf = "$\\displaystyle \\lim_{x \\to \\infty}$";
 							🎯 내 실력에 맞는 문제 도전하기
 						</p>
 						<div style="display: flex; gap: 12px;">
-							<a href="/wiki/chapter01/levels/type02-low/" style="flex: 1; padding: 15px; background: #eef7ee; color: #2e7d32; text-align: center; border-radius: 12px; text-decoration: none; font-weight: bold; border: 1.5px solid #2e7d32; font-size: 1.3rem;">
-								[하]
-							</a>
-							<a href="/wiki/chapter01/levels/type02-mid/" style="flex: 1; padding: 15px; background: #ebf3ff; color: #1565c0; text-align: center; border-radius: 12px; text-decoration: none; font-weight: bold; border: 1.5px solid #1565c0; font-size: 1.3rem;">
-								[중]
-							</a>
-							<a href="/wiki/chapter01/levels/type02-high/" style="flex: 1; padding: 15px; background: #fff8e1; color: #a0522d; text-align: center; border-radius: 12px; text-decoration: none; font-weight: bold; border: 1.5px solid #a0522d; font-size: 1.3rem;">
-								[수능]
-							</a>
+							<a href="/wiki/chapter01/levels/type02-low/" style="flex: 1; padding: 15px; background: #eef7ee; color: #2e7d32; text-align: center; border-radius: 12px; text-decoration: none; font-weight: bold; border: 1.5px solid #2e7d32; font-size: 1.3rem;">[하]</a>
+							<a href="/wiki/chapter01/levels/type02-mid/" style="flex: 1; padding: 15px; background: #ebf3ff; color: #1565c0; text-align: center; border-radius: 12px; text-decoration: none; font-weight: bold; border: 1.5px solid #1565c0; font-size: 1.3rem;">[중]</a>
+							<a href="/wiki/chapter01/levels/type02-high/" style="flex: 1; padding: 15px; background: #fff8e1; color: #a0522d; text-align: center; border-radius: 12px; text-decoration: none; font-weight: bold; border: 1.5px solid #a0522d; font-size: 1.3rem;">[수능]</a>
 						</div>
 					</div>
 				</div>
 
-				<a href="/wiki/chapter01/problems-inf/" class="back-link" style="margin-top: 40px; display: inline-block;">← 유형별 목록으로 돌아가기</a>
+				<a href="/wiki/chapter01/problems-cont/" class="back-link" style="margin-top: 40px; display: inline-block;">← 유형별 목록으로 돌아가기</a>
 			</section>
 
 			<div slot="summary">
-				<p>무리함수가 포함된 무한대 극한은 **'유리화'**가 필살기입니다. 유리화를 통해 우리가 잘 아는 분수 형태({ "$ \\frac{\\infty}{\\infty} $" })로 바꾸는 것이 포인트입니다.</p>
+				<p>절댓값과 가우스 기호가 포함된 함수의 연속성 상세 연습입니다. 극한의 존재 여부와 함숫값이 일치하는지를 꼼꼼히 따지는 훈련이 필요합니다.</p>
 			</div>
 		</CornellNote>
-
-		<script is:inline>
-			if (typeof window !== 'undefined') {
-				document.addEventListener("DOMContentLoaded", function() {
-					if (typeof renderMathInElement === 'function') {
-						renderMathInElement(document.body, {
-							delimiters: [
-								{left: '$$', right: '$$', display: true},
-								{left: '$', right: '$', display: false}
-							],
-							throwOnError : false
-						});
-					}
-				});
-			}
-		</script>
 	</body>
 </html>
