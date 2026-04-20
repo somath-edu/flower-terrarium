@@ -21,8 +21,8 @@
         ]
       }
     },
-    background: place(center + top, dy: 3.8cm)[
-      #line(start: (0pt, 0pt), end: (0pt, 23cm), stroke: 0.3pt + gray.lighten(40%))
+    background: place(center + top, dy: 5.5cm)[
+      #line(start: (0pt, 0pt), end: (0pt, 21cm), stroke: 0.3pt + gray.lighten(40%))
     ],
     footer: [
       #set text(size: 9pt, fill: gray)
@@ -114,8 +114,6 @@
       align(right)[#context text(weight: "bold")[#prob_counter.display("1.")]],
       [
         #text(weight: "medium")[#body]
-        #h(1fr) 
-        #text(size: 8.5pt, weight: "light", fill: gray.darken(30%))[(#score 점)]
       ]
     )
   ]
