@@ -53,10 +53,46 @@ const mathResult = "$ a = 0, b = 3 $";
 				overflow-x: auto;
 				overflow-y: hidden;
 			}
+
+			/* [표준 디자인 시스템] 난이도 내비게이션 최적화 */
+			.difficulty-container {
+				margin-top: 50px;
+				padding: 25px;
+				background: #f9f9f9;
+				border-radius: 16px;
+				border: 1px solid #eee;
+			}
+			.difficulty-list {
+				display: flex;
+				gap: 12px;
+			}
+			.difficulty-btn {
+				flex: 1;
+				padding: 15px;
+				text-align: center;
+				border-radius: 12px;
+				text-decoration: none;
+				font-weight: bold;
+				font-size: 1.3rem;
+				transition: transform 0.2s ease;
+			}
+			.difficulty-btn:active { transform: scale(0.95); }
+			
+			.btn-low { background: #eef7ee; color: #2e7d32; border: 1.5px solid #2e7d32; }
+			.btn-mid { background: #ebf3ff; color: #1565c0; border: 1.5px solid #1565c0; }
+			.btn-high { background: #fff8e1; color: #a0522d; border: 1.5px solid #a0522d; }
+
 			@media screen and (max-width: 480px) {
 				.formula-box { padding: 15px 5px !important; margin: 20px 0 !important; }
 				.katex-display { font-size: 0.85em !important; }
 				.formula-box p { font-size: 1rem !important; line-height: 1.5; }
+				
+				.difficulty-container { padding: 15px !important; }
+				.difficulty-list { gap: 8px !important; }
+				.difficulty-btn { 
+					padding: 12px 5px !important; 
+					font-size: 1.1rem !important; 
+				}
 				body { padding: 10px; }
 			}
 		</style>
@@ -96,6 +132,18 @@ const mathResult = "$ a = 0, b = 3 $";
 							<p><b>Step 3. 연립하기</b><br/>두 식을 연립하면 최종적으로 다음을 얻습니다:<br/><span set:html={mathResult}></span></p>
 						</div>
 					</details>
+
+					<!-- Difficulty Level Navigation -->
+					<div class="difficulty-container">
+						<p style="margin: 0 0 15px 0; font-weight: bold; color: #333; font-size: 1rem; display: flex; align-items: center; gap: 8px;">
+							🎯 내 실력에 맞는 문제 도전하기
+						</p>
+						<div class="difficulty-list">
+							<a href="/wiki/chapter01/levels/type09-low/" class="difficulty-btn btn-low">[하]</a>
+							<a href="/wiki/chapter01/levels/type09-mid/" class="difficulty-btn btn-mid">[중]</a>
+							<a href="/wiki/chapter01/levels/type09-high/" class="difficulty-btn btn-high">[상]</a>
+						</div>
+					</div>
 				</div>
 
 				<a href="/wiki/chapter01/problems-piecewise/" class="back-link" style="margin-top: 40px; display: inline-block;">← 유형별 목록으로 돌아가기</a>

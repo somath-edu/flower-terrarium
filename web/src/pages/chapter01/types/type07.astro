@@ -1,18 +1,12 @@
 ---
 import CornellNote from '../../../components/CornellNote.astro';
 
-// 모든 수식 및 본문 내 수식 텍스트를 변수로 완벽 격리 (Astro 컴파일러 에러 방지)
-const mathMain = "$ f(x) = \\begin{cases} \\displaystyle \\frac{x^2+ax+b}{x-2} & (x \\neq 2) \\\\ 5 & (x=2) \\end{cases} $";
+// 모든 수식을 변수로 격리하여 Astro 컴파일러 에러 방지
+const mathMain = "$ f(x) = \\begin{cases} \\displaystyle \\frac{x^2+ax+b}{x-2} & (x \\neq 2) \\\\ 5 & (x = 2) \\end{cases} $";
 const mathStep1 = "$ 4 + 2a + b = 0 \\implies b = -2a - 4 $";
 const mathStep2 = "$ \\frac{x^2+ax-2a-4}{x-2} = \\frac{(x-2)(x+a+2)}{x-2} = x+a+2 $";
 const mathStep3 = "$ \\displaystyle \\lim_{x \\to 2} (x+a+2) = 4+a $";
 const mathStep4 = "$ 4+a = 5 \\implies a=1, b=-6 $";
-
-// 본문 텍스트 내 수식 변수
-const txtXa = "$x=a$";
-const txtX2 = "$x=2$";
-const txtLimf = "$\\displaystyle \\lim_{x \\to 2} f(x) = f(2)$";
-const txtZero = "$0/0$";
 ---
 
 <html lang="ko">
@@ -20,7 +14,7 @@ const txtZero = "$0/0$";
 		<meta charset="utf-8" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
-		<title>유형 07. 한 점에서의 연속 - 상세 연습</title>
+		<title>유형 07. 미정계수의 결정 - 상세 연습</title>
 		<!-- KaTeX -->
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
 		<script is:inline src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
@@ -60,23 +54,59 @@ const txtZero = "$0/0$";
 				overflow-x: auto;
 				overflow-y: hidden;
 			}
+
+			/* [표준 디자인 시스템] 난이도 내비게이션 최적화 */
+			.difficulty-container {
+				margin-top: 50px;
+				padding: 25px;
+				background: #f9f9f9;
+				border-radius: 16px;
+				border: 1px solid #eee;
+			}
+			.difficulty-list {
+				display: flex;
+				gap: 12px;
+			}
+			.difficulty-btn {
+				flex: 1;
+				padding: 15px;
+				text-align: center;
+				border-radius: 12px;
+				text-decoration: none;
+				font-weight: bold;
+				font-size: 1.3rem;
+				transition: transform 0.2s ease;
+			}
+			.difficulty-btn:active { transform: scale(0.95); }
+			
+			.btn-low { background: #eef7ee; color: #2e7d32; border: 1.5px solid #2e7d32; }
+			.btn-mid { background: #ebf3ff; color: #1565c0; border: 1.5px solid #1565c0; }
+			.btn-high { background: #fff8e1; color: #a0522d; border: 1.5px solid #a0522d; }
+
 			@media screen and (max-width: 480px) {
 				.formula-box { padding: 15px 5px !important; margin: 20px 0 !important; }
 				.katex-display { font-size: 0.85em !important; }
 				.formula-box p { font-size: 1rem !important; line-height: 1.5; }
+				
+				.difficulty-container { padding: 15px !important; }
+				.difficulty-list { gap: 8px !important; }
+				.difficulty-btn { 
+					padding: 12px 5px !important; 
+					font-size: 1.1rem !important; 
+				}
 				body { padding: 10px; }
 			}
 		</style>
 	</head>
 	<body>
-		<CornellNote title="유형 07. 한 점에서의 연속" chapter="Chapter 01 Practice">
+		<CornellNote title="유형 07. 미정계수의 결정" chapter="Chapter 01 Practice">
 			
 			<div slot="cues">
-				<p style="margin: 0; font-weight: bold; color: #1a1a1a;">💡 집중 공략 포인트</p>
+				<p style="margin: 0; font-weight: bold; color: #1a1a1a;">🚀 해결 전략 체크리스트</p>
 				<ul style="margin-top: 10px; padding-left: 18px; font-size: 11pt; line-height: 1.6; color: #444;">
-					<li>불연속 의심 지점(분모=0) 찾기</li>
-					<li>극한값과 함숫값을 각각 구하기</li>
-					<li>미지수가 2개일 때는 분자=0 조건 먼저 찾기</li>
+					<li>함숫값 $f(2)$가 존재하는가?</li>
+					<li>극한값 $\displaystyle\lim_{x\to 2} f(x)$가 존재하는가?</li>
+					<li>분모가 0이면 분자도 0인가?</li>
 				</ul>
 			</div>
 
@@ -85,52 +115,37 @@ const txtZero = "$0/0$";
 					<h4 style="margin-top: 0; color: #1a1a1a; border-bottom: 2px solid royalblue; display: inline-block; padding-bottom: 5px; margin-bottom: 15px;">
 						[핵심 문제]
 					</h4>
-					<p>함수 $f(x)$가 <span set:html={txtXa}></span>에서 연속일 조건을 이용하여 미지수를 구하시오.</p>
+					<p>함수 $f(x)$가 $x=a$에서 연속일 조건을 이용하여 미지수를 구하시오.</p>
 					
-					<!-- 표준화된 formula-box 레이아웃 -->
 					<div class="formula-box">
 						<div class="math-container">
-							<span set:html={"$$ f(x) = \\begin{cases} \\displaystyle \\frac{x^2+ax+b}{x-2} & (x \\neq 2) \\\\ 5 & (x=2) \\end{cases} $$"}></span>
+							<span set:html={"$$ f(x) = \\begin{cases} \\displaystyle \\frac{x^2+ax+b}{x-2} & (x \\neq 2) \\\\ 5 & (x = 2) \\end{cases} $$"}></span>
 						</div>
-						<p style="margin-top: 10px; color: #333; word-break: keep-all;">가 <span set:html={txtX2}></span>에서 연속일 때, $a, b$의 값은?</p>
+						<p style="margin-top: 10px; color: #333; word-break: keep-all;">가 $x=2$에서 연속일 때, $a, b$의 값은?</p>
 					</div>
-					
-					<!-- Progressive Disclosure: Strategy -->
-					<details style="margin-top: 30px; border: 1px solid #eee; border-radius: 8px; padding: 10px; background: #fff;">
-						<summary style="font-weight: bold; color: #1a73e8; cursor: pointer; padding: 5px;">💡 해결 전략 (클릭하여 확인)</summary>
-						<div style="margin-top: 10px; padding: 10px; border-top: 1px dashed #eee; color: #444; line-height: 1.6;">
-							<span set:html={txtX2}></span>에서 연속이려면 <span set:html={txtLimf}></span>를 만족해야 합니다. 분수 형태의 함수에서 극한값이 존재하려면 $x \to 2$일 때 분자도 0으로 가야 한다는 조건(<span set:html={txtZero}></span> 꼴)을 먼저 이용하세요.
-						</div>
-					</details>
 
 					<!-- Progressive Disclosure: Step-by-Step Solution -->
-					<details style="margin-top: 15px; border: 1px solid #eee; border-radius: 8px; padding: 10px; background: #fff;">
-						<summary style="font-weight: bold; color: #e63946; cursor: pointer; padding: 5px;">📝 단계별 풀이 (마지막에 열어보세요!)</summary>
+					<details style="margin-top: 30px; border: 1px solid #eee; border-radius: 8px; padding: 10px; background: #fff;">
+						<summary style="font-weight: bold; color: #e63946; cursor: pointer; padding: 5px;">📝 단계별 풀이 확인하기</summary>
 						<div style="margin-top: 10px; padding: 10px; border-top: 1px dashed #eee; color: #444; line-height: 1.8;">
-							<p><b>Step 1. 분자 조건 확인</b><br/>분모가 $x \to 2$일 때 0이므로, 극한값이 존재하려면 분자도 $x=2$를 대입했을 때 0이어야 합니다.<br/>
+							<p><b>Step 1. 분자 조건 확인</b><br/>분모가 0으로 가므로 분자도 0이어야 합니다.<br/>
 							<span set:html={mathStep1}></span></p>
-							<p><b>Step 2. 식 대입 및 약분</b><br/>$b$를 식에 대입하여 인수분해하면 $x-2$가 약분됩니다.<br/>
+							<p><b>Step 2. 식 대입 및 약분</b><br/>이차식을 인수분해하여 $x-2$를 약분합니다.<br/>
 							<span set:html={mathStep2}></span></p>
-							<p><b>Step 3. 극한값과 함숫값 일치</b><br/><span set:html={mathStep3}></span> 이고 이 값이 $f(2)=5$와 같아야 하므로<br/>
-							<span set:html={mathStep4}></span> 입니다.</p>
+							<p><b>Step 3. 최종 계산</b><br/>극한값과 함숫값 5가 같아야 합니다.<br/>
+							<span set:html={mathStep4}></span></p>
 						</div>
 					</details>
 
 					<!-- Difficulty Level Navigation -->
-					<div style="margin-top: 50px; padding: 25px; background: #f9f9f9; border-radius: 16px; border: 1px solid #eee;">
+					<div class="difficulty-container">
 						<p style="margin: 0 0 15px 0; font-weight: bold; color: #333; font-size: 1rem; display: flex; align-items: center; gap: 8px;">
 							🎯 내 실력에 맞는 문제 도전하기
 						</p>
-						<div style="display: flex; gap: 12px;">
-							<a href="/wiki/chapter01/levels/type07-low/" style="flex: 1; padding: 15px; background: #eef7ee; color: #2e7d32; text-align: center; border-radius: 12px; text-decoration: none; font-weight: bold; border: 1.5px solid #2e7d32; font-size: 1.3rem;">
-								[하]
-							</a>
-							<a href="/wiki/chapter01/levels/type07-mid/" style="flex: 1; padding: 15px; background: #ebf3ff; color: #1565c0; text-align: center; border-radius: 12px; text-decoration: none; font-weight: bold; border: 1.5px solid #1565c0; font-size: 1.3rem;">
-								[중]
-							</a>
-							<a href="/wiki/chapter01/levels/type07-high/" style="flex: 1; padding: 15px; background: #fff8e1; color: #a0522d; text-align: center; border-radius: 12px; text-decoration: none; font-weight: bold; border: 1.5px solid #a0522d; font-size: 1.3rem;">
-								[수능]
-							</a>
+						<div class="difficulty-list">
+							<a href="/wiki/chapter01/levels/type07-low/" class="difficulty-btn btn-low">[하]</a>
+							<a href="/wiki/chapter01/levels/type07-mid/" class="difficulty-btn btn-mid">[중]</a>
+							<a href="/wiki/chapter01/levels/type07-high/" class="difficulty-btn btn-high">[수능]</a>
 						</div>
 					</div>
 				</div>
@@ -139,7 +154,7 @@ const txtZero = "$0/0$";
 			</section>
 
 			<div slot="summary">
-				<p>함수의 연속 상세 연습입니다. 미정계수 결정 문제는 한 점에서의 연속성 개념이 가장 정교하게 쓰이는 유형입니다.</p>
+				<p>미정계수 결정의 핵심은 **'분모가 0이면 분자도 0'**이라는 사실을 통해 식의 형태를 단순화하는 것입니다.</p>
 			</div>
 		</CornellNote>
 
