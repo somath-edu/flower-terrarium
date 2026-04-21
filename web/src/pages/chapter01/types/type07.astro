@@ -33,18 +33,37 @@ const txtZero = "$0/0$";
 				display: flex;
 				justify-content: center;
 			}
-			/* KaTeX Mobile Responsiveness */
+			/* [표준 디자인 시스템] KaTeX & 모바일 수식 최적화 */
+			.formula-box {
+				text-align: center;
+				margin: 30px 0;
+				background: #fff;
+				padding: 30px;
+				border-radius: 12px;
+				border: 1px solid #eee;
+				box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+				overflow: hidden;
+				width: 100%;
+				box-sizing: border-box;
+			}
+			.math-container {
+				width: 100%;
+				overflow-x: auto;
+				white-space: nowrap;
+				-webkit-overflow-scrolling: touch;
+				padding-bottom: 10px;
+				display: flex;
+				justify-content: center;
+			}
 			.katex-display {
+				margin: 0.5em 0 !important;
 				overflow-x: auto;
 				overflow-y: hidden;
-				-webkit-overflow-scrolling: touch;
-				padding: 10px 0;
-				margin: 0.5em 0;
 			}
 			@media screen and (max-width: 480px) {
-				.katex-display { font-size: 0.85em; }
-				.formula-box { padding: 15px 10px !important; margin: 20px 0 !important; }
-				.formula-box p { font-size: 1rem !important; }
+				.formula-box { padding: 15px 5px !important; margin: 20px 0 !important; }
+				.katex-display { font-size: 0.85em !important; }
+				.formula-box p { font-size: 1rem !important; line-height: 1.5; }
 				body { padding: 10px; }
 			}
 		</style>
@@ -67,11 +86,13 @@ const txtZero = "$0/0$";
 						[핵심 문제]
 					</h4>
 					<p>함수 $f(x)$가 <span set:html={txtXa}></span>에서 연속일 조건을 이용하여 미지수를 구하시오.</p>
-					<div class="formula-box" style="text-align: center; margin: 30px 0; background: #fff; padding: 30px; border-radius: 12px; border: 1px solid #eee; box-shadow: 0 2px 8px rgba(0,0,0,0.02);">
+					
+					<!-- 표준화된 formula-box 레이아웃 -->
+					<div class="formula-box">
 						<div class="math-container">
 							<span set:html={"$$ f(x) = \\begin{cases} \\displaystyle \\frac{x^2+ax+b}{x-2} & (x \\neq 2) \\\\ 5 & (x=2) \\end{cases} $$"}></span>
 						</div>
-						<p style="margin: 0; font-size: 1.1rem; color: #333; line-height: 1.6; word-break: keep-all; padding: 0 10px;">가 <span set:html={txtX2}></span>에서 연속일 때, $a, b$의 값은?</p>
+						<p style="margin-top: 10px; color: #333; word-break: keep-all;">가 <span set:html={txtX2}></span>에서 연속일 때, $a, b$의 값은?</p>
 					</div>
 					
 					<!-- Progressive Disclosure: Strategy -->

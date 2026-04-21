@@ -1,17 +1,16 @@
 ---
 import CornellNote from '../../../components/CornellNote.astro';
 
-// 모든 수식 및 본문 내 수식 텍스트를 변수로 완벽 격리 (Astro 컴파일러 에러 방지)
+// 모든 수식을 변수로 격리하여 Astro 컴파일러 에러 방지
 const mathMain = "$ f(x) = \\begin{cases} \\displaystyle \\frac{x^2+ax+b}{x-2} & (x \\neq 2) \\\\ 5 & (x = 2) \\end{cases} $";
-const mathStep1 = "$ \\lim_{x \\to 2} \\frac{x^2+ax+b}{x-2} = 5 $";
-const mathStep2 = "$ 2^2+2a+b = 0 \\implies b = -2a-4 $";
-const mathStep3 = "$ \\lim_{x \\to 2} \\frac{(x-2)(x+a+2)}{x-2} = a+4 = 5 $";
-const mathStep4 = "$ a=1, b=-6 $";
+const mathStep1 = "$ 4 + 2a + b = 0 \\implies b = -2a - 4 $";
+const mathStep2 = "$ \\frac{x^2+ax-2a-4}{x-2} = \\frac{(x-2)(x+a+2)}{x-2} = x+a+2 $";
+const mathStep3 = "$ \\displaystyle \\lim_{x \\to 2} (x+a+2) = 4+a $";
+const mathStep4 = "$ 4+a = 5 \\implies a=1, b=-6 $";
 
-// 본문 텍스트 내 수식 변수
-const txtX2 = "$x=2$";
+// 본문 내 수식 텍스트
 const txtXa = "$x=a$";
-const txtLimf = "$\\lim_{x \\to 2} f(x) = f(2)$";
+const txtX2 = "$x=2$";
 ---
 
 <html lang="ko">
@@ -19,7 +18,7 @@ const txtLimf = "$\\lim_{x \\to 2} f(x) = f(2)$";
 		<meta charset="utf-8" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
-		<title>유형 08. 미정계수의 결정 - 상세 연습</title>
+		<title>유형 08. 구간별 함수의 연속 - 상세 연습</title>
 		<!-- KaTeX -->
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
 		<script is:inline src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
@@ -32,17 +31,50 @@ const txtLimf = "$\\lim_{x \\to 2} f(x) = f(2)$";
 				display: flex;
 				justify-content: center;
 			}
+			/* [표준 디자인 시스템] KaTeX & 모바일 수식 최적화 */
+			.formula-box {
+				text-align: center;
+				margin: 30px 0;
+				background: #fff;
+				padding: 30px;
+				border-radius: 12px;
+				border: 1px solid #eee;
+				box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+				overflow: hidden;
+				width: 100%;
+				box-sizing: border-box;
+			}
+			.math-container {
+				width: 100%;
+				overflow-x: auto;
+				white-space: nowrap;
+				-webkit-overflow-scrolling: touch;
+				padding-bottom: 10px;
+				display: flex;
+				justify-content: center;
+			}
+			.katex-display {
+				margin: 0.5em 0 !important;
+				overflow-x: auto;
+				overflow-y: hidden;
+			}
+			@media screen and (max-width: 480px) {
+				.formula-box { padding: 15px 5px !important; margin: 20px 0 !important; }
+				.katex-display { font-size: 0.85em !important; }
+				.formula-box p { font-size: 1rem !important; line-height: 1.5; }
+				body { padding: 10px; }
+			}
 		</style>
 	</head>
 	<body>
-		<CornellNote title="유형 08. 미정계수의 결정" chapter="Chapter 01 Practice">
+		<CornellNote title="유형 08. 구간별 함수의 연속" chapter="Chapter 01 Practice">
 			
 			<div slot="cues">
 				<p style="margin: 0; font-weight: bold; color: #1a1a1a;">💡 집중 공략 포인트</p>
 				<ul style="margin-top: 10px; padding-left: 18px; font-size: 11pt; line-height: 1.6; color: #444;">
-					<li><span set:html={txtXa}></span>에서 연속일 조건 확인</li>
-					<li>함숫값과 극한값이 일치해야 함</li>
-					<li>0/0꼴 부정형 극한의 성질 활용</li>
+					<li>경계점 $x=2$ 확인</li>
+					<li>극한값과 함숫값이 같다는 조건 활용</li>
+					<li>분수 함수 연속성 해결 패턴 숙지</li>
 				</ul>
 			</div>
 
@@ -52,36 +84,36 @@ const txtLimf = "$\\lim_{x \\to 2} f(x) = f(2)$";
 						[핵심 문제]
 					</h4>
 					<p>함수 $f(x)$가 <span set:html={txtXa}></span>에서 연속일 조건을 이용하여 미지수를 구하시오.</p>
-					<div style="text-align: center; margin: 40px 0; background: rgba(0,0,0,0.02); padding: 30px; border-radius: 12px;">
-						<div style="font-size: 1.6rem; margin-bottom: 15px;">
+					
+					<div class="formula-box">
+						<div class="math-container">
 							<span set:html={"$$ f(x) = \\begin{cases} \\displaystyle \\frac{x^2+ax+b}{x-2} & (x \\neq 2) \\\\ 5 & (x = 2) \\end{cases} $$"}></span>
 						</div>
-						<p style="margin: 0; font-size: 1.2rem; color: #333;">가 <span set:html={txtX2}></span>에서 연속일 때, $a, b$의 값은?</p>
+						<p style="margin-top: 10px; color: #333; word-break: keep-all;">가 <span set:html={txtX2}></span>에서 연속일 때, $a, b$의 값은?</p>
 					</div>
-					
+
+					<!-- Progressive Disclosure: Step-by-Step Solution -->
 					<details style="margin-top: 30px; border: 1px solid #eee; border-radius: 8px; padding: 10px; background: #fff;">
-						<summary style="font-weight: bold; color: #1a73e8; cursor: pointer; padding: 5px;">💡 해결 전략</summary>
-						<div style="margin-top: 10px; padding: 10px; border-top: 1px dashed #eee; color: #444; line-height: 1.6;">
-							<span set:html={txtX2}></span>에서 연속이려면 <span set:html={txtLimf}></span>가 성립해야 합니다. 분모가 0으로 갈 때 극한값이 존재하려면 분자도 0으로 가야 한다는 성질을 이용하세요.
-						</div>
-					</details>
-
-					<details style="margin-top: 15px; border: 1px solid #eee; border-radius: 8px; padding: 10px; background: #fff;">
-						<summary style="font-weight: bold; color: #e63946; cursor: pointer; padding: 5px;">📝 단계별 풀이</summary>
+						<summary style="font-weight: bold; color: #e63946; cursor: pointer; padding: 5px;">📝 단계별 풀이 확인하기</summary>
 						<div style="margin-top: 10px; padding: 10px; border-top: 1px dashed #eee; color: #444; line-height: 1.8;">
-							<p><b>Step 1. 극한 식 세우기</b><br/><span set:html={mathStep1}></span></p>
-							<p><b>Step 2. 분자의 조건 활용</b><br/><span set:html={mathStep2}></span></p>
-							<p><b>Step 3. 결과 결정</b><br/>인수분해 및 약분을 통해 <span set:html={mathStep3}></span><br/>
-							따라서 <span set:html={mathStep4}></span> 입니다.</p>
+							<p><b>Step 1. 분자 조건 확인</b><br/>분모가 0으로 가므로 분자도 0이어야 합니다.<br/>
+							<span set:html={mathStep1}></span></p>
+							<p><b>Step 2. 식 대입 및 약분</b><br/>이차식을 인수분해하여 $x-2$를 약분합니다.<br/>
+							<span set:html={mathStep2}></span></p>
+							<p><b>Step 3. 최종 계산</b><br/>극한값과 함숫값 5가 같아야 합니다.<br/>
+							<span set:html={mathStep4}></span></p>
 						</div>
 					</details>
 
+					<!-- Difficulty Navigation -->
 					<div style="margin-top: 50px; padding: 25px; background: #f9f9f9; border-radius: 16px; border: 1px solid #eee;">
-						<p style="margin: 0 0 15px 0; font-weight: bold; color: #333;">🎯 내 실력에 맞는 문제 도전하기</p>
+						<p style="margin: 0 0 15px 0; font-weight: bold; color: #333; font-size: 1rem; display: flex; align-items: center; gap: 8px;">
+							🎯 실력 확인하기
+						</p>
 						<div style="display: flex; gap: 12px;">
 							<a href="/wiki/chapter01/levels/type08-low/" style="flex: 1; padding: 15px; background: #eef7ee; color: #2e7d32; text-align: center; border-radius: 12px; text-decoration: none; font-weight: bold; border: 1.5px solid #2e7d32; font-size: 1.3rem;">[하]</a>
 							<a href="/wiki/chapter01/levels/type08-mid/" style="flex: 1; padding: 15px; background: #ebf3ff; color: #1565c0; text-align: center; border-radius: 12px; text-decoration: none; font-weight: bold; border: 1.5px solid #1565c0; font-size: 1.3rem;">[중]</a>
-							<a href="/wiki/chapter01/levels/type08-high/" style="flex: 1; padding: 15px; background: #fff8e1; color: #a0522d; text-align: center; border-radius: 12px; text-decoration: none; font-weight: bold; border: 1.5px solid #a0522d; font-size: 1.3rem;">[수능]</a>
+							<a href="/wiki/chapter01/levels/type08-high/" style="flex: 1; padding: 15px; background: #fff8e1; color: #a0522d; text-align: center; border-radius: 12px; text-decoration: none; font-weight: bold; border: 1.5px solid #a0522d; font-size: 1.3rem;">[상]</a>
 						</div>
 					</div>
 				</div>
@@ -90,7 +122,7 @@ const txtLimf = "$\\lim_{x \\to 2} f(x) = f(2)$";
 			</section>
 
 			<div slot="summary">
-				<p>미정계수의 결정은 연속의 정의와 극한의 성질을 동시에 묻는 중요한 문제입니다. 반드시 마스터하세요!</p>
+				<p>구간별 함수에서도 연속성은 '극한값 = 함숫값'이라는 한 가지 원칙으로 모두 통합니다.</p>
 			</div>
 		</CornellNote>
 
