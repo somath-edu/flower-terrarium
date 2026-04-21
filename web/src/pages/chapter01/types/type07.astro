@@ -33,6 +33,19 @@ const txtZero = "$0/0$";
 				display: flex;
 				justify-content: center;
 			}
+			/* KaTeX Mobile Responsiveness */
+			.katex-display {
+				overflow-x: auto;
+				overflow-y: hidden;
+				-webkit-overflow-scrolling: touch;
+				padding: 10px 0;
+				margin: 0.5em 0;
+			}
+			@media screen and (max-width: 480px) {
+				.katex-display { font-size: 0.9em; }
+				.formula-box { padding: 15px !important; margin: 20px 0 !important; }
+				body { padding: 10px; }
+			}
 		</style>
 	</head>
 	<body>
@@ -53,14 +66,8 @@ const txtZero = "$0/0$";
 						[핵심 문제]
 					</h4>
 					<p>함수 $f(x)$가 <span set:html={txtXa}></span>에서 연속일 조건을 이용하여 미지수를 구하시오.</p>
-					<style>
-						@media screen and (max-width: 480px) {
-							.formula-box { padding: 15px !important; margin: 20px 0 !important; }
-							.math-container { font-size: 1.1rem !important; }
-						}
-					</style>
-					<div class="formula-box" style="text-align: center; margin: 30px 0; background: #fff; padding: 30px; border-radius: 12px; border: 1px solid #eee; box-shadow: 0 2px 8px rgba(0,0,0,0.02); overflow: hidden;">
-						<div class="math-container" style="font-size: 1.4rem; margin-bottom: 20px; width: 100%; overflow-x: auto; white-space: nowrap; -webkit-overflow-scrolling: touch; padding-bottom: 5px;">
+					<div class="formula-box" style="text-align: center; margin: 30px 0; background: #fff; padding: 30px; border-radius: 12px; border: 1px solid #eee; box-shadow: 0 2px 8px rgba(0,0,0,0.02);">
+						<div class="math-container">
 							<span set:html={"$$ f(x) = \\begin{cases} \\displaystyle \\frac{x^2+ax+b}{x-2} & (x \\neq 2) \\\\ 5 & (x=2) \\end{cases} $$"}></span>
 						</div>
 						<p style="margin: 0; font-size: 1.1rem; color: #333; line-height: 1.6; word-break: keep-all; padding: 0 10px;">가 <span set:html={txtX2}></span>에서 연속일 때, $a, b$의 값은?</p>
