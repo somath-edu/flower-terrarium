@@ -31,31 +31,33 @@ const mathT2L = "$t \\to 2^-$";
 				display: flex;
 				justify-content: center;
 			}
-			/* [표준 디자인 시스템] 통합형 흐름 레이아웃 */
+			/* [표준 디자인 시스템] 고급 여백 통합형 레이아웃 */
 			.formula-box {
-				text-align: left; /* 지문형이므로 왼쪽 정렬이 읽기 편함 */
-				margin: 30px 0;
+				text-align: left;
+				margin: 35px 0;
 				background: #fff;
-				padding: 30px;
-				border-radius: 12px;
+				padding: 40px 35px; /* 패딩을 더 넓혀서 여유 공간 확보 */
+				border-radius: 16px;
 				border: 1px solid #eee;
-				box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+				box-shadow: 0 4px 12px rgba(0,0,0,0.03);
 				overflow: hidden;
 				width: 100%;
 				box-sizing: border-box;
-				line-height: 2; /* 수식이 섞여 있으므로 줄간격을 넉넉히 */
+				line-height: 2.4; /* 줄간격을 더 넓혀서 시원하게 배치 */
 			}
 			.math-inline-block {
 				display: inline-block;
 				vertical-align: middle;
-				margin: 0 5px;
-				background: rgba(0,0,0,0.02);
-				padding: 5px 15px;
-				border-radius: 6px;
+				margin: 10px 8px; /* 수식 주변 마진 확장 */
+				background: #f8f9fa;
+				padding: 8px 20px; /* 수식 내부 여백 확장 */
+				border-radius: 10px;
+				border: 1px solid rgba(0,0,0,0.03);
 			}
 			@media screen and (max-width: 480px) {
-				.formula-box { padding: 20px 15px !important; margin: 20px 0 !important; }
-				.formula-box p { font-size: 1.05rem !important; }
+				.formula-box { padding: 30px 20px !important; margin: 25px 0 !important; }
+				.formula-box p { font-size: 1.1rem !important; line-height: 2.2 !important; }
+				.math-inline-block { margin: 8px 0; padding: 6px 15px; display: block; text-align: center; } /* 모바일에서는 수식을 블록화하여 더 넓게 */
 				body { padding: 10px; }
 			}
 		</style>
@@ -64,22 +66,22 @@ const mathT2L = "$t \\to 2^-$";
 		<CornellNote title="유형 04. 합성함수의 연속성" chapter="Chapter 01 Practice">
 			
 			<div slot="cues">
-				<p style="margin: 0; font-weight: bold; color: #1a1a1a;">💡 집중 공략 포인트</p>
+				<p style="margin: 0; font-weight: bold; color: #1a1a1a;">🚀 해결 전략 체크리스트</p>
 				<ul style="margin-top: 10px; padding-left: 18px; font-size: 11pt; line-height: 1.6; color: #444;">
-					<li>안쪽 함수 <span set:html={mathFX}></span>의 극한 방향(위/아래/일정) 확인</li>
-					<li>바깥 함수 <span set:html={mathGT}></span>의 해당 지점 연속성 조사</li>
+					<li>안쪽 함수 $f(x)$의 극한 방향 확인</li>
+					<li>바깥 함수 $g(t)$의 해당 지점 연속성</li>
+					<li>치환 변수 $t$의 상태 변화 추적</li>
 				</ul>
 			</div>
 
 			<section>
 				<div class="type-section">
-					<h4 style="margin-top: 0; color: #1a1a1a; border-bottom: 2px solid royalblue; display: inline-block; padding-bottom: 5px; margin-bottom: 15px;">
+					<h4 style="margin-top: 0; color: #1a1a1a; border-bottom: 2px solid royalblue; display: inline-block; padding-bottom: 5px; margin-bottom: 20px;">
 						[핵심 문제]
 					</h4>
 					
-					<!-- 시선 분산을 최소화한 '통합형 흐름' formula-box -->
 					<div class="formula-box">
-						<p style="margin: 0; color: #1a1a1a; font-size: 1.15rem; word-break: keep-all;">
+						<p style="margin: 0; color: #1a1a1a; font-size: 1.2rem; word-break: keep-all; font-weight: 400;">
 							함수 <span set:html={mathFX}></span>가 <span set:html={mathX1}></span>에서 우극한은 $2$인 상태에서 아래쪽에서 접근하고, 
 							함수 <span set:html={mathGT}></span>가 <span set:html={mathT2L}></span>일 때 극한값이 $y$일 때, 
 							합성함수의 극한값 <span class="math-inline-block" set:html={mathOuterLimit}></span> 의 값을 구하시오.
@@ -87,45 +89,27 @@ const mathT2L = "$t \\to 2^-$";
 					</div>
 					
 					<!-- Strategy -->
-					<details style="margin-top: 30px; border: 1px solid #eee; border-radius: 8px; padding: 10px; background: #fff;">
-						<summary style="font-weight: bold; color: #1a73e8; cursor: pointer; padding: 5px;">💡 해결 전략 (클릭하여 확인)</summary>
+					<details style="margin-top: 35px; border: 1px solid #eee; border-radius: 12px; padding: 15px; background: #fff;">
+						<summary style="font-weight: bold; color: #1a73e8; cursor: pointer; padding: 5px;">💡 해결 전략</summary>
 						<div style="margin-top: 10px; padding: 10px; border-top: 1px dashed #eee; color: #444; line-height: 1.6;">
 							합성함수의 극한은 **'상태의 전이'**입니다. <span set:html={mathInnerLimit}></span>라는 사실이 바깥 함수 $g$의 '좌극한'을 보라는 명령이 됩니다.
 						</div>
 					</details>
 
 					<!-- Solution -->
-					<details style="margin-top: 15px; border: 1px solid #eee; border-radius: 8px; padding: 10px; background: #fff;">
+					<details style="margin-top: 15px; border: 1px solid #eee; border-radius: 12px; padding: 15px; background: #fff;">
 						<summary style="font-weight: bold; color: #e63946; cursor: pointer; padding: 5px;">📝 단계별 풀이</summary>
 						<div style="margin-top: 10px; padding: 10px; border-top: 1px dashed #eee; color: #444; line-height: 1.8;">
 							<p><b>Step 1. 안쪽 함수 분석</b><br/>
-							$x \to 1^+$일 때 <span set:html={mathFX}></span>가 어떻게 변화하는지 관찰합니다. 만약 <span set:html={mathFX}></span>가 $2$보다 작은 값에서 커지고 있다면 <span set:html={mathInnerLimit}></span> 입니다.</p>
+							$x \to 1^+$일 때 $f(x)$가 아래쪽에서 $2$로 접근하므로 $f(x) \to 2^-$ 입니다.</p>
 							<p><b>Step 2. 바깥 함수 적용</b><br/>
-							$t = f(x)$라 하면 $t \to 2^-$ 이므로, 바깥 함수 <span set:html={mathGT}></span>의 $2$에서의 **좌극한**을 찾습니다.</p>
-							<p><b>Step 3. 최종 결론</b><br/>
-							바깥 함수의 좌극한값이 곧 최종 합성함수의 극한값입니다.</p>
+							치환된 변수가 $2$의 좌극한으로 가므로, $g(t)$의 좌극한값을 찾습니다.</p>
 						</div>
 					</details>
-
-					<!-- Difficulty Level Navigation -->
-					<div style="margin-top: 50px; padding: 25px; background: #f9f9f9; border-radius: 16px; border: 1px solid #eee;">
-						<p style="margin: 0 0 15px 0; font-weight: bold; color: #333; font-size: 1rem; display: flex; align-items: center; gap: 8px;">
-							🎯 내 실력에 맞는 문제 도전하기
-						</p>
-						<div style="display: flex; gap: 12px;">
-							<a href="/wiki/chapter01/levels/type04-low/" style="flex: 1; padding: 15px; background: #eef7ee; color: #2e7d32; text-align: center; border-radius: 12px; text-decoration: none; font-weight: bold; border: 1.5px solid #2e7d32; font-size: 1.3rem;">[하]</a>
-							<a href="/wiki/chapter01/levels/type04-mid/" style="flex: 1; padding: 15px; background: #ebf3ff; color: #1565c0; text-align: center; border-radius: 12px; text-decoration: none; font-weight: bold; border: 1.5px solid #1565c0; font-size: 1.3rem;">[중]</a>
-							<a href="/wiki/chapter01/levels/type04-high/" style="flex: 1; padding: 15px; background: #fff8e1; color: #a0522d; text-align: center; border-radius: 12px; text-decoration: none; font-weight: bold; border: 1.5px solid #a0522d; font-size: 1.3rem;">[수능]</a>
-						</div>
-					</div>
 				</div>
 
-				<a href="/wiki/chapter01/problems-cont/" class="back-link" style="margin-top: 40px; display: inline-block;">← 유형별 목록으로 돌아가기</a>
+				<a href="/wiki/chapter01/problems-cont/" class="back-link" style="margin-top: 50px; display: inline-block;">← 유형별 목록으로 돌아가기</a>
 			</section>
-
-			<div slot="summary">
-				<p>합성함수의 연속성 상세 연습입니다. 지문에 주어진 조건을 차분히 수학적으로 해석하는 능력을 기릅니다.</p>
-			</div>
 		</CornellNote>
 
 		<script is:inline>
