@@ -1,5 +1,10 @@
 ---
 import CornellNote from '../../../components/CornellNote.astro';
+
+// 수식 변수 격리
+const mathQ1 = "$ \\displaystyle \\lim_{x \\to \\infty} \\frac{(2x+1)(x-3)}{ax^2+5} = 2 $";
+const mathQ2 = "$ \\displaystyle \\lim_{x \\to \\infty} (\\sqrt{x^2+4x} - x) $";
+const mathQ3 = "$ \\displaystyle \\lim_{x \\to \\infty} \\frac{\\sqrt{x^2+1}+x}{2x-1} $";
 ---
 
 <html lang="ko">
@@ -20,77 +25,126 @@ import CornellNote from '../../../components/CornellNote.astro';
 				display: flex;
 				justify-content: center;
 			}
+			/* [표준 디자인 시스템] 난이도 연습 페이지 v2 */
+			.question-card {
+				background: #fff;
+				border-radius: 16px;
+				padding: 25px;
+				margin-bottom: 30px;
+				border: 1px solid #eee;
+				box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+			}
+			.question-header {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				margin-bottom: 20px;
+			}
+			.pencil-star { color: #1a73e8; margin-right: 5px; }
+			
 			.sol-button {
 				display: inline-block;
-				padding: 4px 12px;
-				background: #eef2f8;
+				padding: 6px 16px;
+				background: #edf2f7;
 				color: #1a73e8;
-				border-radius: 8px;
+				border-radius: 20px;
 				text-decoration: none;
 				font-size: 0.9rem;
 				font-weight: bold;
-				margin-left: 10px;
-				border: 1.5px solid #d0e0f0;
+				border: 1.2px solid #e2e8f0;
 				transition: all 0.2s ease;
 			}
 			.sol-button:hover {
 				background: #1a73e8;
 				color: white;
 				transform: translateY(-1px);
-				box-shadow: 0 4px 8px rgba(26, 115, 232, 0.2);
+			}
+
+			.formula-box {
+				text-align: center;
+				margin: 15px 0;
+				background: #fafafa;
+				padding: 20px;
+				border-radius: 12px;
+				border: 1px solid #f0f0f0;
+			}
+			.math-container {
+				width: 100%;
+				overflow-x: auto;
+				white-space: nowrap;
+				-webkit-overflow-scrolling: touch;
+				padding: 10px 0;
+				display: flex;
+				justify-content: center;
+			}
+
+			@media screen and (max-width: 480px) {
+				.question-card { padding: 20px 15px !important; }
+				.formula-box { padding: 15px 5px !important; }
+				.katex-display { font-size: 0.85em !important; }
+				.math-container { justify-content: flex-start; }
+				body { padding: 10px; }
 			}
 		</style>
 	</head>
 	<body>
-		<CornellNote title="유형 01. [중] 실력 향상" chapter="Level: Mid">
+		<CornellNote title="유형 01. 유리함수의 극한 [중]" chapter="Level: Intermediate">
 			<div slot="cues">
-				<p style="margin: 0; font-weight: bold; color: #1a1a1a;">🔵 응용 포인트</p>
+				<p style="margin: 0; font-weight: bold; color: #1a1a1a;">💡 실력 다지기</p>
 				<ul style="margin-top: 10px; padding-left: 18px; font-size: 11pt; line-height: 1.6; color: #444;">
-					<li>복잡한 다항식 전개</li>
-					<li>분수 항 내의 연산 주의</li>
+					<li>무리식이 포함된 경우 유리화 필요성 판단</li>
+					<li>부정형($\infty/\infty$)의 계수 비교 숙달</li>
+					<li>미정계수가 포함된 극한값 해석</li>
 				</ul>
 			</div>
 
 			<section>
 				<div class="type-section">
-					<p style="margin-bottom: 20px;">다항식의 전개와 차수를 고려하여 정확한 값을 도출하는 연습입니다.</p>
+					<p style="margin-bottom: 25px; color: #666; line-height: 1.6;">내신에서 자주 출제되는 중간 난이도 문항들입니다. 계산 실수를 줄이는 연습을 해보세요.</p>
 					
+					<!-- Q1 -->
 					<div class="question-card">
 						<div class="question-header">
-							<p style="margin: 0;"><b>Q1.</b> 다음 극한값을 구하시오.</p>
-							<a href="/wiki/chapter01/solutions/type01-mid/q1" class="sol-button">풀이 💡</a>
+							<p style="margin: 0; font-size: 1.1rem;"><span class="pencil-star">★</span> <b>Q1.</b> 다음 등식이 성립하도록 하는 상수 $a$의 값을 구하시오.</p>
+							<a href="/wiki/chapter01/solutions/type01-mid/q1" class="sol-button">풀이 보기 💡</a>
 						</div>
-						<div class="formula-box" style="text-align: center;">
-							{ "$ \\displaystyle \\lim_{x \\to \\infty} \\frac{(2x+1)(3x-5)}{x^2 + 10} $" }
+						<div class="formula-box">
+							<div class="math-container">
+								<span set:html={mathQ1}></span>
+							</div>
 						</div>
 					</div>
 
 					<!-- Q2 -->
 					<div class="question-card">
 						<div class="question-header">
-							<p style="margin: 0;"><b>Q2.</b> 다음 극한값을 구하시오.</p>
-							<a href="/wiki/chapter01/solutions/type01-mid/q2" class="sol-button">풀이 💡</a>
+							<p style="margin: 0; font-size: 1.1rem;"><span class="pencil-star">★</span> <b>Q2.</b> 다음 극한값을 구하시오. (필요시 유리화 활용)</p>
+							<a href="/wiki/chapter01/solutions/type01-mid/q2" class="sol-button">풀이 보기 💡</a>
 						</div>
-						<div class="formula-box" style="text-align: center;">
-							{ "$ \\displaystyle \\lim_{x \\to \\infty} \\frac{(x+2)^2}{3x^2 - x} $" }
+						<div class="formula-box">
+							<div class="math-container">
+								<span set:html={mathQ2}></span>
+							</div>
 						</div>
 					</div>
 
 					<!-- Q3 -->
 					<div class="question-card">
 						<div class="question-header">
-							<p style="margin: 0;"><b>Q3.</b> 다음 극한값을 구하시오.</p>
-							<a href="/wiki/chapter01/solutions/type01-mid/q3" class="sol-button">풀이 💡</a>
+							<p style="margin: 0; font-size: 1.1rem;"><span class="pencil-star">★</span> <b>Q3.</b> 다음 무리함수가 포함된 극한의 수렴값을 구하시오.</p>
+							<a href="/wiki/chapter01/solutions/type01-mid/q3" class="sol-button">풀이 보기 💡</a>
 						</div>
-						<div class="formula-box" style="text-align: center;">
-							{ "$ \\displaystyle \\lim_{x \\to \\infty} \\frac{2x^2 + 5x}{(x-1)(x+3)} $" }
+						<div class="formula-box">
+							<div class="math-container">
+								<span set:html={mathQ3}></span>
+							</div>
 						</div>
 					</div>
 				</div>
 
-				<div style="margin-top: 40px; display: flex; flex-wrap: wrap; gap: 15px;">
-					<a href="/wiki/chapter01/types/type01/" class="problem-link" style="margin: 0;">← 핵심 문제로 이동</a>
-					<a href="/wiki/chapter01/problems-inf/" class="problem-link" style="margin: 0; background-color: rgba(0,0,0,0.05); color: #666;">목록으로 돌아가기</a>
+				<div style="margin-top: 50px; display: flex; flex-wrap: wrap; gap: 15px;">
+					<a href="/wiki/chapter01/types/type01/" style="flex: 1; padding: 15px; background: #fff; color: #1a73e8; text-align: center; border-radius: 12px; text-decoration: none; font-weight: bold; border: 1.5px solid #1a73e8;">← 핵심 문제로 이동</a>
+					<a href="/wiki/chapter01/problems-inf/" style="flex: 1; padding: 15px; background: #f5f5f5; color: #666; text-align: center; border-radius: 12px; text-decoration: none; font-weight: bold; border: 1px solid #ddd;">목록으로 돌아가기</a>
 				</div>
 			</section>
 		</CornellNote>

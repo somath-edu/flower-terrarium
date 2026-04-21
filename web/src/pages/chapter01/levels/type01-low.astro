@@ -1,5 +1,10 @@
 ---
 import CornellNote from '../../../components/CornellNote.astro';
+
+// 수식 변수 격리
+const mathQ1 = "$ \\displaystyle \\lim_{x \\to \\infty} \\frac{3x+1}{x-2} $";
+const mathQ2 = "$ \\displaystyle \\lim_{x \\to \\infty} \\frac{x^2+5}{2x^2-3x} $";
+const mathQ3 = "$ \\displaystyle \\lim_{x \\to \\infty} \\frac{4}{x+1} $";
 ---
 
 <html lang="ko">
@@ -20,96 +25,126 @@ import CornellNote from '../../../components/CornellNote.astro';
 				display: flex;
 				justify-content: center;
 			}
+			/* [표준 디자인 시스템] 난이도 연습 페이지 v2 */
+			.question-card {
+				background: #fff;
+				border-radius: 16px;
+				padding: 25px;
+				margin-bottom: 30px;
+				border: 1px solid #eee;
+				box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+			}
+			.question-header {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				margin-bottom: 20px;
+			}
+			.pencil-star { color: #2e7d32; margin-right: 5px; }
+			
 			.sol-button {
 				display: inline-block;
-				padding: 4px 12px;
-				background: #eef2f8;
-				color: #1a73e8;
-				border-radius: 8px;
+				padding: 6px 16px;
+				background: #f0f7f0;
+				color: #2e7d32;
+				border-radius: 20px;
 				text-decoration: none;
 				font-size: 0.9rem;
 				font-weight: bold;
-				margin-left: 10px;
-				border: 1.5px solid #d0e0f0;
+				border: 1.2px solid #dcebdc;
 				transition: all 0.2s ease;
 			}
 			.sol-button:hover {
-				background: #1a73e8;
+				background: #2e7d32;
 				color: white;
 				transform: translateY(-1px);
-				box-shadow: 0 4px 8px rgba(26, 115, 232, 0.2);
+			}
+
+			.formula-box {
+				text-align: center;
+				margin: 15px 0;
+				background: #fafafa;
+				padding: 20px;
+				border-radius: 12px;
+				border: 1px solid #f0f0f0;
+			}
+			.math-container {
+				width: 100%;
+				overflow-x: auto;
+				white-space: nowrap;
+				-webkit-overflow-scrolling: touch;
+				padding: 10px 0;
+				display: flex;
+				justify-content: center;
+			}
+
+			@media screen and (max-width: 480px) {
+				.question-card { padding: 20px 15px !important; }
+				.formula-box { padding: 15px 5px !important; }
+				.katex-display { font-size: 0.85em !important; }
+				.math-container { justify-content: flex-start; }
+				body { padding: 10px; }
 			}
 		</style>
 	</head>
 	<body>
-		<CornellNote title="유형 01. [하] 기초 탄탄" chapter="Level: Low">
+		<CornellNote title="유형 01. 유리함수의 극한 [하]" chapter="Level: Beginner">
 			<div slot="cues">
-				<p style="margin: 0; font-weight: bold; color: #1a1a1a;">🟢 기초 포인트</p>
+				<p style="margin: 0; font-weight: bold; color: #1a1a1a;">💡 기초 다지기</p>
 				<ul style="margin-top: 10px; padding-left: 18px; font-size: 11pt; line-height: 1.6; color: #444;">
-					<li>단순 계수 비교 집중</li>
-					<li>빠른 풀이 속도 연습</li>
+					<li>분모와 분자의 차수 확인 연습</li>
+					<li>무한대 분의 상수 꼴의 값 이해</li>
+					<li>가장 높은 차수의 항만 남기기</li>
 				</ul>
 			</div>
 
 			<section>
 				<div class="type-section">
-					<p style="margin-bottom: 20px;">기초적인 계수 비교를 통해 빠르게 정답을 찾는 연습을 합니다.</p>
+					<p style="margin-bottom: 25px; color: #666; line-height: 1.6;">기초적인 유리함수 극한 문항들입니다. 차수 비교의 원리를 확실히 익혀보세요.</p>
 					
+					<!-- Q1 -->
 					<div class="question-card">
 						<div class="question-header">
-							<p style="margin: 0;"><b>Q1.</b> 다음 극한값을 구하시오.</p>
-							<a href="/wiki/chapter01/solutions/type01-low/q1" class="sol-button">풀이 💡</a>
+							<p style="margin: 0; font-size: 1.1rem;"><span class="pencil-star">★</span> <b>Q1.</b> 다음 극한값을 구하시오.</p>
+							<a href="/wiki/chapter01/solutions/type01-low/q1" class="sol-button">풀이 보기 💡</a>
 						</div>
-						<div class="formula-box" style="text-align: center;">
-							{ "$ \\displaystyle \\lim_{x \\to \\infty} \\frac{5x^2 + 1}{2x^2 - 3} $" }
+						<div class="formula-box">
+							<div class="math-container">
+								<span set:html={mathQ1}></span>
+							</div>
 						</div>
 					</div>
 
 					<!-- Q2 -->
 					<div class="question-card">
 						<div class="question-header">
-							<p style="margin: 0;"><b>Q2.</b> 다음 극한값을 구하시오.</p>
-							<a href="/wiki/chapter01/solutions/type01-low/q2" class="sol-button">풀이 💡</a>
+							<p style="margin: 0; font-size: 1.1rem;"><span class="pencil-star">★</span> <b>Q2.</b> 다음 수렴하는 극한의 값을 구하시오.</p>
+							<a href="/wiki/chapter01/solutions/type01-low/q2" class="sol-button">풀이 보기 💡</a>
 						</div>
-						<div class="formula-box" style="text-align: center;">
-							{ "$ \\displaystyle \\lim_{x \\to \\infty} \\frac{10x - 3}{5x + 7} $" }
+						<div class="formula-box">
+							<div class="math-container">
+								<span set:html={mathQ2}></span>
+							</div>
 						</div>
 					</div>
 
 					<!-- Q3 -->
 					<div class="question-card">
 						<div class="question-header">
-							<p style="margin: 0;"><b>Q3.</b> 다음 극한값을 구하시오.</p>
-							<a href="/wiki/chapter01/solutions/type01-low/q3" class="sol-button">풀이 💡</a>
+							<p style="margin: 0; font-size: 1.1rem;"><span class="pencil-star">★</span> <b>Q3.</b> 분모의 차수가 더 큰 다음 극한의 값을 구하시오.</p>
+							<a href="/wiki/chapter01/solutions/type01-low/q3" class="sol-button">풀이 보기 💡</a>
 						</div>
-						<div class="formula-box" style="text-align: center;">
-							{ "$ \\displaystyle \\lim_{x \\to \\infty} \\frac{4x^2 + 7x}{x^2 + 5} $" }
+						<div class="formula-box">
+							<div class="math-container">
+								<span set:html={mathQ3}></span>
+							</div>
 						</div>
 					</div>
 				</div>
 
-				<!-- PDF Download Area -->
-				<div style="margin-top: 50px; padding: 20px 25px; background: #fff; border: 1.5px solid #eee; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.03); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px;">
-					<p style="margin: 0; font-weight: bold; color: #333; display: flex; align-items: center; gap: 8px; font-size: 11pt;">
-						📄 추가 연습 자료
-						<a href="/wiki/pdf/chapter01/type01_low.pdf" download class="problem-link" style="margin-left: 5px; background-color: #c62828; color: white; border: none; padding: 8px 16px; font-size: 10pt; font-weight: normal;">
-							유형 01 연습문제(10문항)
-						</a>
-					</p>
-					<p style="margin: 0; font-size: 9pt; color: #888; font-style: italic;">
-						* A4 사이즈 총 10페이지 (문제지 5p + 해설지 5p)
-					</p>
-				</div>
-
-				<!-- Secondary Navigation (Outside the box) -->
-				<div style="margin-top: 20px; display: flex; gap: 20px; align-items: center; justify-content: center;">
-					<a href="/wiki/chapter01/types/type01/" style="color: #666; text-decoration: none; font-size: 10pt; display: flex; align-items: center; gap: 5px;">
-						<span style="font-size: 12pt;">←</span> 핵심 문제로 이동
-					</a>
-					<div style="width: 1px; height: 12px; background: #ddd;"></div>
-					<a href="/wiki/chapter01/problems-inf/" style="color: #666; text-decoration: none; font-size: 10pt;">
-						목록으로 돌아가기
-					</a>
+				<div style="margin-top: 50px; display: flex; flex-wrap: wrap; gap: 15px;">
+					<a href="/wiki/chapter01/types/type01/" style="flex: 1; padding: 15px; background: #fff; color: #1a73e8; text-align: center; border-radius: 12px; text-decoration: none; font-weight: bold; border: 1.5px solid #1a73e8;">← 핵심 문제로 이동</a>
+					<a href="/wiki/chapter01/problems-inf/" style="flex: 1; padding: 15px; background: #f5f5f5; color: #666; text-align: center; border-radius: 12px; text-decoration: none; font-weight: bold; border: 1px solid #ddd;">목록으로 돌아가기</a>
 				</div>
 			</section>
 		</CornellNote>
