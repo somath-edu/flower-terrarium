@@ -40,6 +40,39 @@ const mathGK0 = "$g(k)=0$";
 				display: flex;
 				justify-content: center;
 			}
+			/* [표준 디자인 시스템] KaTeX & 모바일 수식 최적화 */
+			.formula-box {
+				text-align: center;
+				margin: 30px 0;
+				background: #fff;
+				padding: 30px;
+				border-radius: 12px;
+				border: 1px solid #eee;
+				box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+				overflow: hidden;
+				width: 100%;
+				box-sizing: border-box;
+			}
+			.math-container {
+				width: 100%;
+				overflow-x: auto;
+				white-space: nowrap;
+				-webkit-overflow-scrolling: touch;
+				padding-bottom: 10px;
+				display: flex;
+				justify-content: center;
+			}
+			.katex-display {
+				margin: 0.5em 0 !important;
+				overflow-x: auto;
+				overflow-y: hidden;
+			}
+			@media screen and (max-width: 480px) {
+				.formula-box { padding: 15px 5px !important; margin: 20px 0 !important; }
+				.katex-display { font-size: 0.85em !important; }
+				.formula-box p { font-size: 1rem !important; line-height: 1.5; }
+				body { padding: 10px; }
+			}
 		</style>
 	</head>
 	<body>
@@ -60,9 +93,16 @@ const mathGK0 = "$g(k)=0$";
 						[핵심 문제]
 					</h4>
 					<p>두 함수의 곱이 특정 지점에서 연속이 되도록 하는 미지수를 구하시오.</p>
-					<div style="text-align: center; font-size: 1.6rem; margin: 40px 0; background: rgba(0,0,0,0.02); padding: 30px; border-radius: 12px;">
-						 함수 <span set:html={mathMain}></span> 이고,<br/>
-						 <span set:html={mathGX}></span>일 때, <span set:html={mathFXGX}></span>가 <span set:html={mathX1}></span>에서 연속이 되기 위한 <span set:html={mathA}></span>의 값은?
+
+					<!-- 표준화된 formula-box 레이아웃 -->
+					<div class="formula-box">
+						<div class="math-container">
+							<span set:html={"$$ f(x) = \\begin{cases} x+2 & (x < 1) \\\\ x^2-4 & (x \\ge 1) \\end{cases} $$"}></span>
+						</div>
+						<p style="margin-top: 15px; color: #333; word-break: keep-all;">
+							이고, <span set:html={mathGX}></span>일 때,<br/>
+							<span set:html={mathFXGX}></span>가 <span set:html={mathX1}></span>에서 연속이 되기 위한 <span set:html={mathA}></span>의 값은?
+						</p>
 					</div>
 					
 					<!-- Strategy -->
