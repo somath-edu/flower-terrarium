@@ -14,10 +14,14 @@ import CornellNote from '../../../../components/CornellNote.astro';
 		<script is:inline src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
 		<style>
 			body { background-color: #e0e0e0; margin: 0; padding: 10px; display: flex; justify-content: center; }
-			.sol-box { background: white; padding: 10px; border-radius: 20px; border: 1.5px solid #eee; margin-bottom: 25px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
-			.step-title { display: block; font-weight: bold; color: #2e7d32; margin: 20px 0 10px 0; font-size: 1.1rem; }
-			.back-btn { display: inline-block; padding: 10px 20px; background: #333; color: white; border-radius: 8px; text-decoration: none; margin-top: 20px; transition: background 0.2s; }
-			.back-btn:hover { background: #555; }
+			.sol-box { background: white; padding: 25px; border-radius: 20px; border: 1.5px solid #eee; margin-bottom: 25px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+			.step-title { display: block; font-weight: bold; color: #1a73e8; margin: 25px 0 10px 0; font-size: 1.1rem; border-left: 4px solid #1a73e8; padding-left: 10px; }
+			
+			@media screen and (max-width: 600px) {
+				body { padding: 5px; }
+				.sol-box { padding: 20px 15px; }
+				.mobile-nav-btn { width: 100% !important; display: block !important; box-sizing: border-box; text-align: center; }
+			}
 		</style>
 	</head>
 	<body>
@@ -25,14 +29,14 @@ import CornellNote from '../../../../components/CornellNote.astro';
 			<div slot="cues">
 				<p style="margin: 0; font-weight: bold; color: #1a1a1a;">💡 풀이 전략</p>
 				<p style="margin-top: 10px; font-size: 10pt; line-height: 1.6; color: #666;">
-					무한대 극한($x \to \infty$)에서 차수가 같을 때 극한값은 최고차항 계수비라는 점을 이용합니다.
+					무한대 극한({ "$ x \\to \\infty $" })에서 차수가 같을 때 극한값은 최고차항 계수비라는 점을 이용합니다.
 				</p>
 			</div>
 
 			<section>
-				<div class="sol-box formula-box">
-					<p style="margin-bottom: 20px; font-weight: bold;">Q2. 다음 등식이 성립하도록 하는 상수 { "$ a $" }의 값을 구하시오.</p>
-					<p style="text-align: center; font-size: 1.25rem; background: #f9f9f9; padding: 10px; border-radius: 12px;">
+				<div class="sol-box">
+					<p style="margin-bottom: 20px; font-weight: bold;">Q2. 다음 등식이 성립하도록 하는 상수 $a$의 값을 구하시오.</p>
+					<p style="text-align: center; font-size: 1.25rem; background: #f9f9f9; padding: 20px; border-radius: 12px; margin-bottom: 30px;">
 						{ "$ \\displaystyle \\lim_{x \\to \\infty} \\frac{3x^2 - x}{ax^2 + 5} = \\frac{1}{2} $" }
 					</p>
 
@@ -40,13 +44,14 @@ import CornellNote from '../../../../components/CornellNote.astro';
 					<p>분모와 분자가 모두 { "$ 2 $" }차식입니다. 무한대 극한에서 차수가 같으면 최고차항 계수비가 곧 극한값입니다.</p>
 
 					<span class="step-title">Step 2. 계수비 식 세우기</span>
-					<p>분자의 계수는 { "$ 3 $" }, 분모의 계수는 { "$ a $" }이므로 계수비는 { "$ \\frac{3}{a} $" }입니다.</p>
+					<p>분자의 최고차항 계수는 { "$ 3 $" }, 분모의 최고차항 계수는 { "$ a $" }이므로 계수비는 { "$ \\frac{3}{a} $" }입니다.</p>
 
-					<span class="step-title">Step 3. 상수 { "$ a $" } 결정</span>
-					<p>{ "$ \\frac{3}{a} = \\frac{1}{2} \\implies a = 6 $" }입니다.</p>
+					<span class="step-title">Step 3. 상수 $a$ 결정</span>
+					<p>{ "$ \\displaystyle \\frac{3}{a} = \\frac{1}{2} \\implies a = 6 $" }<br/>
+					따라서 정답은 { "$ 6 $" }입니다.</p>
 				</div>
 
-				<div style="text-align: center;">
+				<div style="text-align: center; margin-bottom: 30px;">
 					<a href="/wiki/chapter01/levels/type03-low/" class="problem-link mobile-nav-btn">← 문제로 돌아가기</a>
 				</div>
 			</section>

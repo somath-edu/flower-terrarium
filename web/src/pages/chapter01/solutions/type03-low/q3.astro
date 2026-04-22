@@ -14,10 +14,14 @@ import CornellNote from '../../../../components/CornellNote.astro';
 		<script is:inline src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
 		<style>
 			body { background-color: #e0e0e0; margin: 0; padding: 10px; display: flex; justify-content: center; }
-			.sol-box { background: white; padding: 10px; border-radius: 20px; border: 1.5px solid #eee; margin-bottom: 25px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
-			.step-title { display: block; font-weight: bold; color: #2e7d32; margin: 20px 0 10px 0; font-size: 1.1rem; }
-			.back-btn { display: inline-block; padding: 10px 20px; background: #333; color: white; border-radius: 8px; text-decoration: none; margin-top: 20px; transition: background 0.2s; }
-			.back-btn:hover { background: #555; }
+			.sol-box { background: white; padding: 25px; border-radius: 20px; border: 1.5px solid #eee; margin-bottom: 25px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+			.step-title { display: block; font-weight: bold; color: #1a73e8; margin: 25px 0 10px 0; font-size: 1.1rem; border-left: 4px solid #1a73e8; padding-left: 10px; }
+			
+			@media screen and (max-width: 600px) {
+				body { padding: 5px; }
+				.sol-box { padding: 20px 15px; }
+				.mobile-nav-btn { width: 100% !important; display: block !important; box-sizing: border-box; text-align: center; }
+			}
 		</style>
 	</head>
 	<body>
@@ -25,28 +29,31 @@ import CornellNote from '../../../../components/CornellNote.astro';
 			<div slot="cues">
 				<p style="margin: 0; font-weight: bold; color: #1a1a1a;">💡 풀이 전략</p>
 				<p style="margin-top: 10px; font-size: 10pt; line-height: 1.6; color: #666;">
-					분자의 차수가 분모보다 크면 무한대로 발산하므로, 극한값이 존재하려면 최고차항 계수가 { "$ 0 $" }이어야 합니다.
+					분자의 차수가 분모보다 크면 무한대로 발산하므로, 극한값이 상수로 존재하려면 분자의 차수를 낮추어야 합니다.
 				</p>
 			</div>
 
 			<section>
-				<div class="sol-box formula-box">
-					<p style="margin-bottom: 20px; font-weight: bold;">Q3. 다음 등식이 성립하도록 하는 상수 { "$ a $" }의 값을 구하시오.</p>
-					<p style="text-align: center; font-size: 1.25rem; background: #f9f9f9; padding: 10px; border-radius: 12px;">
-						{ "$ \\displaystyle \\lim_{x \\to \\infty} \\frac{ax^2 + 5x}{2x + 1} = 5 $" }
+				<div class="sol-box">
+					<p style="margin-bottom: 20px; font-weight: bold;">Q3. 다음 등식이 성립하도록 하는 상수 $a$의 값을 구하시오.</p>
+					<p style="text-align: center; font-size: 1.25rem; background: #f9f9f9; padding: 20px; border-radius: 12px; margin-bottom: 30px;">
+						{ "$ \\displaystyle \\lim_{x \\to \\infty} \\frac{ax^2 + 5x}{2x + 1} = \\frac{5}{2} $" }
 					</p>
 
-					<span class="step-title">Step 1. 차수 비교</span>
-					<p>분모가 { "$ 1 $" }차식인데 극한값이 { "$ 5 $" }로 수렴하므로, 분자도 반드시 { "$ 1 $" }차식이어야 합니다.</p>
+					<span class="step-title">Step 1. 차수 비교 및 조건 확인</span>
+					<p>분모는 { "$ 1 $" }차식인데 극한값이 { "$ \frac{5}{2} $" }로 수렴하므로, 분자도 반드시 { "$ 1 $" }차식이어야 합니다.<br/>
+					만약 분자가 { "$ 2 $" }차식이라면 극한값은 무한대로 발산하게 됩니다.</p>
 
-					<span class="step-title">Step 2. 최고차항 제거</span>
-					<p>{ "$ 2 $" }차항인 { "$ ax^2 $" }이 사라져야 하므로 **{ "$ a = 0 $" }**이어야 합니다.</p>
+					<span class="step-title">Step 2. 미정계수 $a$ 결정</span>
+					<p>분자의 { "$ 2 $" }차항인 { "$ ax^2 $" }이 사라져야 하므로 계수 { "$ a $" }는 반드시 **{ "$ 0 $" }**이어야 합니다.</p>
 
-					<span class="step-title">Step 3. 최종 확인</span>
-					<p>{ "$ a=0 $" }일 때 주어진 식은 { "$ \\displaystyle \\lim_{x \\to \\infty} \\frac{5x}{2x+1} = \\frac{5}{2} $" }가 됩니다. 문제의 조건은 { "$ a $" }를 구하는 것이므로 **{ "$ a = 0 $" }**이 정답입니다.</p>
+					<span class="step-title">Step 3. 최종 정답 확인</span>
+					<p>{ "$ a=0 $" }일 때 식을 대입하여 확인하면:<br/>
+					{ "$ \\displaystyle \\lim_{x \\to \\infty} \\frac{5x}{2x+1} = \\frac{5}{2} $" }<br/>
+					이는 문제의 조건과 일치하므로 정답은 **{ "$ 0 $" }**입니다.</p>
 				</div>
 
-				<div style="text-align: center;">
+				<div style="text-align: center; margin-bottom: 30px;">
 					<a href="/wiki/chapter01/levels/type03-low/" class="problem-link mobile-nav-btn">← 문제로 돌아가기</a>
 				</div>
 			</section>
