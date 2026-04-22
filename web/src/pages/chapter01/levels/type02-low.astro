@@ -20,24 +20,74 @@ import CornellNote from '../../../components/CornellNote.astro';
 				display: flex;
 				justify-content: center;
 			}
+			/* [표준 디자인 시스템] 하단 버튼형 연습 페이지 */
+			.question-card {
+				background: #fff;
+				border-radius: 16px;
+				padding: 25px;
+				margin-bottom: 30px;
+				border: 1px solid #eee;
+				box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+				display: flex;
+				flex-direction: column;
+			}
+			.question-header {
+				margin-bottom: 20px;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+			}
+			.pencil-star { color: #d84315; margin-right: 5px; }
+			
+			.sol-container {
+				margin-top: 20px;
+				display: flex;
+				justify-content: flex-end;
+			}
 			.sol-button {
 				display: inline-block;
-				padding: 4px 12px;
+				padding: 8px 20px;
 				background: #fff8e1;
 				color: #a0522d;
-				border-radius: 8px;
+				border-radius: 25px;
 				text-decoration: none;
-				font-size: 0.9rem;
+				font-size: 0.95rem;
 				font-weight: bold;
-				margin-left: 10px;
 				border: 1.5px solid #a0522d;
 				transition: all 0.2s ease;
+				text-align: center;
 			}
 			.sol-button:hover {
 				background: #a0522d;
 				color: white;
 				transform: translateY(-1px);
-				box-shadow: 0 4px 8px rgba(160, 82, 45, 0.2);
+			}
+
+			.formula-box {
+				text-align: center;
+				margin: 15px 0;
+				background: #fafafa;
+				padding: 20px;
+				border-radius: 12px;
+				border: 1px solid #f0f0f0;
+			}
+
+			@media screen and (max-width: 600px) {
+				.question-card { padding: 20px 15px !important; margin-bottom: 20px; }
+				.question-header { flex-direction: column; align-items: flex-start; gap: 10px; }
+				.formula-box { padding: 15px 5px !important; }
+				.sol-container { justify-content: center !important; margin-top: 15px; width: 100%; }
+				.sol-button { 
+					width: 100% !important; 
+					display: block !important;
+					padding: 12px; 
+					font-size: 1rem;
+					border-radius: 12px;
+					box-sizing: border-box;
+					margin-left: 0 !important;
+				}
+				body { padding: 5px; }
+				.type-section { padding: 15px !important; }
 			}
 		</style>
 	</head>
@@ -53,44 +103,51 @@ import CornellNote from '../../../components/CornellNote.astro';
 
 			<section>
 				<div class="type-section">
-					<p style="margin-bottom: 20px;">무리식의 기본적인 유리화 과정을 반복 연습합니다.</p>
+					<p style="margin-bottom: 25px; color: #666; line-height: 1.6;">무리식의 기본적인 유리화 과정을 반복 연습합니다.</p>
 					
+					<!-- Q1 -->
 					<div class="question-card">
 						<div class="question-header">
-							<p style="margin: 0;"><b>Q1.</b> 다음 극한값을 구하시오.</p>
-							<a href="/wiki/chapter01/solutions/type02-low/q1" class="sol-button">풀이 💡</a>
+							<p style="margin: 0; font-size: 1.1rem;"><span class="pencil-star">★</span> <b>Q1.</b> 다음 극한값을 구하시오.</p>
 						</div>
-						<div class="formula-box" style="text-align: center;">
+						<div class="formula-box">
 							{ "$ \\displaystyle \\lim_{x \\to \\infty} (\\sqrt{x^2 + x} - x) $" }
+						</div>
+						<div class="sol-container">
+							<a href="/wiki/chapter01/solutions/type02-low/q1" class="sol-button">풀이 보기 💡</a>
 						</div>
 					</div>
 
 					<!-- Q2 -->
 					<div class="question-card">
 						<div class="question-header">
-							<p style="margin: 0;"><b>Q2.</b> 다음 극한값을 구하시오.</p>
-							<a href="/wiki/chapter01/solutions/type02-low/q2" class="sol-button">풀이 💡</a>
+							<p style="margin: 0; font-size: 1.1rem;"><span class="pencil-star">★</span> <b>Q2.</b> 다음 극한값을 구하시오.</p>
 						</div>
-						<div class="formula-box" style="text-align: center;">
+						<div class="formula-box">
 							{ "$ \\displaystyle \\lim_{x \\to \\infty} (\\sqrt{x^2 + 4x} - x) $" }
+						</div>
+						<div class="sol-container">
+							<a href="/wiki/chapter01/solutions/type02-low/q2" class="sol-button">풀이 보기 💡</a>
 						</div>
 					</div>
 
 					<!-- Q3 -->
 					<div class="question-card">
 						<div class="question-header">
-							<p style="margin: 0;"><b>Q3.</b> 다음 극한값을 구하시오.</p>
-							<a href="/wiki/chapter01/solutions/type02-low/q3" class="sol-button">풀이 💡</a>
+							<p style="margin: 0; font-size: 1.1rem;"><span class="pencil-star">★</span> <b>Q3.</b> 다음 극한값을 구하시오.</p>
 						</div>
-						<div class="formula-box" style="text-align: center;">
+						<div class="formula-box">
 							{ "$ \\displaystyle \\lim_{x \\to \\infty} \\sqrt{x}(\\sqrt{x+1} - \\sqrt{x}) $" }
+						</div>
+						<div class="sol-container">
+							<a href="/wiki/chapter01/solutions/type02-low/q3" class="sol-button">풀이 보기 💡</a>
 						</div>
 					</div>
 				</div>
 
-				<div style="margin-top: 40px; display: flex; flex-wrap: wrap; gap: 15px;">
-					<a href="/wiki/chapter01/types/type02/" class="problem-link" style="margin: 0;">← 핵심 문제로 이동</a>
-					<a href="/wiki/chapter01/problems-inf/" class="problem-link" style="margin: 0; background-color: rgba(0,0,0,0.05); color: #666;">목록으로 돌아가기</a>
+				<div style="margin-top: 50px; display: flex; flex-wrap: wrap; gap: 15px;">
+					<a href="/wiki/chapter01/types/type02/" style="flex: 1; padding: 15px; background: #fff; color: #a0522d; text-align: center; border-radius: 12px; text-decoration: none; font-weight: bold; border: 1.5px solid #a0522d;">← 핵심 문제로 이동</a>
+					<a href="/wiki/chapter01/problems-inf/" style="flex: 1; padding: 15px; background: #f5f5f5; color: #666; text-align: center; border-radius: 12px; text-decoration: none; font-weight: bold; border: 1px solid #ddd;">목록으로 돌아가기</a>
 				</div>
 			</section>
 		</CornellNote>
